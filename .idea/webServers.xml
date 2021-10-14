@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="9360951a-7c21-4b7a-99e8-3290c8456971" name="A100 103.242.175.227">
+        <fileTransfer rootFolder="/data/private/yangguang/FS-PBA" accessType="SFTP" host="103.242.175.227" port="22" sshConfigId="3e62cd71-8fca-4fff-9a87-e8881603d467" sshConfig="A100 103.242.175.227" keyPair="true" />
+      </webServer>
+    </option>
+  </component>
+</project>
