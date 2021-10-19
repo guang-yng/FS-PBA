@@ -62,7 +62,7 @@ def tokenize_multipart_input(
     max_length, 
     tokenizer, 
     task_name=None, 
-    prompt=False, 
+    prompt=False,
     template=None,
     label_word_list=None, 
     first_sent_limit=None,
@@ -70,6 +70,7 @@ def tokenize_multipart_input(
     gpt3=False,
     truncate_head=False,
     support_labels=None,
+    prompt_num=100,
 ):
     def enc(text):
         return tokenizer.encode(text, add_special_tokens=False)
@@ -103,10 +104,12 @@ def tokenize_multipart_input(
         assert template is not None
 
         special_token_mapping = {
-            'cls': tokenizer.cls_token_id, 'mask': tokenizer.mask_token_id, 'sep': tokenizer.sep_token_id, 'sep+': tokenizer.sep_token_id, 
+            'cls': tokenizer.cls_token_id, 'mask': tokenizer.mask_token_id, 'sep': tokenizer.sep_token_id, 'sep+': tokenizer.sep_token_id,
+            'prompt': [-(i+1) for i in range(prompt_num)]
         }
         template_list = template.split('*') # Get variable list in the template
         segment_id = 0 # Current segment id. Segment id +1 if encountering sep+.
+        st_prompt = 0 # The start position of prompt
 
         for part_id, part in enumerate(template_list):
             new_tokens = []
@@ -115,7 +118,11 @@ def tokenize_multipart_input(
                 if part == 'cls' and 'T5' in type(tokenizer).__name__:
                     # T5 does not have cls token
                     continue
-                new_tokens.append(special_token_mapping[part])
+                if part != 'prompt':
+                    new_tokens.append(special_token_mapping[part])
+                else:
+                    new_tokens += special_token_mapping[part]
+                    st_prompt = len(input_ids)
                 if part == 'sep+':
                     segment_plus_1_flag = True
             elif part[:6] == 'label_':
@@ -228,15 +235,23 @@ def tokenize_multipart_input(
 
     # Truncate
     if len(input_ids) > max_length:
-        if truncate_head:
-            input_ids = input_ids[-max_length:]
-            attention_mask = attention_mask[-max_length:]
-            token_type_ids = token_type_ids[-max_length:]
-        else:
-            # Default is to truncate the tail
-            input_ids = input_ids[:max_length]
-            attention_mask = attention_mask[:max_length]
-            token_type_ids = token_type_ids[:max_length]
+        if st_prompt == 0:
+            if truncate_head:
+                input_ids = input_ids[-max_length:]
+                attention_mask = attention_mask[-max_length:]
+                token_type_ids = token_type_ids[-max_length:]
+            else:
+                # Default is to truncate the tail
+                input_ids = input_ids[:max_length]
+                attention_mask = attention_mask[:max_length]
+                token_type_ids = token_type_ids[:max_length]
+        else :
+            del_length = len(input_ids)-max_length
+            left_end = st_prompt+prompt_num-del_length
+            right_end = st_prompt+prompt_num
+            input_ids = input_ids[:left_end]+input_ids[right_end:]
+            attention_mask = attention_mask[:left_end] + attention_mask[right_end:]
+            token_type_ids = token_type_ids[:left_end] + token_type_ids[right_end:]
 
     # Find mask token
     if prompt:
@@ -265,6 +280,7 @@ class FewShotDataset(torch.utils.data.Dataset):
         self.processor = processors_mapping[args.task_name]
         self.tokenizer = tokenizer
         self.mode = mode
+        self.prompt_num = args.prompt_num
 
         # If not using demonstrations, use use_demo=True
         self.use_demo = use_demo
@@ -582,6 +598,7 @@ class FewShotDataset(torch.utils.data.Dataset):
                 label_word_list=label_word_list,
                 first_sent_limit=self.args.first_sent_limit,
                 other_sent_limit=self.args.other_sent_limit,
+                prompt_num=self.prompt_num,
             )
             features = OurInputFeatures(**inputs, label=example_label)
 
@@ -642,7 +659,8 @@ class FewShotDataset(torch.utils.data.Dataset):
                 other_sent_limit=self.args.other_sent_limit,
                 truncate_head=self.args.truncate_head,
                 gpt3=self.args.gpt3_in_context_head or self.args.gpt3_in_context_tail,
-                support_labels=None if not (self.args.gpt3_in_context_head or self.args.gpt3_in_context_tail) else support_labels
+                support_labels=None if not (self.args.gpt3_in_context_head or self.args.gpt3_in_context_tail) else support_labels,
+                prompt_num=self.prompt_num,
             )
             features = OurInputFeatures(**inputs, label=example_label)
 
@@ -650,7 +668,7 @@ class FewShotDataset(torch.utils.data.Dataset):
             logger.info("*** Example ***")
             logger.info("guid: %s" % (example.guid))
             logger.info("features: %s" % features)
-            logger.info("text: %s" % self.tokenizer.decode(features.input_ids))
+            logger.info("text: %s" % self.tokenizer.decode([(i >= 0) * i for i in features.input_ids]))
 
         return features
 

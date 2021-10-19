@@ -4,19 +4,25 @@ import torch
 import torch.nn as nn
 from packaging import version
 
-from transformers import RobertaForMaskedLM
-from model import PromptRobertaForMaskedLM
+from transformers import RobertaForMaskedLM, PreTrainedModel
+from .model import PromptRobertaForMaskedLM
 
 
 class AutoRobertaForMaskedLM(nn.Module):
-    def __init__(self, use_prompt, config):
+    def __init__(self, config, use_prompt, model_name_or_path=None):
         super().__init__()
 
         self.use_prompt = use_prompt
-        if use_prompt :
-            self.roberta = PromptRobertaForMaskedLM.from_pretrained(config)
+        if model_name_or_path is not None:
+            if use_prompt :
+                self.roberta = PromptRobertaForMaskedLM.from_pretrained(model_name_or_path, config=config)
+            else:
+                self.roberta = RobertaForMaskedLM.from_pretrained(model_name_or_path, config=config)
         else:
-            self.roberta = RobertaForMaskedLM.from_pretrained(config)
+            if use_prompt:
+                self.roberta = PromptRobertaForMaskedLM(config=config)
+            else:
+                self.roberta = RobertaForMaskedLM(config=config)
 
         # These attributes should be assigned once the model is initialized
         self.model_args = None
@@ -26,6 +32,8 @@ class AutoRobertaForMaskedLM(nn.Module):
         # For regression
         self.lb = None
         self.ub = None
+
+        self.num_labels = config.num_labels
 
     def forward(self, input_ids=None, attention_mask=None, mask_pos=None, labels=None):
         if mask_pos is not None:
@@ -42,7 +50,7 @@ class AutoRobertaForMaskedLM(nn.Module):
         logits = torch.cat(logits, -1)
 
         # Regression task
-        if self.config.num_labels == 1:
+        if self.num_labels == 1:
             logsoftmax = nn.LogSoftmax(-1)
             logits = logsoftmax(logits) # Log prob of right polarity
 

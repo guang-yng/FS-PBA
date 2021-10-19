@@ -16,7 +16,7 @@ from transformers import GlueDataTrainingArguments as DataTrainingArguments
 from transformers import HfArgumentParser, TrainingArguments, set_seed
 
 from src.dataset import FewShotDataset
-from src.models import AutoRobertaForMaskedLM, resize_token_type_embeddings
+from src.models import AutoRobertaForMaskedLM
 from src.trainer import Trainer
 from src.processors import processors_mapping, num_labels_mapping, output_modes_mapping, compute_metrics_mapping, bound_mapping
 
@@ -52,6 +52,11 @@ class ModelArguments:
     random_segment: bool = field(
         default=False,
         metadata={"help": "Whether to reinitialize the token type embeddings (only for BERT)."}
+    )
+
+    use_prompt: bool = field(
+        default=False,
+        metadata={"help": "Whether the model has prompt"}
     )
 
     # Length of prompt
@@ -272,8 +277,9 @@ def main():
     else:
         model_args, data_args, training_args = parser.parse_args_into_dataclasses()
 
-    if 'prompt' in model_args.few_shot_type:
+    if model_args.use_prompt:
         data_args.prompt = True
+        data_args.prompt_num = model_args.prompt_num
 
     if training_args.no_train:
         training_args.do_train = False
@@ -400,7 +406,8 @@ def main():
 
     set_seed(training_args.seed)
 
-    model = model_fn(config=config)
+    model = model_fn(use_prompt=model_args.use_prompt,
+                     model_name_or_path=model_args.model_name_or_path, config=config)
 
     # Pass dataset and argument information to the model
     model.label_word_list = torch.tensor(train_dataset.label_word_list).long().cuda()
@@ -459,7 +466,7 @@ def main():
             torch.save(data_args, os.path.join(training_args.output_dir, "data_args.bin"))
         
         # Reload the best checkpoint (for eval)
-        model = model_fn.from_pretrained(training_args.output_dir)
+        model.load_state_dict(torch.load(os.path.join(training_args.output_dir, "pytorch_model.bin")))
         model = model.to(training_args.device)
         trainer.model = model
         if data_args.prompt:

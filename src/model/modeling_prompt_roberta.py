@@ -92,7 +92,8 @@ class PromptRobertaEmbeddings(nn.Module):
             token_type_ids = torch.zeros(input_shape, dtype=torch.long, device=self.position_ids.device)
 
         if inputs_embeds is None:
-            word_embeds = self.word_embeddings(input_ids)
+            word_embeds = self.word_embeddings(input_ids * (input_ids >= 0)) * \
+                          input_ids.unsqueeze(-1).expand(-1, -1, self.word_embeddings.weight.shape[-1])
             prompt_ids = - (input_ids+1)
             prompt_embeds = self.prompt_embeddings(prompt_ids * (prompt_ids >= 0).int()) \
                             * (prompt_ids >= 0).int().unsqueeze(2)
@@ -343,7 +344,7 @@ class PromptRobertaModel(BertModelAdaptersMixin, RobertaPreTrainedModel):
 
 @add_start_docstrings("""Prompt RoBERTa Model with a `language modeling` head on top. """, PROMPT_ROBERTA_START_DOCSTRING)
 class PromptRobertaForMaskedLM(ModelWithHeadsAdaptersMixin, RobertaPreTrainedModel):
-    authorized_missing_keys = [r"position_ids", r"predictions.decoder.bias"]
+    authorized_missing_keys = [r"position_ids", r"predictions.decoder.bias", r"roberta.embeddings.prompt_embeddings.weight"]
     authorized_unexpected_keys = [r"pooler"]
 
     def __init__(self, config):
@@ -362,7 +363,7 @@ class PromptRobertaForMaskedLM(ModelWithHeadsAdaptersMixin, RobertaPreTrainedMod
 
         # Initialize Prompt Embedding Randomly from Word Embedding
         init_ids = torch.randint(config.vocab_size, (config.prompt_num, ))
-        self.embeddings.init_prompt_emb(init_ids)
+        self.roberta.embeddings.init_prompt_emb(init_ids)
 
     def get_output_embeddings(self):
         return self.lm_head.decoder
@@ -436,7 +437,7 @@ class PromptRobertaForMaskedLM(ModelWithHeadsAdaptersMixin, RobertaPreTrainedMod
 
         if not return_dict:
             output = (prediction_scores,) + outputs[2:]
-            return ((masked_lm_loss,) + output) if masked_lm_loss is not None else output
+            return ((masked_lm_loss,) + output)
 
         return MaskedLMOutput(
             loss=masked_lm_loss,

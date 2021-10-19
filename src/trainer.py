@@ -38,6 +38,7 @@ from torch.utils.data.distributed import DistributedSampler
 from torch.utils.data.sampler import RandomSampler, SequentialSampler
 
 import transformers
+from transformers import EvaluationStrategy
 from transformers.data.data_collator import DataCollator, DataCollatorWithPadding, default_data_collator
 from transformers.file_utils import WEIGHTS_NAME, is_datasets_available, is_in_notebook, is_torch_tpu_available
 from transformers.integrations import (
@@ -150,7 +151,7 @@ if is_ray_available():
 
 logger = logging.get_logger(__name__)
 
-########## The above part is copied from Transformers' trainer (3.4.0) ########## 
+########## The above part is copied from Transformers' trainer (3.4.0) ##########
 
 def default_dev_objective(metrics):
     """
@@ -168,7 +169,7 @@ def default_dev_objective(metrics):
         return metrics["eval_pearson"]
     elif "eval_acc" in metrics:
         return metrics["eval_acc"]
- 
+
     raise Exception("No metric founded for {}".format(metrics))
 
 class Trainer(transformers.Trainer):
@@ -238,7 +239,7 @@ class Trainer(transformers.Trainer):
 
         # Data loading.
         train_dataloader = self.get_train_dataloader()
-        num_update_steps_per_epoch = len(train_dataloader) // self.args.gradient_accumulation_steps 
+        num_update_steps_per_epoch = len(train_dataloader) // self.args.gradient_accumulation_steps
         if num_update_steps_per_epoch == 0:
             num_update_steps_per_epoch = 1
         if self.args.max_steps > 0:
@@ -404,14 +405,14 @@ class Trainer(transformers.Trainer):
                     # ----------------------------------------------------------------------
 
                     metrics = None
-                    if self.args.evaluate_during_training and self.global_step % self.args.eval_steps == 0:
+                    if self.args.evaluation_strategy == EvaluationStrategy.STEPS:
                         output = self.evaluate()
                         metrics = output.metrics
                         objective = self.dev_objective(metrics)
                         if objective > self.objective:
                             logger.info("Best dev result: {}".format(objective))
                             self.objective = objective
-                            self.save_model(self.args.output_dir) 
+                            self.save_model(self.args.output_dir)
 
                     # ----------------------------------------------------------------------
                     # END CHANGES.
@@ -421,6 +422,25 @@ class Trainer(transformers.Trainer):
                 if self.args.max_steps > 0 and self.global_step > self.args.max_steps:
                     epoch_iterator.close()
                     break
+
+            # ----------------------------------------------------------------------
+            # BEGIN CHANGES.
+            # ----------------------------------------------------------------------
+
+            metrics = None
+            if self.args.evaluation_strategy == EvaluationStrategy.EPOCH:
+                output = self.evaluate()
+                metrics = output.metrics
+                objective = self.dev_objective(metrics)
+                if objective > self.objective:
+                    logger.info("Best dev result: {}".format(objective))
+                    self.objective = objective
+                    self.save_model(self.args.output_dir)
+
+            # ----------------------------------------------------------------------
+            # END CHANGES.
+            # ----------------------------------------------------------------------
+
             if self.args.max_steps > 0 and self.global_step > self.args.max_steps:
                 train_iterator.close()
                 break
