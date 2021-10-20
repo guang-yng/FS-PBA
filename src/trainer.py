@@ -207,14 +207,25 @@ class Trainer(transformers.Trainer):
             no_decay = ["bias", "LayerNorm.weight"]
             optimizer_grouped_parameters = [
                 {
-                    "params": [p for n, p in params.items() if not any(nd in n for nd in no_decay)],
+                    "params": [p for n, p in params.items() if not any(nd in n for nd in no_decay) and p.requires_grad],
                     "weight_decay": self.args.weight_decay,
                 },
                 {
-                    "params": [p for n, p in params.items() if any(nd in n for nd in no_decay)],
+                    "params": [p for n, p in params.items() if any(nd in n for nd in no_decay) and p.requires_grad],
                     "weight_decay": 0.0,
                 },
             ]
+            optimizer_grouped_parameters_names = [
+                {
+                    "params": [n for n, p in params.items() if not any(nd in n for nd in no_decay) and p.requires_grad],
+                    "weight_decay": self.args.weight_decay,
+                },
+                {
+                    "params": [n for n, p in params.items() if any(nd in n for nd in no_decay) and p.requires_grad],
+                    "weight_decay": 0.0,
+                },
+            ]
+            print(optimizer_grouped_parameters_names, self.args.learning_rate)
             self.optimizer = AdamW(
                 optimizer_grouped_parameters,
                 lr=self.args.learning_rate,

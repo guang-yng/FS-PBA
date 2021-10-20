@@ -93,7 +93,7 @@ class PromptRobertaEmbeddings(nn.Module):
 
         if inputs_embeds is None:
             word_embeds = self.word_embeddings(input_ids * (input_ids >= 0)) * \
-                          input_ids.unsqueeze(-1).expand(-1, -1, self.word_embeddings.weight.shape[-1])
+                          (input_ids >= 0).unsqueeze(-1).expand(-1, -1, self.word_embeddings.weight.shape[-1])
             prompt_ids = - (input_ids+1)
             prompt_embeds = self.prompt_embeddings(prompt_ids * (prompt_ids >= 0).int()) \
                             * (prompt_ids >= 0).int().unsqueeze(2)

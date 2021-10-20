@@ -8,11 +8,11 @@ python run.py \
     --evaluation_strategy steps \
     --model_name_or_path roberta-large \
     --use_prompt \
+    --prompt_num 5 \
     --num_k 16 \
     --max_steps 1000 \
-    --eval_steps 100 \
     --per_device_train_batch_size 2 \
-    --learning_rate 1e-5 \
+    --learning_rate 2.5e-2 \
     --num_train_epochs 0 \
     --output_dir result/tmp \
     --seed 42 \

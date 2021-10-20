@@ -35,6 +35,15 @@ class AutoRobertaForMaskedLM(nn.Module):
 
         self.num_labels = config.num_labels
 
+    def freeze_model(self):
+        for p in self.parameters():
+            p.requires_grad = False
+
+    def train_prompt(self):
+        for n, p in self.named_parameters():
+            if 'prompt' in n:
+                p.requires_grad = True
+
     def forward(self, input_ids=None, attention_mask=None, mask_pos=None, labels=None):
         if mask_pos is not None:
             mask_pos = mask_pos.squeeze()

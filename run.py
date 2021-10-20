@@ -443,7 +443,7 @@ def main():
             return compute_metrics_mapping[task_name](task_name, preds, label_ids)
 
         return compute_metrics_fn
-    
+
     # Initialize our Trainer
     trainer = Trainer(
         model=model,
@@ -455,6 +455,8 @@ def main():
 
     # Training
     if training_args.do_train:
+        model.freeze_model()
+        model.train_prompt()
         trainer.train(model_path=model_args.model_name_or_path if os.path.isdir(model_args.model_name_or_path) else None)
         # Use the early stop, so do not save the model in the end (unless specify save_at_last)
         if training_args.save_at_last:
