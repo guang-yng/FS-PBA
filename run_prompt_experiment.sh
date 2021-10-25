@@ -30,6 +30,7 @@ case $TASK in
     SST-2)
         TEMPLATE=*cls**sent_0*prompt*mask*.*sep+*
         MAPPING="{'0':'terrible','1':'great'}"
+        PROMPT_INIT="_It_was"
         ;;
     MRPC)
         TEMPLATE=*cls**sent_0**mask*,*+sentl_1**sep+*
@@ -120,6 +121,7 @@ python run.py \
   --model_name_or_path $MODEL \
   --use_prompt \
   --prompt_num $PROMPT \
+  --prompt_init $PROMPT_INIT \
   --num_k $K \
   --max_seq_length 128 \
   --per_device_train_batch_size $REAL_BS \

@@ -212,10 +212,6 @@ class PromptRobertaModel(BertModelAdaptersMixin, RobertaPreTrainedModel):
 
         self.init_weights()
 
-        # Initialize Prompt Embedding Randomly from Word Embedding
-        init_ids = torch.randint(config.vocab_size, (config.prompt_num, ))
-        self.embeddings.init_prompt_emb(init_ids)
-
     def get_input_embeddings(self):
         return self.embeddings.word_embeddings
 
@@ -360,10 +356,6 @@ class PromptRobertaForMaskedLM(ModelWithHeadsAdaptersMixin, RobertaPreTrainedMod
         self.lm_head = RobertaLMHead(config)
 
         self.init_weights()
-
-        # Initialize Prompt Embedding Randomly from Word Embedding
-        init_ids = torch.randint(config.vocab_size, (config.prompt_num, ))
-        self.roberta.embeddings.init_prompt_emb(init_ids)
 
     def get_output_embeddings(self):
         return self.lm_head.decoder

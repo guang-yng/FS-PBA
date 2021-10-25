@@ -1,6 +1,5 @@
 # Required environment variables:
 # TAG: tag for the trail
-# TYPE: finetune / prompt / prompt-demo  
 # TASK: SST-2 / sst-5 / mr / cr / mpqa / subj / trec / CoLA / MNLI / SNLI / QNLI / RTE / MRPC / QQP / STS-B
 # BS: batch size (recommendation: 2 / 4 / 8)
 # LR: learning rate (recommendation: 1e-5 / 2e-5 / 5e-5)
@@ -114,9 +113,8 @@ python run.py \
   --do_train \
   --do_eval \
   --do_predict \
-  --evaluate_during_training \
+  --evaluation_strategy steps \
   --model_name_or_path $MODEL \
-  --few_shot_type $TYPE \
   --num_k $K \
   --max_seq_length 128 \
   --per_device_train_batch_size $REAL_BS \
@@ -127,7 +125,7 @@ python run.py \
   --logging_steps $EVAL_STEP \
   --eval_steps $EVAL_STEP \
   --num_train_epochs 0 \
-  --output_dir result/$TASK-$TYPE-$K-$SEED-$MODEL-$TRIAL_IDTF \
+  --output_dir result/$TASK-$K-0-$SEED-$MODEL-$TRIAL_IDTF \
   --seed $SEED \
   --tag $TAG \
   --template $TEMPLATE \
@@ -138,4 +136,4 @@ python run.py \
 # Delete the checkpoint 
 # Since we need to run multiple trials, saving all the checkpoints takes 
 # a lot of storage space. You can find all evaluation results in `log` file anyway.
-rm -r result/$TASK-$TYPE-$K-$SEED-$MODEL-$TRIAL_IDTF \
+rm -r result/$TASK-$K-0-$SEED-$MODEL-$TRIAL_IDTF \

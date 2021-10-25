@@ -65,6 +65,10 @@ class ModelArguments:
         metadata={"help": "The length of the prompt"}
     )
 
+    prompt_init: Optional[str] = field(
+        default=None, metadata={"help": "The words used to initialize prompt"}
+    )
+
     use_adapter: bool = field(
         default=False,
         metadata={"help": "Whether to add the adapter layers"}
@@ -375,6 +379,7 @@ def main():
     )
 
     config.prompt_num = model_args.prompt_num
+    config.prompt_init = model_args.prompt_init
 
     if config.model_type == 'roberta':
         model_fn = AutoRobertaForMaskedLM
@@ -403,6 +408,9 @@ def main():
         if training_args.do_predict
         else None
     )
+
+    # Process config.init_prompt
+    config.prompt_init = tokenizer.encode(config.prompt_init.replace('_', ' '), add_special_tokens=False)
 
     set_seed(training_args.seed)
 
