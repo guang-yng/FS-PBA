@@ -120,7 +120,7 @@ def main():
                 if cond not in item or (item[cond] != condition[cond]):
                     ok = False
                     break
-        
+
         if ok:
             seed = item['data_dir'].split('-')[-1] + '-' + str(item['seed'])
             if seed not in seed_result:
@@ -130,31 +130,35 @@ def main():
                 seed_result[seed].append(item)
                 if item[args.key] > seed_best[seed][args.key]:
                     seed_best[seed] = item
-    
-    final_result_dev = np.zeros((len(seed_best)))
-    final_result_test = np.zeros((len(seed_best)))
-    final_result_test2 = np.zeros((len(seed_best)))
-    for i, seed in enumerate(seed_best):
-        final_result_dev[i] = seed_best[seed][args.key]
-        final_result_test[i] = seed_best[seed][args.test_key]
-        if len(args.test_key2) > 0:
-            final_result_test2[i] = seed_best[seed][args.test_key2]
-        print("%s: best dev (%.5f) test (%.5f) %s | total trials: %d" % (
-            seed,
-            seed_best[seed][args.key],
-            seed_best[seed][args.test_key],
-            "test2 (%.5f)" % (seed_best[seed][args.test_key2]) if len(args.test_key2) > 0 else "",
-            len(seed_result[seed])
-        ))
-        s = ''
-        for k in ['per_device_train_batch_size', 'gradient_accumulation_steps', 'learning_rate', 'eval_steps', 'max_steps']:
-            s += '| {}: {} '.format(k, seed_best[seed][k])
-        print('    ' + s)
 
-    s = "mean +- std: %.1f (%.1f) (median %.1f)" % (final_result_test.mean() * 100, final_result_test.std() * 100, np.median(final_result_test) * 100)
-    if len(args.test_key2) > 0:
-        s += "second metric: %.1f (%.1f) (median %.1f)" % (final_result_test2.mean() * 100, final_result_test2.std() * 100, np.median(final_result_test2) * 100)
-    print(s)
+    for seed in seed_result:
+        seed_list = seed_result[seed]
+        for item in seed_list:
+            print("seed = %s, learning_rate = %f, results = %.4f" % (seed, item['learning_rate'], item[args.test_key]))
+    # final_result_dev = np.zeros((len(seed_best)))
+    # final_result_test = np.zeros((len(seed_best)))
+    # final_result_test2 = np.zeros((len(seed_best)))
+    # for i, seed in enumerate(seed_best):
+    #     final_result_dev[i] = seed_best[seed][args.key]
+    #     final_result_test[i] = seed_best[seed][args.test_key]
+    #     if len(args.test_key2) > 0:
+    #         final_result_test2[i] = seed_best[seed][args.test_key2]
+    #     print("%s: best dev (%.5f) test (%.5f) %s | total trials: %d" % (
+    #         seed,
+    #         seed_best[seed][args.key],
+    #         seed_best[seed][args.test_key],
+    #         "test2 (%.5f)" % (seed_best[seed][args.test_key2]) if len(args.test_key2) > 0 else "",
+    #         len(seed_result[seed])
+    #     ))
+    #     s = ''
+    #     for k in ['per_device_train_batch_size', 'gradient_accumulation_steps', 'learning_rate', 'eval_steps', 'max_steps']:
+    #         s += '| {}: {} '.format(k, seed_best[seed][k])
+    #     print('    ' + s)
+
+    # s = "mean +- std: %.1f (%.1f) (median %.1f)" % (final_result_test.mean() * 100, final_result_test.std() * 100, np.median(final_result_test) * 100)
+    # if len(args.test_key2) > 0:
+    #     s += "second metric: %.1f (%.1f) (median %.1f)" % (final_result_test2.mean() * 100, final_result_test2.std() * 100, np.median(final_result_test2) * 100)
+    # print(s)
 
 if __name__ == '__main__':
     main()

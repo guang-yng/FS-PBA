@@ -14,6 +14,7 @@ import transformers
 from transformers import AutoConfig, AutoModelForSequenceClassification, AutoTokenizer, EvalPrediction
 from transformers import GlueDataTrainingArguments as DataTrainingArguments
 from transformers import HfArgumentParser, TrainingArguments, set_seed
+from transformers import AdapterType, AdapterConfig
 
 from src.dataset import FewShotDataset
 from src.models import AutoRobertaForMaskedLM
@@ -61,12 +62,8 @@ class ModelArguments:
 
     # Length of prompt
     prompt_num: int = field(
-        default=100,
+        default=10,
         metadata={"help": "The length of the prompt"}
-    )
-
-    prompt_init: Optional[str] = field(
-        default=None, metadata={"help": "The words used to initialize prompt"}
     )
 
     use_adapter: bool = field(
@@ -260,6 +257,11 @@ class DynamicTrainingArguments(TrainingArguments):
         metadata={"help": "Instead of saving the best (dev performance) checkpoint, save the last checkpoint"}
     )
 
+    training_params: str = field(
+        default='all',
+        metadata={"help": "The parameters to be trained (all, prompt, adapter or bias)"}
+    )
+
     # Turn off train/test
     no_train: bool = field(
         default=False,
@@ -281,9 +283,8 @@ def main():
     else:
         model_args, data_args, training_args = parser.parse_args_into_dataclasses()
 
-    if model_args.use_prompt:
-        data_args.prompt = True
-        data_args.prompt_num = model_args.prompt_num
+    data_args.prompt = True
+    data_args.prompt_num = model_args.prompt_num
 
     if training_args.no_train:
         training_args.do_train = False
@@ -379,7 +380,6 @@ def main():
     )
 
     config.prompt_num = model_args.prompt_num
-    config.prompt_init = model_args.prompt_init
 
     if config.model_type == 'roberta':
         model_fn = AutoRobertaForMaskedLM
@@ -409,13 +409,15 @@ def main():
         else None
     )
 
-    # Process config.init_prompt
-    config.prompt_init = tokenizer.encode(config.prompt_init.replace('_', ' '), add_special_tokens=False)
 
     set_seed(training_args.seed)
 
     model = model_fn(use_prompt=model_args.use_prompt,
                      model_name_or_path=model_args.model_name_or_path, config=config)
+
+    if model_args.use_adapter:
+        config = AdapterConfig.load('houlsby', reduction_factor=16)
+        model.add_adapter('PBAdapter', AdapterType('text_task'), config=config)
 
     # Pass dataset and argument information to the model
     model.label_word_list = torch.tensor(train_dataset.label_word_list).long().cuda()
@@ -464,7 +466,14 @@ def main():
     # Training
     if training_args.do_train:
         model.freeze_model()
-        model.train_prompt()
+        if 'adapter' in training_args.training_params:
+            model.train_adapter('PBAdapter')
+        if 'prompt' in training_args.training_params:
+            model.train_prompt()
+        if 'bias' in training_args.training_params:
+            model.train_bias()
+        if 'all' in training_args.training_params:
+            model.train()
         trainer.train(model_path=model_args.model_name_or_path if os.path.isdir(model_args.model_name_or_path) else None)
         # Use the early stop, so do not save the model in the end (unless specify save_at_last)
         if training_args.save_at_last:

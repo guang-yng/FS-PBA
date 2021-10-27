@@ -24,17 +24,6 @@ class AutoRobertaForMaskedLM(nn.Module):
             else:
                 self.roberta = RobertaForMaskedLM(config=config)
 
-        if use_prompt:
-            if config.prompt_init is None:
-                # Initialize Prompt Embedding Randomly from Word Embedding
-                init_ids = torch.randint(config.vocab_size, (config.prompt_num, ))
-                self.roberta.roberta.embeddings.init_prompt_emb(init_ids)
-            else:
-                # Initialize Prompt with config.prompt_init
-                assert len(config.prompt_init) == config.prompt_num
-                print('Initialize prompt with ', config.prompt_init)
-                self.roberta.roberta.embeddings.init_prompt_emb(torch.tensor(config.prompt_init))
-
         # These attributes should be assigned once the model is initialized
         self.model_args = None
         self.data_args = None
@@ -53,6 +42,17 @@ class AutoRobertaForMaskedLM(nn.Module):
     def train_prompt(self):
         for n, p in self.named_parameters():
             if 'prompt' in n:
+                p.requires_grad = True
+
+    def add_adapter(self, *args, **kwargs):
+        return self.roberta.add_adapter(*args, **kwargs)
+
+    def train_adapter(self, *args, **kwargs):
+        return self.roberta.train_adapter(*args, **kwargs)
+
+    def train_bias(self):
+        for n, p in self.named_parameters():
+            if 'bias' in n:
                 p.requires_grad = True
 
     def forward(self, input_ids=None, attention_mask=None, mask_pos=None, labels=None):

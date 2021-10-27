@@ -1,5 +1,6 @@
 # Required environment variables:
 # TAG: tag for the trail
+# PROMPT: length of prompt
 # TASK: SST-2 / sst-5 / mr / cr / mpqa / subj / trec / CoLA / MNLI / SNLI / QNLI / RTE / MRPC / QQP / STS-B
 # BS: batch size (recommendation: 2 / 4 / 8)
 # LR: learning rate (recommendation: 1e-5 / 2e-5 / 5e-5)
@@ -96,7 +97,7 @@ case $TASK in
 esac
 
 # Gradient accumulation steps
-# For medium-sized GPUs (e.g., 2080ti with 10GB memory), they can only take 
+# For medium-sized GPUs (e.g., 2080ti with 10GB memory), they can only take
 # a maximum batch size of 2 when using large-size models. So we use gradient
 # accumulation steps to achieve the same effect of larger batch sizes.
 REAL_BS=2
@@ -105,6 +106,8 @@ GS=$(expr $BS / $REAL_BS)
 # Use a random number to distinguish different trails (avoid accidental overwriting)
 TRIAL_IDTF=$RANDOM
 DATA_DIR=data/k-shot/$TASK/$K-$SEED
+
+echo $LR
 
 python run.py \
   --task_name $TASK \
@@ -115,8 +118,10 @@ python run.py \
   --do_predict \
   --evaluation_strategy steps \
   --model_name_or_path $MODEL \
+  --use_prompt \
+  --prompt_num $PROMPT \
   --num_k $K \
-  --max_seq_length 128 \
+  --max_seq_length 256 \
   --per_device_train_batch_size $REAL_BS \
   --per_device_eval_batch_size 16 \
   --gradient_accumulation_steps $GS \
@@ -125,15 +130,15 @@ python run.py \
   --logging_steps $EVAL_STEP \
   --eval_steps $EVAL_STEP \
   --num_train_epochs 0 \
-  --output_dir result/$TASK-$K-0-$SEED-$MODEL-$TRIAL_IDTF \
+  --output_dir result/$TASK-$K-$PROMPT-$SEED-$MODEL-$TRIAL_IDTF \
   --seed $SEED \
   --tag $TAG \
   --template $TEMPLATE \
   --mapping $MAPPING \
   $TASK_EXTRA \
-  $1 
+  $1
 
-# Delete the checkpoint 
-# Since we need to run multiple trials, saving all the checkpoints takes 
+# Delete the checkpoint
+# Since we need to run multiple trials, saving all the checkpoints takes
 # a lot of storage space. You can find all evaluation results in `log` file anyway.
-rm -r result/$TASK-$K-0-$SEED-$MODEL-$TRIAL_IDTF \
+rm -r result/$TASK-$K-$PROMPT-$SEED-$MODEL-$TRIAL_IDTF \

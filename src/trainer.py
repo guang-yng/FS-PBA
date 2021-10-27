@@ -416,7 +416,7 @@ class Trainer(transformers.Trainer):
                     # ----------------------------------------------------------------------
 
                     metrics = None
-                    if self.args.evaluation_strategy == EvaluationStrategy.STEPS:
+                    if self.args.evaluation_strategy == EvaluationStrategy.STEPS and self.global_step % self.args.eval_steps == 0:
                         output = self.evaluate()
                         metrics = output.metrics
                         objective = self.dev_objective(metrics)

@@ -70,7 +70,7 @@ def tokenize_multipart_input(
     gpt3=False,
     truncate_head=False,
     support_labels=None,
-    prompt_num=100,
+    prompt_num=10,
 ):
     def enc(text):
         return tokenizer.encode(text, add_special_tokens=False)
