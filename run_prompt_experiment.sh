@@ -28,7 +28,7 @@ case $TASK in
         MAPPING="{'0':'incorrect','1':'correct'}"
         ;;
     SST-2)
-        TEMPLATE=*cls**sent_0*_It_was*mask*prompt*.*sep+*
+        # TEMPLATE=*cls*prompt*sent_0*_It_was*mask*.*sep+*
         MAPPING="{'0':'terrible','1':'great'}"
         ;;
     MRPC)

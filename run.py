@@ -55,11 +55,6 @@ class ModelArguments:
         metadata={"help": "Whether to reinitialize the token type embeddings (only for BERT)."}
     )
 
-    use_prompt: bool = field(
-        default=False,
-        metadata={"help": "Whether the model has prompt"}
-    )
-
     # Length of prompt
     prompt_num: int = field(
         default=10,
@@ -412,7 +407,7 @@ def main():
 
     set_seed(training_args.seed)
 
-    model = model_fn(use_prompt=model_args.use_prompt,
+    model = model_fn(use_prompt=True,
                      model_name_or_path=model_args.model_name_or_path, config=config)
 
     if model_args.use_adapter:
