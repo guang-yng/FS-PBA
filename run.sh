@@ -22,7 +22,6 @@ CUDA_VISIBLE_DEVICES=0,1,2,5 python run.py \
   --do_predict \
   --evaluation_strategy steps \
   --model_name_or_path $MODEL \
-  --use_prompt \
   --prompt_num $PROMPT \
   --num_k $K \
   --max_seq_length 256 \

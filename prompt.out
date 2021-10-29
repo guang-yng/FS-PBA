@@ -1,0 +1,5 @@
+seed = 13-13, learning_rate = 0.000300, results = 0.8142
+seed = 21-21, learning_rate = 0.000300, results = 0.8761
+seed = 42-42, learning_rate = 0.000300, results = 0.8945
+seed = 87-87, learning_rate = 0.000300, results = 0.8773
+seed = 100-100, learning_rate = 0.000300, results = 0.8658

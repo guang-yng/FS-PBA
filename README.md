@@ -1,6 +1,4 @@
-# LM-BFF (**B**etter **F**ew-shot **F**ine-tuning of **L**anguage **M**odels)
-
-This is the implementation of the paper [Making Pre-trained Language Models Better Few-shot Learners](https://arxiv.org/pdf/2012.15723.pdf). LM-BFF is short for **b**etter **f**ew-shot **f**ine-tuning of **l**anguage **m**odels.
+# FS-PBA (**F**ew-**S**hot **P**rompt **B**ias **A**dapter Tuning)
 
 ## Quick links
 
@@ -20,16 +18,11 @@ This is the implementation of the paper [Making Pre-trained Language Models Bett
 
 ## Overview
 
-![](./figs/lmbff.png)
-
-In this work we present LM-BFF, a suite of simple and complementary techniques for fine-tuning pre-trained language models on a small number of training examples. Our approach includes:
-
-1. Prompt-based fine-tuning together with a novel pipeline for automating prompt generation.
-2. A refined strategy for incorporating demonstrations into context.
-
-You can find more details of this work in our [paper](https://arxiv.org/pdf/2012.15723.pdf).
+Not Completed.
 
 ## Requirements
+
+Our code typically runs on python version 3.6.13.
 
 To run our code, please install all the dependency packages by using the following command:
 
@@ -63,10 +56,10 @@ md5sum -c checksum
 
 **NOTE**: During training, the model will generate/load cache files in the data folder. If your data have changed, make sure to clean all the cache files (starting with "cache").
 
-## Run LM-BFF
+## Run FS-PBA
 
 ### Quick start
-Our code is built on [transformers](https://github.com/huggingface/transformers) and we use its `3.4.0` version. Other versions of `transformers` might cause unexpected errors.
+Our code is built on [adapter-transformers](https://github.com/huggingface/transformers) and we use its `1.1.1` version. Other versions of `adapter-transformers` might cause unexpected errors.
 
 Before running any experiments, create the result folder by `mkdir result` to save checkpoints. Then you can run our code with the following example:
 
@@ -78,9 +71,8 @@ python run.py \
     --do_train \
     --do_eval \
     --do_predict \
-    --evaluate_during_training \
+    --evaluation_strategy steps \
     --model_name_or_path roberta-large \
-    --few_shot_type prompt-demo \
     --num_k 16 \
     --max_steps 1000 \
     --eval_steps 100 \
@@ -89,10 +81,14 @@ python run.py \
     --num_train_epochs 0 \
     --output_dir result/tmp \
     --seed 42 \
-    --template "*cls**sent_0*_It_was*mask*.*sep+*" \
+    --prompt_num 10 \
+    --template "*cls*prompt*sent_0*_It_was*.*sep+*" \
     --mapping "{'0':'terrible','1':'great'}" \
     --num_sample 16 \
+    --training_params prompt
 ```
+
+**The following contents are out of date**.
 
 Most arguments are inherited from `transformers` and are easy to understand. We further explain some of the LM-BFF's arguments:
 
