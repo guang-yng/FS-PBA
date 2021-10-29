@@ -141,8 +141,8 @@ def main():
         s = 0
         for seed in lrs[lr]:
             item = lrs[lr][seed]
-            print(item, args.test_key)
             s += item[args.test_key]
+            print({"seed": seed, "learning_rate": lr, "resutls": item[args.test_key]})
         s = s / len(lrs[lr])
         answer = max(answer, s)
     print({'best_results': answer})
