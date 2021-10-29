@@ -2,11 +2,11 @@ for seed in 13 21 42 87 100
 do
     for bs in 2
     do
-        for lr in 3e-3 1e-3
+        for lr in 3e-4
         do
             for prompt in 10
             do
-                CUDA_VISIBLE_DEVICES=0,1,2,3 \
+                CUDA_VISIBLE_DEVICES=1,2,3,4 \
                 TAG=exp-pre \
                 TASK=SST-2 \
                 BS=$bs \

@@ -118,7 +118,6 @@ python run.py \
   --do_predict \
   --evaluation_strategy steps \
   --model_name_or_path $MODEL \
-  --use_prompt \
   --prompt_num $PROMPT \
   --num_k $K \
   --max_seq_length 256 \
@@ -141,4 +140,4 @@ python run.py \
 # Delete the checkpoint
 # Since we need to run multiple trials, saving all the checkpoints takes
 # a lot of storage space. You can find all evaluation results in `log` file anyway.
-rm -r result/$TASK-$K-$PROMPT-$SEED-$MODEL-$TRIAL_IDTF \
+rm -r result/$TASK-$K-$PROMPT-$SEED-$MODEL-$TRIAL_IDTF
