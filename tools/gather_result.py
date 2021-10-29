@@ -108,6 +108,7 @@ def main():
     
     seed_result = {}
     seed_best = {}
+    lrs = {}
 
     for item in result_list:
         ok = True
@@ -123,6 +124,10 @@ def main():
 
         if ok:
             seed = item['data_dir'].split('-')[-1] + '-' + str(item['seed'])
+            if item['learning_rate'] not in lrs:
+                lrs[item['learning_rate']] = {seed: item}
+            else:
+                lrs[item['learning_rate']][seed] = item
             if seed not in seed_result:
                 seed_result[seed] = [item]
                 seed_best[seed] = item
@@ -131,10 +136,22 @@ def main():
                 if item[args.key] > seed_best[seed][args.key]:
                     seed_best[seed] = item
 
-    for seed in seed_result:
-        seed_list = seed_result[seed]
-        for item in seed_list:
-            print("seed = %s, learning_rate = %f, results = %.4f" % (seed, item['learning_rate'], item[args.test_key]))
+    answer=0
+    for lr in lrs:
+        s = 0
+        for seed in lrs[lr]:
+            item = lrs[lr][seed]
+            print(item, args.test_key)
+            s += item[args.test_key]
+        s = s / len(lrs[lr])
+        answer = max(answer, s)
+    print({'best_results': answer})
+
+    # for seed in seed_result:
+    #     seed_list = seed_result[seed]
+    #     for item in seed_list:
+            # print("seed = %s, learning_rate = %f, results = %.4f" % (seed, item['learning_rate'], item[args.test_key]))
+    
     # final_result_dev = np.zeros((len(seed_best)))
     # final_result_test = np.zeros((len(seed_best)))
     # final_result_test2 = np.zeros((len(seed_best)))
