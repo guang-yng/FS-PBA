@@ -8,13 +8,17 @@ bs=2
 
 case $TASK in
     CoLA)
+        task=cola
     ;;
     SST-2)
         task=sst-2
     ;;
+    MNLI)
+        task=mnli
+    ;;
 esac
 
-for hard in N
+for hard in Y N
 do
     # None
     CUDA_VISIBLE_DEVICES=$cuda \

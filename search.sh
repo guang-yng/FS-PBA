@@ -1,28 +1,11 @@
-python tools/gather_result.py --condition "{'tag': 'exp-pre', 'task_name': 'sst-2', 'training_params': 'bias,prompt'}" > bias,prompt.out
+CUDA_VISIBLE_DEVICES=1,3,4,5 \
+TASK=SST-2 \
+TAG=exp \
+BS=2 \
+SEED=13 \
+MODEL=roberta-large \
+HARD=Y \
+NOTRAIN=1 \
+bash run_experiment.sh
 
-
-for seed in 13 21 42 87 100
-do
-    for bs in 2
-    do
-        for lr in 1e-3 3e-4 1e-4 3e-5
-        do
-            for prompt in 10
-            do
-                CUDA_VISIBLE_DEVICES=1,2,3,4 \
-                TAG=exp-pre \
-                TASK=SST-2 \
-                BS=$bs \
-                LR=$lr \
-                PROMPT=$prompt \
-                SEED=$seed \
-                MODEL=roberta-large \
-                TEMPLATE=*cls*prompt*sent_0*_It_was*mask*.*sep+* \
-                bash run_prompt_experiment.sh "--training_params bias,prompt,adapter --use_adapter"
-                if (($? != 0)); then exit 0; fi
-            done
-        done
-    done
-done
-
-python tools/gather_result.py --condition "{'tag': 'exp-pre', 'task_name': 'sst-2', 'training_params': 'bias,prompt,adapter'}" > bias,prompt,adapter.out
+python tools/gather_result.py --condition "{'tag': 'exp', 'task_name': 'sst-2', 'do_train': False}" > SST-2-Y-none.out
