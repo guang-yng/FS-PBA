@@ -3,7 +3,7 @@
 
 TAG=exp
 model=roberta-large
-cuda=1,2,3,4
+cuda=2,3,5,7
 bs=2
 
 case $TASK in
@@ -49,6 +49,7 @@ do
             HARD=$hard \
             bash run_experiment.sh "--training_params prompt"
             if (($? != 0)); then exit 0; fi
+            echo "Hi"
         done
     done
 
@@ -57,7 +58,7 @@ do
     # Bias
     for seed in 13 21 42 87 100
     do
-        for lr in 1e-3 3e-4 1e-3
+        for lr in 1e-3 3e-4 1e-4
         do
             CUDA_VISIBLE_DEVICES=$cuda \
             TASK=$TASK \
@@ -77,7 +78,7 @@ do
     # Adapter
     for seed in 13 21 42 87 100
     do
-        for lr in 3e-4 1e-3 3e-5
+        for lr in 1e-3 3e-4 1e-4 3e-5
         do
             CUDA_VISIBLE_DEVICES=$cuda \
             TASK=$TASK \
@@ -97,7 +98,7 @@ do
     # Prompt + Adapter
     for seed in 13 21 42 87 100
     do
-        for lr in 3e-4 1e-3 3e-5
+        for lr in 1e-3 3e-4 1e-4 3e-5
         do
             CUDA_VISIBLE_DEVICES=$cuda \
             TASK=$TASK \
@@ -118,7 +119,7 @@ do
     # Prompt + Bias
     for seed in 13 21 42 87 100
     do
-        for lr in 3e-4 1e-3 3e-5
+        for lr in 1e-3 3e-4 1e-4 3e-5
         do
             CUDA_VISIBLE_DEVICES=$cuda \
             TASK=$TASK \
@@ -139,7 +140,7 @@ do
     # Bias + Adapter
     for seed in 13 21 42 87 100
     do
-        for lr in 3e-4 1e-3 3e-5
+        for lr in 1e-3 3e-4 1e-4 3e-5
         do
             CUDA_VISIBLE_DEVICES=$cuda \
             TASK=$TASK \
@@ -157,9 +158,9 @@ do
     python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'bias,adapter'}" > $TASK-$hard-bias-adapter.out
 
     # Prompt + Bias + Adapter
-    for seed in 13 21 42 87 100
+    for seed in 42 87 100
     do
-        for lr in 3e-4 1e-3 3e-5
+        for lr in 1e-3 3e-4 1e-4 3e-5
         do
             CUDA_VISIBLE_DEVICES=$cuda \
             TASK=$TASK \

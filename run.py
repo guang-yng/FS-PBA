@@ -526,8 +526,10 @@ def main():
         test_datasets = [test_dataset]
         if data_args.task_name == "mnli":
             mnli_mm_data_args = dataclasses.replace(data_args, task_name="mnli-mm")
+            mnli_mm_data_args.prompt_num = data_args.prompt_num
+            mnli_mm_data_args.prompt = True
             test_datasets.append(
-                FewShotDataset(mnli_mm_data_args, tokenizer=tokenizer, mode="test", use_demo=('demo' in model_args.few_shot_type))
+                FewShotDataset(mnli_mm_data_args, tokenizer=tokenizer, mode="test", use_demo=False)
             )
 
         for test_dataset in test_datasets:
