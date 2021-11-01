@@ -6,6 +6,8 @@ model=roberta-large
 cuda=2,3,5,7
 bs=2
 
+mkdir ./result/$TASK
+
 case $TASK in
     CoLA)
         task=cola
@@ -31,7 +33,7 @@ do
     NOTRAIN=1 \
     bash run_experiment.sh
 
-    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'do_train': False}" > $TASK-$hard-none.out
+    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'do_train': False}" > ./result/$TASK/$TASK-$hard-none.out
 
     # PROMPT
     for seed in 13 21 42 87 100
@@ -53,7 +55,7 @@ do
         done
     done
 
-    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt'}" > $TASK-$hard-prompt.out
+    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt'}" > ./result/$TASK/$TASK-$hard-prompt.out
 
     # Bias
     for seed in 13 21 42 87 100
@@ -73,7 +75,7 @@ do
         done
     done
 
-    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'bias'}" > $TASK-$hard-bias.out
+    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'bias'}" > ./result/$TASK/$TASK-$hard-bias.out
 
     # Adapter
     for seed in 13 21 42 87 100
@@ -93,7 +95,7 @@ do
         done
     done
 
-    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'adapter'}" > $TASK-$hard-adapter.out
+    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'adapter'}" > ./result/$TASK/$TASK-$hard-adapter.out
 
     # Prompt + Adapter
     for seed in 13 21 42 87 100
@@ -114,7 +116,7 @@ do
         done
     done
 
-    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt,adapter'}" > $TASK-$hard-prompt-adapter.out
+    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt,adapter'}" > ./result/$TASK/$TASK-$hard-prompt-adapter.out
 
     # Prompt + Bias
     for seed in 13 21 42 87 100
@@ -135,7 +137,7 @@ do
         done
     done
 
-    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt,bias'}" > $TASK-$hard-prompt-bias.out
+    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt,bias'}" > ./result/$TASK/$TASK-$hard-prompt-bias.out
 
     # Bias + Adapter
     for seed in 13 21 42 87 100
@@ -155,7 +157,7 @@ do
         done
     done
 
-    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'bias,adapter'}" > $TASK-$hard-bias-adapter.out
+    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'bias,adapter'}" > ./result/$TASK/$TASK-$hard-bias-adapter.out
 
     # Prompt + Bias + Adapter
     for seed in 42 87 100
@@ -176,5 +178,5 @@ do
         done
     done
 
-    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt,bias,adapter'}" > $TASK-$hard-prompt-bias-adapter.out
+    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt,bias,adapter'}" > ./result/$TASK/$TASK-$hard-prompt-bias-adapter.out
 done

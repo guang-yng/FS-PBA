@@ -235,28 +235,24 @@ def tokenize_multipart_input(
 
     # Truncate
     if len(input_ids) > max_length:
-        if st_prompt == 0:
-            if truncate_head:
-                input_ids = input_ids[-max_length:]
-                attention_mask = attention_mask[-max_length:]
-                token_type_ids = token_type_ids[-max_length:]
-            else:
-                # Default is to truncate the tail
-                input_ids = input_ids[:max_length]
-                attention_mask = attention_mask[:max_length]
-                token_type_ids = token_type_ids[:max_length]
-        else :
-            del_length = len(input_ids)-max_length
-            left_end = st_prompt+prompt_num-del_length
-            right_end = st_prompt+prompt_num
-            input_ids = input_ids[:left_end]+input_ids[right_end:]
-            attention_mask = attention_mask[:left_end] + attention_mask[right_end:]
-            token_type_ids = token_type_ids[:left_end] + token_type_ids[right_end:]
+        if truncate_head:
+            input_ids = input_ids[-max_length:]
+            attention_mask = attention_mask[-max_length:]
+            token_type_ids = token_type_ids[-max_length:]
+        else:
+            # Default is to truncate the tail
+            input_ids = input_ids[:max_length]
+            attention_mask = attention_mask[:max_length]
+            token_type_ids = token_type_ids[:max_length]
 
     # Find mask token
     if prompt:
         mask_pos = [input_ids.index(tokenizer.mask_token_id)]
         # Make sure that the masked position is inside the max_length
+        if mask_pos[0] >= max_length:
+            logger.info(input_ids)
+            logger.info(len(input_ids))
+            logger.info(mask_pos)
         assert mask_pos[0] < max_length
 
     result = {'input_ids': input_ids, 'attention_mask': attention_mask}

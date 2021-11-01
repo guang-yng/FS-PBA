@@ -66,7 +66,7 @@ case $TASK in
                 TEMPLATE=*cls*$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
         esac
         MAPPING="{'contradiction':'No','entailment':'Yes','neutral':'Maybe'}"
-        TASK_EXTRA="--max_seq_len 256 --num_sample 4"
+        TASK_EXTRA="--max_seq_len 512 --num_sample 4"
         ;;
     SNLI)
         TEMPLATE=*cls**sent-_0*?*mask*,*+sentl_1**sep+*
