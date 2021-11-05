@@ -1,9 +1,9 @@
 # Required environment variables:
 # TASK: SST-2 / sst-5 / mr / cr / mpqa / subj / trec / CoLA / MNLI / SNLI / QNLI / RTE / MRPC / QQP / STS-B
 
-TAG=exp
+TAG=exp2
 model=roberta-large
-cuda=2,3,5,7
+cuda=0,1,2,4
 bs=2
 
 mkdir ./result/$TASK
@@ -180,3 +180,18 @@ do
 
     python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt,bias,adapter'}" > ./result/$TASK/$TASK-$hard-prompt-bias-adapter.out
 done
+
+if [ $task -eq mnli ]; then
+    task=mnli-mm
+    for $hard in Y N 
+    do
+        python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'do_train': False}" > ./result/$TASK/$TASK-mm-$hard-none.out
+        python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt'}" > ./result/$TASK/$TASK-mm-$hard-prompt.out
+        python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'bias'}" > ./result/$TASK/$TASK-mm-$hard-bias.out
+        python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'adapter'}" > ./result/$TASK/$TASK-mm-$hard-adapter.out
+        python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt,adapter'}" > ./result/$TASK/$TASK-mm-$hard-prompt-adapter.out
+        python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt,bias'}" > ./result/$TASK/$TASK-mm-$hard-prompt-bias.out
+        python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'bias,adapter'}" > ./result/$TASK/$TASK-mm-$hard-bias-adapter.out
+        python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt,bias,adapter'}" > ./result/$TASK/$TASK-mm-$hard-prompt-bias-adapter.out
+    done
+fi

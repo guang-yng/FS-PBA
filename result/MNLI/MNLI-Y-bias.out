@@ -1,0 +1,16 @@
+{'seed': '13-13', 'learning_rate': 0.001, 'resutls': 0.6510443199184921}
+{'seed': '21-21', 'learning_rate': 0.001, 'resutls': 0.7011716760061131}
+{'seed': '42-42', 'learning_rate': 0.001, 'resutls': 0.6660213958227204}
+{'seed': '87-87', 'learning_rate': 0.001, 'resutls': 0.7088130412633724}
+{'seed': '100-100', 'learning_rate': 0.001, 'resutls': 0.6814060112073357}
+{'seed': '13-13', 'learning_rate': 0.0003, 'resutls': 0.6585838003056547}
+{'seed': '21-21', 'learning_rate': 0.0003, 'resutls': 0.6657157412124299}
+{'seed': '42-42', 'learning_rate': 0.0003, 'resutls': 0.6437086092715232}
+{'seed': '87-87', 'learning_rate': 0.0003, 'resutls': 0.6754966887417219}
+{'seed': '100-100', 'learning_rate': 0.0003, 'resutls': 0.6546102903718798}
+{'seed': '13-13', 'learning_rate': 0.0001, 'resutls': 0.6500254712175242}
+{'seed': '21-21', 'learning_rate': 0.0001, 'resutls': 0.6582781456953642}
+{'seed': '42-42', 'learning_rate': 0.0001, 'resutls': 0.6271013754457463}
+{'seed': '87-87', 'learning_rate': 0.0001, 'resutls': 0.6026490066225165}
+{'seed': '100-100', 'learning_rate': 0.0001, 'resutls': 0.6459500764136525}
+{'best_results': 0.6816912888436066}
