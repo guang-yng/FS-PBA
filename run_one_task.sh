@@ -3,8 +3,9 @@
 
 TAG=exp2
 model=roberta-large
-cuda=0,1,2,4
-bs=2
+cuda=1,2,3,4
+bs=8
+gpun=4
 
 mkdir ./result/$TASK
 
@@ -31,6 +32,7 @@ do
     MODEL=$model \
     HARD=$hard \
     NOTRAIN=1 \
+    GPUN=$gpun \
     bash run_experiment.sh
 
     python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'do_train': False}" > ./result/$TASK/$TASK-$hard-none.out
@@ -38,7 +40,7 @@ do
     # PROMPT
     for seed in 13 21 42 87 100
     do
-        for lr in 1e-2 3e-3 1e-3
+        for lr in 1e-2 3e-3 1e-3 3e-4
         do
             CUDA_VISIBLE_DEVICES=$cuda \
             TASK=$TASK \
@@ -49,6 +51,7 @@ do
             SEED=$seed \
             MODEL=$model \
             HARD=$hard \
+	    GPUN=$gpun \
             bash run_experiment.sh "--training_params prompt"
             if (($? != 0)); then exit 0; fi
             echo "Hi"
@@ -60,7 +63,7 @@ do
     # Bias
     for seed in 13 21 42 87 100
     do
-        for lr in 1e-3 3e-4 1e-4
+        for lr in 3e-3 1e-3 3e-4 1e-4
         do
             CUDA_VISIBLE_DEVICES=$cuda \
             TASK=$TASK \
@@ -70,6 +73,7 @@ do
             SEED=$seed \
             MODEL=$model \
             HARD=$hard \
+	    GPUN=$gpun \
             bash run_experiment.sh "--training_params bias"
             if (($? != 0)); then exit 0; fi
         done
@@ -90,6 +94,7 @@ do
             SEED=$seed \
             MODEL=$model \
             HARD=$hard \
+	    GPUN=$gpun \
             bash run_experiment.sh "--training_params adapter --use_adapter"
             if (($? != 0)); then exit 0; fi
         done
@@ -111,6 +116,7 @@ do
             SEED=$seed \
             MODEL=$model \
             HARD=$hard \
+	    GPUN=$gpun \
             bash run_experiment.sh "--training_params prompt,adapter --use_adapter"
             if (($? != 0)); then exit 0; fi
         done
@@ -132,6 +138,7 @@ do
             SEED=$seed \
             MODEL=$model \
             HARD=$hard \
+	    GPUN=$gpun \
             bash run_experiment.sh "--training_params prompt,bias"
             if (($? != 0)); then exit 0; fi
         done
@@ -152,6 +159,7 @@ do
             SEED=$seed \
             MODEL=$model \
             HARD=$hard \
+	    GPUN=$gpun \
             bash run_experiment.sh "--training_params bias,adapter --use_adapter"
             if (($? != 0)); then exit 0; fi
         done
@@ -173,6 +181,7 @@ do
             SEED=$seed \
             MODEL=$model \
             HARD=$hard \
+	    GPUN=$gpun \
             bash run_experiment.sh "--training_params prompt,bias,adapter --use_adapter"
             if (($? != 0)); then exit 0; fi
         done

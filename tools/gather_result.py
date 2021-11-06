@@ -142,10 +142,12 @@ def main():
         for seed in lrs[lr]:
             item = lrs[lr][seed]
             s += item[args.test_key]
-            print({"seed": seed, "learning_rate": lr, "resutls": item[args.test_key]})
+            print({"seed": seed, "learning_rate": lr, "dev_result": item[args.key], "test_result": item[args.test_key]})
         s = s / len(lrs[lr])
-        answer = max(answer, s)
-    print({'best_results': answer})
+        if s > answer:
+            answer = s
+            max_lr = lr
+    print({'best_lr': max_lr, 'best_results': answer})
 
     # for seed in seed_result:
     #     seed_list = seed_result[seed]

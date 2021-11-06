@@ -8,15 +8,16 @@
 # MODEL: pre-trained model name (roberta-*, bert-*), see Transformers model list
 # HARD: whether to use hard template (Y or N)
 # NOTRAIN: not to train
+# GPUN: number of gpu
 
 # Number of training instances per label
 K=16
 
 # Training steps
-MAX_STEP=10000
+MAX_STEP=3000
 
 # Validation steps
-EVAL_STEP=1000
+EVAL_STEP=100
 
 # Task specific parameters
 # The default length is 128 and the default number of samples is 16.
@@ -119,8 +120,9 @@ esac
 # For medium-sized GPUs (e.g., 2080ti with 10GB memory), they can only take
 # a maximum batch size of 2 when using large-size models. So we use gradient
 # accumulation steps to achieve the same effect of larger batch sizes.
-REAL_BS=2
-GS=$(expr ${BS} / ${REAL_BS})
+PER_BS=$(expr $BS / $GPUN)
+REAL_BS=1
+GS=$(expr ${PER_BS} / ${REAL_BS})
 
 # Use a random number to distinguish different trails (avoid accidental overwriting)
 TRIAL_IDTF=$RANDOM

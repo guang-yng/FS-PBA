@@ -1,21 +1,21 @@
-{'seed': '13-13', 'learning_rate': 0.001, 'resutls': 0.6672440142638818}
-{'seed': '21-21', 'learning_rate': 0.001, 'resutls': 0.6420784513499745}
-{'seed': '42-42', 'learning_rate': 0.001, 'resutls': 0.667142129393785}
-{'seed': '87-87', 'learning_rate': 0.001, 'resutls': 0.7050433010697912}
-{'seed': '100-100', 'learning_rate': 0.001, 'resutls': 0.6370860927152318}
-{'seed': '13-13', 'learning_rate': 0.0003, 'resutls': 0.6913907284768211}
-{'seed': '21-21', 'learning_rate': 0.0003, 'resutls': 0.6766174223127865}
-{'seed': '42-42', 'learning_rate': 0.0003, 'resutls': 0.6467651553744269}
-{'seed': '87-87', 'learning_rate': 0.0003, 'resutls': 0.6816097809475293}
-{'seed': '100-100', 'learning_rate': 0.0003, 'resutls': 0.678349465104432}
-{'seed': '13-13', 'learning_rate': 0.0001, 'resutls': 0.6507386653082017}
-{'seed': '21-21', 'learning_rate': 0.0001, 'resutls': 0.6841569026999491}
-{'seed': '42-42', 'learning_rate': 0.0001, 'resutls': 0.6453387671930718}
-{'seed': '87-87', 'learning_rate': 0.0001, 'resutls': 0.6667345899133978}
-{'seed': '100-100', 'learning_rate': 0.0001, 'resutls': 0.6621497707590422}
-{'seed': '13-13', 'learning_rate': 3e-05, 'resutls': 0.6464595007641365}
-{'seed': '21-21', 'learning_rate': 3e-05, 'resutls': 0.6464595007641365}
-{'seed': '42-42', 'learning_rate': 3e-05, 'resutls': 0.6310748853795212}
-{'seed': '87-87', 'learning_rate': 3e-05, 'resutls': 0.6620478858889455}
-{'seed': '100-100', 'learning_rate': 3e-05, 'resutls': 0.6363728986245543}
-{'best_results': 0.6749465104431991}
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.75, 'test_result': 0.6672440142638818}
+{'seed': '21-21', 'learning_rate': 0.001, 'dev_result': 0.6875, 'test_result': 0.6420784513499745}
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.6875, 'test_result': 0.667142129393785}
+{'seed': '87-87', 'learning_rate': 0.001, 'dev_result': 0.75, 'test_result': 0.7050433010697912}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.7083333333333334, 'test_result': 0.6370860927152318}
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.7291666666666666, 'test_result': 0.6913907284768211}
+{'seed': '21-21', 'learning_rate': 0.0003, 'dev_result': 0.6458333333333334, 'test_result': 0.6766174223127865}
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.6666666666666666, 'test_result': 0.6467651553744269}
+{'seed': '87-87', 'learning_rate': 0.0003, 'dev_result': 0.6875, 'test_result': 0.6816097809475293}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.7708333333333334, 'test_result': 0.678349465104432}
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.75, 'test_result': 0.6507386653082017}
+{'seed': '21-21', 'learning_rate': 0.0001, 'dev_result': 0.6666666666666666, 'test_result': 0.6841569026999491}
+{'seed': '42-42', 'learning_rate': 0.0001, 'dev_result': 0.6666666666666666, 'test_result': 0.6453387671930718}
+{'seed': '87-87', 'learning_rate': 0.0001, 'dev_result': 0.625, 'test_result': 0.6667345899133978}
+{'seed': '100-100', 'learning_rate': 0.0001, 'dev_result': 0.625, 'test_result': 0.6621497707590422}
+{'seed': '13-13', 'learning_rate': 3e-05, 'dev_result': 0.7291666666666666, 'test_result': 0.6464595007641365}
+{'seed': '21-21', 'learning_rate': 3e-05, 'dev_result': 0.625, 'test_result': 0.6464595007641365}
+{'seed': '42-42', 'learning_rate': 3e-05, 'dev_result': 0.6458333333333334, 'test_result': 0.6310748853795212}
+{'seed': '87-87', 'learning_rate': 3e-05, 'dev_result': 0.6458333333333334, 'test_result': 0.6620478858889455}
+{'seed': '100-100', 'learning_rate': 3e-05, 'dev_result': 0.5833333333333334, 'test_result': 0.6363728986245543}
+{'best_lr': 0.0003, 'best_results': 0.6749465104431991}
