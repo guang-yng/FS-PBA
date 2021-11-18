@@ -7,112 +7,11 @@ cuda=3,7
 bs=4
 gpun=2
 
-mkdir ./result/$TASK
-
-case $TASK in
-    CoLA)
-        task=cola
-    ;;
-    SST-2)
-        task=sst-2
-    ;;
-    MNLI)
-        task=mnli
-    ;;
-esac
-
-hard=N
-
-    # Prompt + Adapter
-    for seed in 100
-    do
-        for lr in 3e-4 1e-4 3e-5
-        do
-            CUDA_VISIBLE_DEVICES=$cuda \
-            TASK=$TASK \
-            TAG=$TAG \
-            BS=$bs \
-            LR=$lr \
-            PROMPT=prompt \
-            SEED=$seed \
-            MODEL=$model \
-            HARD=$hard \
-            GPUN=$gpun \
-            bash run_experiment.sh "--training_params prompt,adapter --use_adapter"
-            if (($? != 0)); then exit 0; fi
-        done
-    done
-
-    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt,adapter'}" > ./result/$TASK/$TASK-$hard-prompt-adapter.out
-
-    # Prompt + Bias
-    for seed in 13 21 42 87 100
-    do
-        for lr in 1e-3 3e-4 1e-4 3e-5
-        do
-            CUDA_VISIBLE_DEVICES=$cuda \
-            TASK=$TASK \
-            TAG=$TAG \
-            BS=$bs \
-            LR=$lr \
-            PROMPT=prompt \
-            SEED=$seed \
-            MODEL=$model \
-            HARD=$hard \
-            GPUN=$gpun \
-            bash run_experiment.sh "--training_params prompt,bias"
-            if (($? != 0)); then exit 0; fi
-        done
-    done
-
-    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt,bias'}" > ./result/$TASK/$TASK-$hard-prompt-bias.out
-
-    # Bias + Adapter
-    for seed in 13 21 42 87 100
-    do
-        for lr in 1e-3 3e-4 1e-4 3e-5
-        do
-            CUDA_VISIBLE_DEVICES=$cuda \
-            TASK=$TASK \
-            TAG=$TAG \
-            BS=$bs \
-            LR=$lr \
-            SEED=$seed \
-            MODEL=$model \
-            HARD=$hard \
-            GPUN=$gpun \
-            bash run_experiment.sh "--training_params bias,adapter --use_adapter"
-            if (($? != 0)); then exit 0; fi
-        done
-    done
-
-    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'bias,adapter'}" > ./result/$TASK/$TASK-$hard-bias-adapter.out
-
-    # Prompt + Bias + Adapter
-    for seed in 42 87 100
-    do
-        for lr in 1e-3 3e-4 1e-4 3e-5
-        do
-            CUDA_VISIBLE_DEVICES=$cuda \
-            TASK=$TASK \
-            TAG=$TAG \
-            BS=$bs \
-            LR=$lr \
-            PROMPT=prompt \
-            SEED=$seed \
-            MODEL=$model \
-            HARD=$hard \
-            GPUN=$gpun \
-            bash run_experiment.sh "--training_params prompt,bias,adapter --use_adapter"
-            if (($? != 0)); then exit 0; fi
-        done
-    done
-
-    python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt,bias,adapter'}" > ./result/$TASK/$TASK-$hard-prompt-bias-adapter.out
+task=mnli
 
 if [[ $task == mnli ]]; then
     task=mnli-mm
-    for $hard in Y N 
+    for hard in Y N 
     do
         python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'do_train': False}" > ./result/$TASK/$TASK-mm-$hard-none.out
         python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt'}" > ./result/$TASK/$TASK-mm-$hard-prompt.out

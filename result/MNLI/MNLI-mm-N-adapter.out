@@ -1,0 +1,21 @@
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.5416666666666666, 'test_result': 0.46267290480065093}
+{'seed': '21-21', 'learning_rate': 0.001, 'dev_result': 0.4166666666666667, 'test_result': 0.40205451586655816}
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.5416666666666666, 'test_result': 0.5513628966639544}
+{'seed': '87-87', 'learning_rate': 0.001, 'dev_result': 0.4583333333333333, 'test_result': 0.575366151342555}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.3333333333333333, 'test_result': 0.3295362082994304}
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.5833333333333334, 'test_result': 0.5333604556550041}
+{'seed': '21-21', 'learning_rate': 0.0003, 'dev_result': 0.5416666666666666, 'test_result': 0.4783360455655004}
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.625, 'test_result': 0.5420056956875509}
+{'seed': '87-87', 'learning_rate': 0.0003, 'dev_result': 0.6041666666666666, 'test_result': 0.5748576078112286}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.7291666666666666, 'test_result': 0.656326281529699}
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.5208333333333334, 'test_result': 0.5327502034174125}
+{'seed': '21-21', 'learning_rate': 0.0001, 'dev_result': 0.5625, 'test_result': 0.4827095199349064}
+{'seed': '42-42', 'learning_rate': 0.0001, 'dev_result': 0.6041666666666666, 'test_result': 0.5682465419039869}
+{'seed': '87-87', 'learning_rate': 0.0001, 'dev_result': 0.5, 'test_result': 0.5852318958502848}
+{'seed': '100-100', 'learning_rate': 0.0001, 'dev_result': 0.6875, 'test_result': 0.6284580960130187}
+{'seed': '13-13', 'learning_rate': 3e-05, 'dev_result': 0.5, 'test_result': 0.47172497965825877}
+{'seed': '21-21', 'learning_rate': 3e-05, 'dev_result': 0.5625, 'test_result': 0.4971521562245728}
+{'seed': '42-42', 'learning_rate': 3e-05, 'dev_result': 0.5416666666666666, 'test_result': 0.4767087062652563}
+{'seed': '87-87', 'learning_rate': 3e-05, 'dev_result': 0.5, 'test_result': 0.5474979658258747}
+{'seed': '100-100', 'learning_rate': 3e-05, 'dev_result': 0.6875, 'test_result': 0.5337672904800651}
+{'best_lr': 0.0001, 'best_results': 0.5594792514239219}
