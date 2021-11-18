@@ -14,10 +14,10 @@
 K=16
 
 # Training steps
-MAX_STEP=3000
+MAX_STEP=6000
 
 # Validation steps
-EVAL_STEP=100
+EVAL_STEP=200
 
 # Task specific parameters
 # The default length is 128 and the default number of samples is 16.
@@ -121,7 +121,7 @@ esac
 # a maximum batch size of 2 when using large-size models. So we use gradient
 # accumulation steps to achieve the same effect of larger batch sizes.
 PER_BS=$(expr $BS / $GPUN)
-REAL_BS=1
+REAL_BS=2
 GS=$(expr ${PER_BS} / ${REAL_BS})
 
 # Use a random number to distinguish different trails (avoid accidental overwriting)

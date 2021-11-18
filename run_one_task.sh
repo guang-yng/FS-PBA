@@ -3,9 +3,9 @@
 
 TAG=exp2
 model=roberta-large
-cuda=1,2,3,4
-bs=8
-gpun=4
+cuda=4,6
+bs=4
+gpun=2
 
 mkdir ./result/$TASK
 
@@ -51,7 +51,7 @@ do
             SEED=$seed \
             MODEL=$model \
             HARD=$hard \
-	    GPUN=$gpun \
+            GPUN=$gpun \
             bash run_experiment.sh "--training_params prompt"
             if (($? != 0)); then exit 0; fi
             echo "Hi"
@@ -73,7 +73,7 @@ do
             SEED=$seed \
             MODEL=$model \
             HARD=$hard \
-	    GPUN=$gpun \
+            GPUN=$gpun \
             bash run_experiment.sh "--training_params bias"
             if (($? != 0)); then exit 0; fi
         done
@@ -94,7 +94,7 @@ do
             SEED=$seed \
             MODEL=$model \
             HARD=$hard \
-	    GPUN=$gpun \
+            GPUN=$gpun \
             bash run_experiment.sh "--training_params adapter --use_adapter"
             if (($? != 0)); then exit 0; fi
         done
@@ -116,7 +116,7 @@ do
             SEED=$seed \
             MODEL=$model \
             HARD=$hard \
-	    GPUN=$gpun \
+            GPUN=$gpun \
             bash run_experiment.sh "--training_params prompt,adapter --use_adapter"
             if (($? != 0)); then exit 0; fi
         done
@@ -138,7 +138,7 @@ do
             SEED=$seed \
             MODEL=$model \
             HARD=$hard \
-	    GPUN=$gpun \
+            GPUN=$gpun \
             bash run_experiment.sh "--training_params prompt,bias"
             if (($? != 0)); then exit 0; fi
         done
@@ -159,7 +159,7 @@ do
             SEED=$seed \
             MODEL=$model \
             HARD=$hard \
-	    GPUN=$gpun \
+            GPUN=$gpun \
             bash run_experiment.sh "--training_params bias,adapter --use_adapter"
             if (($? != 0)); then exit 0; fi
         done
@@ -181,7 +181,7 @@ do
             SEED=$seed \
             MODEL=$model \
             HARD=$hard \
-	    GPUN=$gpun \
+            GPUN=$gpun \
             bash run_experiment.sh "--training_params prompt,bias,adapter --use_adapter"
             if (($? != 0)); then exit 0; fi
         done
@@ -190,7 +190,7 @@ do
     python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt,bias,adapter'}" > ./result/$TASK/$TASK-$hard-prompt-bias-adapter.out
 done
 
-if [ $task -eq mnli ]; then
+if [[ $task == mnli ]]; then
     task=mnli-mm
     for $hard in Y N 
     do
