@@ -47,16 +47,31 @@ case $TASK in
         MAPPING="{'0':'terrible','1':'great'}"
         ;;
     MRPC)
-        TEMPLATE=*cls**sent_0**mask*,*+sentl_1**sep+*
+        case $HARD in
+            Y)
+                TEMPLATE=*cls*$PROMPT*sent_0**mask*,*+sentl_1**sep+*;;
+            N)
+                TEMPLATE=*cls*$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
+        esac
         MAPPING="{'0':'No','1':'Yes'}"
         ;;
     QQP)
-        TEMPLATE=*cls**sent_0**mask*,*+sentl_1**sep+*
+        case $HARD in
+            Y)
+                TEMPLATE=*cls*$PROMPT*sent_0**mask*,*+sentl_1**sep+*;;
+            N)
+                TEMPLATE=*cls*$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
+        esac
         MAPPING="{'0':'No','1':'Yes'}"
         TASK_EXTRA="--num_sample 4"
         ;;
     STS-B)
-        TEMPLATE=*cls**sent_0**mask*,*+sentl_1**sep+*
+        case $HARD in
+            Y)
+                TEMPLATE=*cls*$PROMPT*sent_0**mask*,*+sentl_1**sep+*;;
+            N)
+                TEMPLATE=*cls*$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
+        esac
         MAPPING="{'0':'No','1':'Yes'}"
         ;;
     MNLI)
@@ -75,13 +90,23 @@ case $TASK in
         TASK_EXTRA="--max_seq_len 256 --num_sample 4"
         ;;
     QNLI)
-        TEMPLATE=*cls**sent-_0*?*mask*,*+sentl_1**sep+*
+        case $HARD in
+            Y)
+                TEMPLATE=*cls*$PROMPT*sent-_0*?*mask*,*+sentl_1**sep+*;;
+            N)
+                TEMPLATE=*cls*$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
+        esac
         MAPPING="{'not_entailment':'No','entailment':'Yes'}"
         ;;
     RTE)
-        TEMPLATE=*cls**sent-_0*?*mask*,*+sentl_1**sep+*
+        case $HARD in
+            Y)
+                TEMPLATE=*cls*$PROMPT*sent-_0*?*mask*,*+sentl_1**sep+*;;
+            N)
+                TEMPLATE=*cls*$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
+        esac
         MAPPING="{'not_entailment':'No','entailment':'Yes'}"
-        TASK_EXTRA="--max_seq_len 256 --first_sent_limit 240"
+        TASK_EXTRA="--max_seq_len 512 --first_sent_limit 240"
         ;;
     mr)
         TEMPLATE=*cls**sent_0*_It_was*mask*.*sep+*

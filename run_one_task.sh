@@ -1,9 +1,9 @@
 # Required environment variables:
 # TASK: SST-2 / sst-5 / mr / cr / mpqa / subj / trec / CoLA / MNLI / SNLI / QNLI / RTE / MRPC / QQP / STS-B
 
-TAG=exp2
+TAG=exp
 model=roberta-large
-cuda=4,6
+cuda=4,7
 bs=4
 gpun=2
 
@@ -18,6 +18,21 @@ case $TASK in
     ;;
     MNLI)
         task=mnli
+    ;;
+    STS-B)
+        task=sts-b/pearson
+    ;;
+    MRPC)
+        task=mrpc/f1
+    ;;
+    QQP)
+        task=qqp/f1
+    ;;
+    QNLI)
+        task=qnli
+    ;;
+    RTE)
+        task=rte
     ;;
 esac
 
@@ -192,7 +207,7 @@ done
 
 if [[ $task == mnli ]]; then
     task=mnli-mm
-    for $hard in Y N 
+    for hard in Y N 
     do
         python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'do_train': False}" > ./result/$TASK/$TASK-mm-$hard-none.out
         python tools/gather_result.py --condition "{'tag': '$TAG', 'task_name': '$task', 'training_params': 'prompt'}" > ./result/$TASK/$TASK-mm-$hard-prompt.out

@@ -136,7 +136,7 @@ def main():
                 if item[args.key] > seed_best[seed][args.key]:
                     seed_best[seed] = item
 
-    answer=0
+    answer=None
     for lr in lrs:
         s = 0
         for seed in lrs[lr]:
@@ -144,7 +144,7 @@ def main():
             s += item[args.test_key]
             print({"seed": seed, "learning_rate": lr, "dev_result": item[args.key], "test_result": item[args.test_key]})
         s = s / len(lrs[lr])
-        if s > answer:
+        if answer==None or s > answer:
             answer = s
             max_lr = lr
     print({'best_lr': max_lr, 'best_results': answer})
