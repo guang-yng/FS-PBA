@@ -153,8 +153,6 @@ GS=$(expr ${PER_BS} / ${REAL_BS})
 TRIAL_IDTF=$RANDOM
 DATA_DIR=data/k-shot/$TASK/$K-$SEED
 
-echo $LR
-
 if [ -z "$NOTRAIN" ]; then
     python run.py \
     --task_name $TASK \

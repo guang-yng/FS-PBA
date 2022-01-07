@@ -124,28 +124,38 @@ def main():
             if item['learning_rate'] not in lrs:
                 lrs[item['learning_rate']] = {seed: item}
             else:
-                lrs[item['learning_rate']][seed] = item
-            if seed not in seed_result:
-                seed_result[seed] = [item]
-                seed_best[seed] = item
-            else:
-                seed_result[seed].append(item)
-                if item[args.key] > seed_best[seed][args.key]:
-                    seed_best[seed] = item
+                if seed not in lrs[item['learning_rate']]:
+                    lrs[item['learning_rate']][seed] = item
+                else:
+                    print('Warning: Overwirte results on learning rate = '+
+                           str(item['learning_rate']) +', seed = ' + str(seed) )
+                    lrs[item['learning_rate']][seed] = item
+
+            # if seed not in seed_result:
+            #     seed_result[seed] = [item]
+            #     seed_best[seed] = item
+            # else:
+            #     seed_result[seed].append(item)
+            #     if item[args.key] > seed_best[seed][args.key]:
+            #         seed_best[seed] = item
+
     print('total experiments: %d\n' % total)
 
     answer=None
     for lr in lrs:
-        s = 0
+        s = []
         for seed in lrs[lr]:
             item = lrs[lr][seed]
-            s += item[args.test_key]
+            s.append(item[args.test_key])
             print({"seed": seed, "learning_rate": lr, "dev_result": item[args.key], "test_result": item[args.test_key]})
-        s = s / len(lrs[lr])
-        if answer==None or s > answer:
-            answer = s
+        test_acc_mean = np.array(s).mean()
+        test_acc_std = np.array(s).std()
+        print('Statistics for learning rate = '+str(lr)+": mean: "+str(test_acc_mean)+", std: " + str(test_acc_std))
+        if answer==None or test_acc_mean > answer:
+            answer = test_acc_mean
             max_lr = lr
-    print({'best_lr': max_lr, 'best_results': answer})
+            std = test_acc_std
+    print({'best_lr': max_lr, 'mean': answer, 'std': std})
 
     # for seed in seed_result:
     #     seed_list = seed_result[seed]

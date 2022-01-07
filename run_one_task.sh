@@ -1,13 +1,12 @@
 # Required environment variables:
 # TASK: SST-2 / sst-5 / mr / cr / mpqa / subj / trec / CoLA / MNLI / SNLI / QNLI / RTE / MRPC / QQP / STS-B
 
-TAG=exp
 model=roberta-large
-cuda=4,7
+cuda=0,1,4,7
 bs=4
 gpun=2
 
-mkdir ./result/$TASK
+[ ! -d "./result/$TASK" ] && mkdir ./result/$TASK
 
 case $TASK in
     CoLA)
@@ -38,6 +37,8 @@ esac
 
 for hard in Y N
 do
+    TAG=exp-$hard
+
     # None
     CUDA_VISIBLE_DEVICES=$cuda \
     TASK=$TASK \

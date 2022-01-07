@@ -669,7 +669,10 @@ def main():
                 final_result.pop('evaluation_strategy')
             f.write(str(final_result) + '\n')
     
-    os.remove(os.path.join(training_args.output_dir, "pytorch_model.bin"))
+    try:
+        os.remove(os.path.join(training_args.output_dir, "pytorch_model.bin"))
+    except:
+        logger.log("The pytorch_model.bin file doesn't EXIST")
     return eval_results
 
 if __name__ == "__main__":
