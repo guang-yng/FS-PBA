@@ -1,0 +1,5 @@
+total experiments: 1
+
+{'seed': '13-13', 'learning_rate': 5e-05, 'dev_result': 0.8125, 'test_result': 0.8360091743119266}
+Statistics for learning rate = 5e-05: mean: 0.8360091743119266, std: 0.0
+{'best_lr': 5e-05, 'mean': 0.8360091743119266, 'std': 0.0}

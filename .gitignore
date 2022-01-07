@@ -3,4 +3,6 @@
 /log.lock
 /.idea/
 /src/__pycache__/
-/result/
+
+/result/SST-2-*
+/result/CoLA-*
