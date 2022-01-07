@@ -319,6 +319,7 @@ class Trainer(transformers.Trainer):
         self.epoch = 0
         epochs_trained = 0
         steps_trained_in_current_epoch = 0
+        self.result = {}
         # Check if continuing training from a checkpoint
         if model_path is not None:
             # set global_step to global_step of last saved checkpoint from model path
@@ -420,6 +421,7 @@ class Trainer(transformers.Trainer):
                         output = self.evaluate()
                         metrics = output.metrics
                         objective = self.dev_objective(metrics)
+                        self.result[self.global_step] = objective
                         if objective > self.objective:
                             logger.info("Best dev result: {}".format(objective))
                             self.objective = objective
@@ -443,6 +445,7 @@ class Trainer(transformers.Trainer):
                 output = self.evaluate()
                 metrics = output.metrics
                 objective = self.dev_objective(metrics)
+                self.result[self.global_step] = objective
                 if objective > self.objective:
                     logger.info("Best dev result: {}".format(objective))
                     self.objective = objective
@@ -464,7 +467,7 @@ class Trainer(transformers.Trainer):
             delattr(self, "_past")
 
         logger.info("\n\nTraining completed. Do not forget to share your model on huggingface.co/models =)\n\n")
-        return TrainOutput(self.global_step, tr_loss / self.global_step), self.objective
+        return TrainOutput(self.global_step, tr_loss / self.global_step), self.objective, self.result
 
 
     """

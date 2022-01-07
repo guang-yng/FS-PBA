@@ -110,19 +110,16 @@ def main():
     seed_best = {}
     lrs = {}
 
+    total = 0
     for item in result_list:
         ok = True
         for cond in condition:
-            if isinstance(condition[cond], list):
-                if cond not in item or (item[cond] not in condition[cond]):
-                    ok = False
-                    break
-            else:
-                if cond not in item or (item[cond] != condition[cond]):
-                    ok = False
-                    break
+            if cond not in item or (item[cond] != condition[cond]):
+                ok = False
+                break
 
         if ok:
+            total = total+1
             seed = item['data_dir'].split('-')[-1] + '-' + str(item['seed'])
             if item['learning_rate'] not in lrs:
                 lrs[item['learning_rate']] = {seed: item}
@@ -135,6 +132,7 @@ def main():
                 seed_result[seed].append(item)
                 if item[args.key] > seed_best[seed][args.key]:
                     seed_best[seed] = item
+    print('total experiments: %d\n' % total)
 
     answer=None
     for lr in lrs:

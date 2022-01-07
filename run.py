@@ -5,7 +5,7 @@ import logging
 import os
 import sys
 from dataclasses import dataclass, field
-from typing import Callable, Dict, Optional
+from typing import Callable, Dict, Optional, Union, List
 import torch
 
 import numpy as np
@@ -252,7 +252,7 @@ class DynamicTrainingArguments(TrainingArguments):
         metadata={"help": "Instead of saving the best (dev performance) checkpoint, save the last checkpoint"}
     )
 
-    training_params: str = field(
+    training_params: Optional[List[str]] = field(
         default='all',
         metadata={"help": "The parameters to be trained (all, prompt, adapter or bias)"}
     )
@@ -336,6 +336,9 @@ def main():
 
                 data_args.mapping = mapping_list[data_args.mapping_id]
                 logger.info("Specify using the %d-th mapping: %s" % (data_args.mapping_id, data_args.mapping))
+
+    # Avoid space in name
+    training_args.output_dir = training_args.output_dir.replace(' ', '-')
 
     # Check save path
     if (
@@ -458,27 +461,132 @@ def main():
         compute_metrics=build_compute_metrics_fn(data_args.task_name)
     )
 
+    def save_trained_param(model, dir):
+        param = {}
+        for p in model.named_parameters():
+            if p[1].requires_grad:
+                param[p[0]] = p[1]
+        torch.save(param, dir)
+    
+    def load_trained_param(model, dir):
+        param = torch.load(dir)
+        model.load_state_dict(param, strict=False)
+
+
+    final_result = {}
     # Training
     if training_args.do_train:
-        model.freeze_model()
-        if 'adapter' in training_args.training_params:
-            model.train_adapter('PBAdapter')
-        if 'prompt' in training_args.training_params:
-            model.train_prompt()
-        if 'bias' in training_args.training_params:
-            model.train_bias()
-        if 'all' in training_args.training_params:
-            model.train()
-        trainer.train(model_path=model_args.model_name_or_path if os.path.isdir(model_args.model_name_or_path) else None)
-        # Use the early stop, so do not save the model in the end (unless specify save_at_last)
-        if training_args.save_at_last:
-            trainer.save_model(training_args.output_dir)
+        train_params_list = training_args.training_params
+        if isinstance(train_params_list, str):
+            train_params_list = [train_params_list]
+        for params in train_params_list:
+            model.freeze_model()
+            if 'adapter' in params:
+                model.train_adapter('PBAdapter')
+            if 'prompt' in params:
+                model.train_prompt()
+            if 'bias' in params:
+                model.train_bias()
+            if 'all' in params:
+                model.train()
+            result = trainer.train(model_path=model_args.model_name_or_path 
+                                   if os.path.isdir(model_args.model_name_or_path) else None) [-1]
+            torch.save(result, os.path.join(training_args.output_dir, "result_"+params+".pt"))
+
+            # Use the early stop, so do not save the model in the end (unless specify save_at_last)
+            save_trained_param(model, os.path.join(training_args.output_dir, 
+                                                   "in_step_model_"+params+'.bin'))
  
-        if trainer.is_world_master():
-            tokenizer.save_pretrained(training_args.output_dir)
-            torch.save(model_args, os.path.join(training_args.output_dir, "model_args.bin"))
-            torch.save(data_args, os.path.join(training_args.output_dir, "data_args.bin"))
+            if trainer.is_world_master():
+                tokenizer.save_pretrained(training_args.output_dir)
+                torch.save(model_args, os.path.join(training_args.output_dir, "model_args.bin"))
+                torch.save(data_args, os.path.join(training_args.output_dir, "data_args.bin"))
         
+            # Reload the best checkpoint (for eval)
+            model.load_state_dict(torch.load(os.path.join(training_args.output_dir, "pytorch_model.bin")))
+            model = model.to(training_args.device)
+            trainer.model = model
+            if data_args.prompt:
+                model.label_word_list = torch.tensor(train_dataset.label_word_list).long().cuda()
+            if output_modes_mapping[data_args.task_name] == 'regression':
+                # lower / upper bounds
+                model.lb, model.ub = bound_mapping[data_args.task_name]
+            model.model_args = model_args
+            model.data_args = data_args
+            model.tokenizer = tokenizer
+
+            #Evaluation
+            eval_results = {}
+            if training_args.do_eval:
+                logger.info("*** Stage Validate ***")
+
+                eval_datasets = [eval_dataset]
+
+                for eval_dataset in eval_datasets:
+                    trainer.compute_metrics = build_compute_metrics_fn(eval_dataset.args.task_name)
+                    output = trainer.evaluate(eval_dataset=eval_dataset)
+                    eval_result = output.metrics 
+
+                    output_eval_file = os.path.join(
+                        training_args.output_dir, f"eval_results_{eval_dataset.args.task_name}.txt"
+                    )
+                    if trainer.is_world_master():
+                        with open(output_eval_file, "w") as writer:
+                            logger.info("***** Eval results {} *****".format(eval_dataset.args.task_name))
+                            for key, value in eval_result.items():
+                                logger.info("  %s = %s", key, value)
+                                writer.write("%s = %s\n" % (key, value))
+                                final_result[eval_dataset.args.task_name + '_dev_' + params + '_' + key] = value
+                    eval_results.update(eval_result)
+
+            test_results = {}
+            if training_args.do_predict:
+                logging.info("*** Test ***")
+                test_datasets = [test_dataset]
+                if data_args.task_name == "mnli":
+                    mnli_mm_data_args = dataclasses.replace(data_args, task_name="mnli-mm")
+                    mnli_mm_data_args.prompt_num = data_args.prompt_num
+                    mnli_mm_data_args.prompt = True
+                    test_datasets.append(
+                        FewShotDataset(mnli_mm_data_args, tokenizer=tokenizer, mode="test", use_demo=False)
+                    )
+
+                for test_dataset in test_datasets:
+                    trainer.compute_metrics = build_compute_metrics_fn(test_dataset.args.task_name)
+                    output = trainer.evaluate(eval_dataset=test_dataset)
+                    test_result = output.metrics
+
+                    output_test_file = os.path.join(
+                        training_args.output_dir, f"test_results_{test_dataset.args.task_name}.txt"
+                    )
+                    if trainer.is_world_master():
+                        with open(output_test_file, "w") as writer:
+                            logger.info("***** Test results {} *****".format(test_dataset.args.task_name))
+                            for key, value in test_result.items():
+                                logger.info("  %s = %s", key, value)
+                                writer.write("%s = %s\n" % (key, value))
+                                final_result[test_dataset.args.task_name + '_test_' + params + '_' + key] = value
+
+                        if training_args.save_logit:
+                            predictions = output.predictions
+                            num_logits = predictions.shape[-1]
+                            logits = predictions.reshape([test_dataset.num_sample, -1, num_logits]).mean(axis=0)
+                            np.save(os.path.join(training_args.save_logit_dir, "{}-{}-{}.npy".format(test_dataset.task_name, training_args.model_id, training_args.array_id)), logits)
+
+                    test_results.update(test_result)
+
+            load_trained_param(model, os.path.join(training_args.output_dir, "in_step_model_"+params+'.bin'))
+            model = model.to(training_args.device)
+            trainer.model = model
+            if data_args.prompt:
+                model.label_word_list = torch.tensor(train_dataset.label_word_list).long().cuda()
+            if output_modes_mapping[data_args.task_name] == 'regression':
+                # lower / upper bounds
+                model.lb, model.ub = bound_mapping[data_args.task_name]
+            model.model_args = model_args
+            model.data_args = data_args
+            model.tokenizer = tokenizer
+
         # Reload the best checkpoint (for eval)
         model.load_state_dict(torch.load(os.path.join(training_args.output_dir, "pytorch_model.bin")))
         model = model.to(training_args.device)
@@ -493,10 +601,6 @@ def main():
         model.tokenizer = tokenizer
 
     # Evaluation
-    final_result = {
-        'time': str(datetime.today()),
-    }
-
     eval_results = {}
     if training_args.do_eval:
         logger.info("*** Validate ***")
@@ -565,6 +669,7 @@ def main():
                 final_result.pop('evaluation_strategy')
             f.write(str(final_result) + '\n')
     
+    os.remove(os.path.join(training_args.output_dir, "pytorch_model.bin"))
     return eval_results
 
 if __name__ == "__main__":

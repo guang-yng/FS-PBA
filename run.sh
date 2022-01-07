@@ -1,43 +1,51 @@
-TAG=exp
-TASK=SST-2
-K=16
-SEED=42
-MODEL=roberta-large
-PROMPT=10
-REAL_BS=2
-GS=1
-LR=3e-4
-MAX_STEP=1000
-EVAL_STEP=100
-DATA_DIR=data/k-shot/$TASK/$K-$SEED
-TRIAL_IDTF=hand
-TEMPLATE=*cls**sent_0*_It_was*prompt*mask*.*sep+*
-MAPPING="{'0':'terrible','1':'great'}"
-CUDA_VISIBLE_DEVICES=0,1,2,5 python run.py \
-  --task_name $TASK \
-  --data_dir $DATA_DIR \
-  --overwrite_output_dir \
-  --do_train \
-  --do_eval \
-  --do_predict \
-  --evaluation_strategy steps \
-  --model_name_or_path $MODEL \
-  --prompt_num $PROMPT \
-  --num_k $K \
-  --max_seq_length 256 \
-  --per_device_train_batch_size $REAL_BS \
-  --per_device_eval_batch_size 16 \
-  --gradient_accumulation_steps $GS \
-  --learning_rate $LR \
-  --max_steps $MAX_STEP \
-  --logging_steps $EVAL_STEP \
-  --eval_steps $EVAL_STEP \
-  --num_train_epochs 0 \
-  --output_dir result/$TASK-$K-$PROMPT-$SEED-$MODEL-$TRIAL_IDTF \
-  --seed $SEED \
-  --tag $TAG \
-  --template $TEMPLATE \
-  --mapping $MAPPING \
-  --training_params prompt
+TAG=exp-stage
+model=roberta-large
+cuda=1,5
+bs=4
+gpun=2
 
-rm -r result/$TASK-$K-$PROMPT-$SEED-$MODEL-$TRIAL_IDTF \
+mkdir ./result/$TASK
+
+case $TASK in
+    CoLA)
+        task=cola
+    ;;
+    SST-2)
+        task=sst-2
+    ;;
+    MNLI)
+        task=mnli
+    ;;
+    STS-B)
+        task=sts-b/pearson
+    ;;
+    MRPC)
+        task=mrpc/f1
+    ;;
+    QQP)
+        task=qqp/f1
+    ;;
+    QNLI)
+        task=qnli
+    ;;
+    RTE)
+        task=rte
+    ;;
+esac
+
+hard=Y
+seed=13
+lr=1e-3
+
+CUDA_VISIBLE_DEVICES=$cuda \
+TASK=$TASK \
+TAG=$TAG \
+BS=$bs \
+LR=$lr \
+PROMPT=prompt \
+SEED=$seed \
+MODEL=$model \
+HARD=$hard \
+GPUN=$gpun \
+TRAIN_PARM="prompt adatper bias" \
+bash run_mulstage_experiment.sh "--use_adapter"
