@@ -1,0 +1,12 @@
+{'tag': 'exp-Y', 'task_name': 'rte', 'training_params': ['prompt']}
+total experiments: 4
+
+{'seed': '13-13', 'learning_rate': 0.01, 'dev_result': 0.59375, 'test_result': 0.5018050541516246}
+Statistics for learning rate = 0.01: mean: 0.5018050541516246, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.003, 'dev_result': 0.625, 'test_result': 0.4548736462093863}
+Statistics for learning rate = 0.003: mean: 0.4548736462093863, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.59375, 'test_result': 0.592057761732852}
+Statistics for learning rate = 0.001: mean: 0.592057761732852, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.5625, 'test_result': 0.5848375451263538}
+Statistics for learning rate = 0.0003: mean: 0.5848375451263538, std: 0.0
+{'best_lr': 0.001, 'mean': 0.592057761732852, 'std': 0.0}

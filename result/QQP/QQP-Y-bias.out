@@ -1,0 +1,13 @@
+{'tag': 'exp-Y', 'task_name': 'qqp/f1', 'training_params': ['bias']}
+total experiments: 4
+
+{'seed': '13-13', 'learning_rate': 0.003, 'dev_result': 0.8108108108108109, 'test_result': 0.6503421138374396}
+Statistics for learning rate = 0.003: mean: 0.6503421138374396, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.7692307692307693, 'test_result': 0.6443078897361861}
+Statistics for learning rate = 0.001: mean: 0.6443078897361861, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.7777777777777777, 'test_result': 0.6607852948147368}
+Statistics for learning rate = 0.0003: mean: 0.6607852948147368, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.7567567567567567, 'test_result': 0.6733179285034661}
+Statistics for learning rate = 0.0001: mean: 0.6733179285034661, std: 0.0
+Warning! Best Learning rate equals minmum Learning rate.
+{'best_lr': 0.0001, 'mean': 0.6733179285034661, 'std': 0.0}

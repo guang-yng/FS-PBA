@@ -1,0 +1,12 @@
+{'tag': 'exp-Y', 'task_name': 'rte', 'training_params': ['bias']}
+total experiments: 4
+
+{'seed': '13-13', 'learning_rate': 0.003, 'dev_result': 0.59375, 'test_result': 0.48375451263537905}
+Statistics for learning rate = 0.003: mean: 0.48375451263537905, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.59375, 'test_result': 0.6173285198555957}
+Statistics for learning rate = 0.001: mean: 0.6173285198555957, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.75, 'test_result': 0.6787003610108303}
+Statistics for learning rate = 0.0003: mean: 0.6787003610108303, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.71875, 'test_result': 0.6642599277978339}
+Statistics for learning rate = 0.0001: mean: 0.6642599277978339, std: 0.0
+{'best_lr': 0.0003, 'mean': 0.6787003610108303, 'std': 0.0}

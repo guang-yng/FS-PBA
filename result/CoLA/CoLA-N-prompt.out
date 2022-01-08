@@ -1,0 +1,12 @@
+{'tag': 'exp-N', 'task_name': 'cola', 'training_params': ['prompt']}
+total experiments: 4
+
+{'seed': '13-13', 'learning_rate': 0.01, 'dev_result': 0.40451991747794525, 'test_result': 0.0233807096399483}
+Statistics for learning rate = 0.01: mean: 0.0233807096399483, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.003, 'dev_result': 0.0, 'test_result': 0.03298912474719909}
+Statistics for learning rate = 0.003: mean: 0.03298912474719909, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.3779644730092272, 'test_result': 0.01647191991207847}
+Statistics for learning rate = 0.001: mean: 0.01647191991207847, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.19738550848793068, 'test_result': 0.030446342304820788}
+Statistics for learning rate = 0.0003: mean: 0.030446342304820788, std: 0.0
+{'best_lr': 0.003, 'mean': 0.03298912474719909, 'std': 0.0}

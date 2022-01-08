@@ -1,0 +1,13 @@
+{'tag': 'exp-N', 'task_name': 'cola', 'training_params': ['bias']}
+total experiments: 4
+
+{'seed': '13-13', 'learning_rate': 0.003, 'dev_result': 0.4383570037596047, 'test_result': -0.0035117768451477477}
+Statistics for learning rate = 0.003: mean: -0.0035117768451477477, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.1259881576697424, 'test_result': 0.027048123027946527}
+Statistics for learning rate = 0.001: mean: 0.027048123027946527, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.20851441405707474, 'test_result': 0.04828589848169037}
+Statistics for learning rate = 0.0003: mean: 0.04828589848169037, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.18786728732554486, 'test_result': 0.049473020853933444}
+Statistics for learning rate = 0.0001: mean: 0.049473020853933444, std: 0.0
+Warning! Best Learning rate equals minmum Learning rate.
+{'best_lr': 0.0001, 'mean': 0.049473020853933444, 'std': 0.0}

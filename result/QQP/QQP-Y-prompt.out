@@ -1,0 +1,12 @@
+{'tag': 'exp-Y', 'task_name': 'qqp/f1', 'training_params': ['prompt']}
+total experiments: 4
+
+{'seed': '13-13', 'learning_rate': 0.01, 'dev_result': 0.7999999999999999, 'test_result': 0.5173297440012425}
+Statistics for learning rate = 0.01: mean: 0.5173297440012425, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.003, 'dev_result': 0.7317073170731707, 'test_result': 0.5289362923282953}
+Statistics for learning rate = 0.003: mean: 0.5289362923282953, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.6341463414634146, 'test_result': 0.502351385909022}
+Statistics for learning rate = 0.001: mean: 0.502351385909022, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.6511627906976744, 'test_result': 0.47663372649027735}
+Statistics for learning rate = 0.0003: mean: 0.47663372649027735, std: 0.0
+{'best_lr': 0.003, 'mean': 0.5289362923282953, 'std': 0.0}

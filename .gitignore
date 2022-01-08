@@ -1,5 +1,6 @@
 /data/original/
 /data/datasets.tar
+/data/k-shot/*/*/cached*
 /log.lock
 /.idea/
 /src/__pycache__/
@@ -13,4 +14,6 @@
 /result/MRPC-*
 /result/QNLI-*
 /result/RTE-*
+/result/QQP-*
+/result/STS-B-*
 /A100-*

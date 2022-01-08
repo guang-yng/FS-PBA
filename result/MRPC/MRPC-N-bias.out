@@ -1,0 +1,12 @@
+{'tag': 'exp-N', 'task_name': 'mrpc/f1', 'training_params': ['bias']}
+total experiments: 4
+
+{'seed': '13-13', 'learning_rate': 0.003, 'dev_result': 0.6060606060606061, 'test_result': 0.5232815964523281}
+Statistics for learning rate = 0.003: mean: 0.5232815964523281, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.7368421052631579, 'test_result': 0.7073608617594254}
+Statistics for learning rate = 0.001: mean: 0.7073608617594254, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.6451612903225806, 'test_result': 0.5272331154684097}
+Statistics for learning rate = 0.0003: mean: 0.5272331154684097, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.6451612903225806, 'test_result': 0.481981981981982}
+Statistics for learning rate = 0.0001: mean: 0.481981981981982, std: 0.0
+{'best_lr': 0.001, 'mean': 0.7073608617594254, 'std': 0.0}

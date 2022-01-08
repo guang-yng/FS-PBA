@@ -1,0 +1,12 @@
+{'tag': 'exp-N', 'task_name': 'cola', 'training_params': ['adapter']}
+total experiments: 4
+
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.10721125348377948, 'test_result': 0.0555290647355159}
+Statistics for learning rate = 0.001: mean: 0.0555290647355159, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.06362847629757777, 'test_result': 0.12111096000268053}
+Statistics for learning rate = 0.0003: mean: 0.12111096000268053, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.125, 'test_result': 0.014414092670087301}
+Statistics for learning rate = 0.0001: mean: 0.014414092670087301, std: 0.0
+{'seed': '13-13', 'learning_rate': 3e-05, 'dev_result': 0.31311214554257477, 'test_result': 0.060390978976924165}
+Statistics for learning rate = 3e-05: mean: 0.060390978976924165, std: 0.0
+{'best_lr': 0.0003, 'mean': 0.12111096000268053, 'std': 0.0}
