@@ -4,5 +4,13 @@
 /.idea/
 /src/__pycache__/
 
+/run.back
+/run.tmp.py
+
 /result/SST-2-*
 /result/CoLA-*
+/result/MNLI-*
+/result/MRPC-*
+/result/QNLI-*
+/result/RTE-*
+/A100-*

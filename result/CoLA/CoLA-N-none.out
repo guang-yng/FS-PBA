@@ -1,0 +1,7 @@
+{'tag': 'exp-N', 'task_name': 'cola', 'do_train': False}
+total experiments: 1
+
+{'seed': '13-13', 'learning_rate': 5e-05, 'dev_result': 0.0, 'test_result': 0.0463559874942472}
+Statistics for learning rate = 5e-05: mean: 0.0463559874942472, std: 0.0
+Warning! Best Learning rate equals minmum Learning rate.
+{'best_lr': 5e-05, 'mean': 0.0463559874942472, 'std': 0.0}

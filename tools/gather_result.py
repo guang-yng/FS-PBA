@@ -18,6 +18,8 @@ def main():
 
     condition = eval(args.condition)
 
+    print(condition)
+
     if len(args.key) == 0:
         if condition['task_name'] == 'cola':
             args.key = 'cola_dev_eval_mcc'
@@ -142,6 +144,10 @@ def main():
     print('total experiments: %d\n' % total)
 
     answer=None
+    min_lr = 1
+    max_lr = 0
+    best_lr = None
+    std = None
     for lr in lrs:
         s = []
         for seed in lrs[lr]:
@@ -153,9 +159,15 @@ def main():
         print('Statistics for learning rate = '+str(lr)+": mean: "+str(test_acc_mean)+", std: " + str(test_acc_std))
         if answer==None or test_acc_mean > answer:
             answer = test_acc_mean
-            max_lr = lr
+            best_lr = lr
             std = test_acc_std
-    print({'best_lr': max_lr, 'mean': answer, 'std': std})
+        min_lr = min(min_lr, lr)
+        max_lr = max(max_lr, lr)
+    if best_lr == min_lr:
+        print('Warning! Best Learning rate equals minmum Learning rate.')
+    elif best_lr == max_lr:
+        print('Warning! Best Learning rate equals maximum Learning rate.')
+    print({'best_lr': best_lr, 'mean': answer, 'std': std})
 
     # for seed in seed_result:
     #     seed_list = seed_result[seed]

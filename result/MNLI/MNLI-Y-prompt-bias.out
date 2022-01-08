@@ -1,0 +1,13 @@
+{'tag': 'exp-Y', 'task_name': 'mnli', 'training_params': ['prompt,bias']}
+total experiments: 4
+
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.75, 'test_result': 0.6664289353031075}
+Statistics for learning rate = 0.001: mean: 0.6664289353031075, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.7708333333333334, 'test_result': 0.6562404482934284}
+Statistics for learning rate = 0.0003: mean: 0.6562404482934284, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.7708333333333334, 'test_result': 0.6533876719307183}
+Statistics for learning rate = 0.0001: mean: 0.6533876719307183, std: 0.0
+{'seed': '13-13', 'learning_rate': 3e-05, 'dev_result': 0.7708333333333334, 'test_result': 0.6405501782985227}
+Statistics for learning rate = 3e-05: mean: 0.6405501782985227, std: 0.0
+Warning! Best Learning rate equals maximum Learning rate.
+{'best_lr': 0.001, 'mean': 0.6664289353031075, 'std': 0.0}

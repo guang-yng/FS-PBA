@@ -1,0 +1,13 @@
+{'tag': 'exp-Y', 'task_name': 'mrpc/f1', 'training_params': ['bias,adapter']}
+total experiments: 4
+
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.6666666666666666, 'test_result': 0.8122270742358079}
+Statistics for learning rate = 0.001: mean: 0.8122270742358079, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.823529411764706, 'test_result': 0.7471264367816093}
+Statistics for learning rate = 0.0003: mean: 0.7471264367816093, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.823529411764706, 'test_result': 0.772563176895307}
+Statistics for learning rate = 0.0001: mean: 0.772563176895307, std: 0.0
+{'seed': '13-13', 'learning_rate': 3e-05, 'dev_result': 0.7999999999999999, 'test_result': 0.7567567567567567}
+Statistics for learning rate = 3e-05: mean: 0.7567567567567567, std: 0.0
+Warning! Best Learning rate equals maximum Learning rate.
+{'best_lr': 0.001, 'mean': 0.8122270742358079, 'std': 0.0}

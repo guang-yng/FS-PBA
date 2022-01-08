@@ -1,0 +1,13 @@
+{'tag': 'exp-Y', 'task_name': 'cola', 'training_params': ['prompt,bias']}
+total experiments: 4
+
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.31311214554257477, 'test_result': 0.025913087060439887}
+Statistics for learning rate = 0.001: mean: 0.025913087060439887, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.3216337604513384, 'test_result': -0.009252032508089042}
+Statistics for learning rate = 0.0003: mean: -0.009252032508089042, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.0, 'test_result': 0.01834705324263748}
+Statistics for learning rate = 0.0001: mean: 0.01834705324263748, std: 0.0
+{'seed': '13-13', 'learning_rate': 3e-05, 'dev_result': 0.0, 'test_result': -0.022935907714615785}
+Statistics for learning rate = 3e-05: mean: -0.022935907714615785, std: 0.0
+Warning! Best Learning rate equals maximum Learning rate.
+{'best_lr': 0.001, 'mean': 0.025913087060439887, 'std': 0.0}

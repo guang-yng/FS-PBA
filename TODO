@@ -1,0 +1,6 @@
+Current Running: A100-1-0 TASK=SST2 GPU=0,1,4,7
+Current Running: A100-1-1 TASK=MNLI GPU=1,0,4,7
+Current Running: A100-2   TASK=CoLA GPU=6,7
+Current Running: A100-4   TASK=MRPC GPU=4,5
+Current Running: A000-4-1 TASK=QNLI GPU=6,7
+Current Running: A100-4-2 TASK=RTE  GPU=5,4,6,7

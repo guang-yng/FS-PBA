@@ -1,0 +1,13 @@
+{'tag': 'exp-Y', 'task_name': 'mrpc/f1', 'training_params': ['prompt']}
+total experiments: 5
+
+{'seed': '13-13', 'learning_rate': 0.01, 'dev_result': 0.6666666666666667, 'test_result': 0.7459807073954984}
+{'seed': '21-21', 'learning_rate': 0.01, 'dev_result': 0.7441860465116279, 'test_result': 0.6782608695652175}
+Statistics for learning rate = 0.01: mean: 0.712120788480358, std: 0.03385991891514045
+{'seed': '13-13', 'learning_rate': 0.003, 'dev_result': 0.6842105263157896, 'test_result': 0.628131021194605}
+Statistics for learning rate = 0.003: mean: 0.628131021194605, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.7567567567567567, 'test_result': 0.7355072463768115}
+Statistics for learning rate = 0.001: mean: 0.7355072463768115, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.7000000000000001, 'test_result': 0.7243816254416962}
+Statistics for learning rate = 0.0003: mean: 0.7243816254416962, std: 0.0
+{'best_lr': 0.001, 'mean': 0.7355072463768115, 'std': 0.0}

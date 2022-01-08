@@ -1,0 +1,13 @@
+{'tag': 'exp-Y', 'task_name': 'sst-2', 'training_params': ['bias']}
+total experiments: 4
+
+{'seed': '13-13', 'learning_rate': 0.003, 'dev_result': 0.84375, 'test_result': 0.7947247706422018}
+Statistics for learning rate = 0.003: mean: 0.7947247706422018, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.875, 'test_result': 0.9243119266055045}
+Statistics for learning rate = 0.001: mean: 0.9243119266055045, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.9375, 'test_result': 0.9220183486238532}
+Statistics for learning rate = 0.0003: mean: 0.9220183486238532, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.9375, 'test_result': 0.9277522935779816}
+Statistics for learning rate = 0.0001: mean: 0.9277522935779816, std: 0.0
+Warning! Best Learning rate equals minmum Learning rate.
+{'best_lr': 0.0001, 'mean': 0.9277522935779816, 'std': 0.0}

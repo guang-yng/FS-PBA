@@ -472,6 +472,18 @@ def main():
         param = torch.load(dir)
         model.load_state_dict(param, strict=False)
 
+    if training_args.do_predict:
+        test_datasets = [test_dataset]
+        if data_args.task_name == "mnli":
+            mnli_mm_data_args = dataclasses.replace(data_args, task_name="mnli-mm")
+            mnli_mm_data_args.prompt_num = data_args.prompt_num
+            mnli_mm_data_args.prompt = True
+            test_datasets.append(
+                FewShotDataset(mnli_mm_data_args, tokenizer=tokenizer, mode="test", use_demo=False)
+            )
+
+    if training_args.do_eval:
+        eval_datasets = [eval_dataset]
 
     final_result = {}
     # Training
@@ -520,8 +532,6 @@ def main():
             if training_args.do_eval:
                 logger.info("*** Stage Validate ***")
 
-                eval_datasets = [eval_dataset]
-
                 for eval_dataset in eval_datasets:
                     trainer.compute_metrics = build_compute_metrics_fn(eval_dataset.args.task_name)
                     output = trainer.evaluate(eval_dataset=eval_dataset)
@@ -542,14 +552,6 @@ def main():
             test_results = {}
             if training_args.do_predict:
                 logging.info("*** Test ***")
-                test_datasets = [test_dataset]
-                if data_args.task_name == "mnli":
-                    mnli_mm_data_args = dataclasses.replace(data_args, task_name="mnli-mm")
-                    mnli_mm_data_args.prompt_num = data_args.prompt_num
-                    mnli_mm_data_args.prompt = True
-                    test_datasets.append(
-                        FewShotDataset(mnli_mm_data_args, tokenizer=tokenizer, mode="test", use_demo=False)
-                    )
 
                 for test_dataset in test_datasets:
                     trainer.compute_metrics = build_compute_metrics_fn(test_dataset.args.task_name)
@@ -605,8 +607,6 @@ def main():
     if training_args.do_eval:
         logger.info("*** Validate ***")
 
-        eval_datasets = [eval_dataset]
-
         for eval_dataset in eval_datasets:
             trainer.compute_metrics = build_compute_metrics_fn(eval_dataset.args.task_name)
             output = trainer.evaluate(eval_dataset=eval_dataset)
@@ -627,14 +627,6 @@ def main():
     test_results = {}
     if training_args.do_predict:
         logging.info("*** Test ***")
-        test_datasets = [test_dataset]
-        if data_args.task_name == "mnli":
-            mnli_mm_data_args = dataclasses.replace(data_args, task_name="mnli-mm")
-            mnli_mm_data_args.prompt_num = data_args.prompt_num
-            mnli_mm_data_args.prompt = True
-            test_datasets.append(
-                FewShotDataset(mnli_mm_data_args, tokenizer=tokenizer, mode="test", use_demo=False)
-            )
 
         for test_dataset in test_datasets:
             trainer.compute_metrics = build_compute_metrics_fn(test_dataset.args.task_name)
