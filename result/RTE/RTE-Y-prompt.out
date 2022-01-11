@@ -1,12 +1,20 @@
 {'tag': 'exp-Y', 'task_name': 'rte', 'training_params': ['prompt']}
-total experiments: 4
+total experiments: 12
 
 {'seed': '13-13', 'learning_rate': 0.01, 'dev_result': 0.59375, 'test_result': 0.5018050541516246}
-Statistics for learning rate = 0.01: mean: 0.5018050541516246, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.01, 'dev_result': 0.65625, 'test_result': 0.5270758122743683}
+{'seed': '100-100', 'learning_rate': 0.01, 'dev_result': 0.75, 'test_result': 0.5270758122743683}
+Statistics for learning rate = 0.01: mean: 0.5186522262334536, std: 0.01191274962287807
 {'seed': '13-13', 'learning_rate': 0.003, 'dev_result': 0.625, 'test_result': 0.4548736462093863}
-Statistics for learning rate = 0.003: mean: 0.4548736462093863, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.003, 'dev_result': 0.5625, 'test_result': 0.5270758122743683}
+{'seed': '100-100', 'learning_rate': 0.003, 'dev_result': 0.65625, 'test_result': 0.5667870036101083}
+Statistics for learning rate = 0.003: mean: 0.516245487364621, std: 0.04632581601665499
 {'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.59375, 'test_result': 0.592057761732852}
-Statistics for learning rate = 0.001: mean: 0.592057761732852, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.53125, 'test_result': 0.4981949458483754}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.6875, 'test_result': 0.5992779783393501}
+Statistics for learning rate = 0.001: mean: 0.5631768953068592, std: 0.04604362567920335
 {'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.5625, 'test_result': 0.5848375451263538}
-Statistics for learning rate = 0.0003: mean: 0.5848375451263538, std: 0.0
-{'best_lr': 0.001, 'mean': 0.592057761732852, 'std': 0.0}
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.4375, 'test_result': 0.51985559566787}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.625, 'test_result': 0.5631768953068592}
+Statistics for learning rate = 0.0003: mean: 0.555956678700361, std: 0.02701557679981187
+{'best_lr': 0.001, 'mean': 0.5631768953068592, 'std': 0.04604362567920335}

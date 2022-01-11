@@ -1,12 +1,20 @@
 {'tag': 'exp-Y', 'task_name': 'cola', 'training_params': ['prompt,adapter']}
-total experiments: 4
+total experiments: 12
 
 {'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.0, 'test_result': 0.0}
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.0, 'test_result': 0.0}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.0, 'test_result': 0.0}
 Statistics for learning rate = 0.001: mean: 0.0, std: 0.0
 {'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.0, 'test_result': 0.053304819469816585}
-Statistics for learning rate = 0.0003: mean: 0.053304819469816585, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.5039526306789696, 'test_result': 0.09644884849592326}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.40451991747794525, 'test_result': 0.1565274057585286}
+Statistics for learning rate = 0.0003: mean: 0.10209369124142283, std: 0.04232905831891148
 {'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.08606629658238704, 'test_result': 0.024011814488569573}
-Statistics for learning rate = 0.0001: mean: 0.024011814488569573, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.0001, 'dev_result': 0.4383570037596047, 'test_result': 0.052627404272026584}
+{'seed': '100-100', 'learning_rate': 0.0001, 'dev_result': 0.375, 'test_result': 0.16473420885657822}
+Statistics for learning rate = 0.0001: mean: 0.08045780920572479, std: 0.060726691815305
 {'seed': '13-13', 'learning_rate': 3e-05, 'dev_result': 0.07559289460184544, 'test_result': -0.013546558181587069}
-Statistics for learning rate = 3e-05: mean: -0.013546558181587069, std: 0.0
-{'best_lr': 0.0003, 'mean': 0.053304819469816585, 'std': 0.0}
+{'seed': '42-42', 'learning_rate': 3e-05, 'dev_result': 0.31814238148788887, 'test_result': 0.07376853015034376}
+{'seed': '100-100', 'learning_rate': 3e-05, 'dev_result': 0.2519763153394848, 'test_result': 0.07836645140359805}
+Statistics for learning rate = 3e-05: mean: 0.046196141124118247, std: 0.04228615068957151
+{'best_lr': 0.0003, 'mean': 0.10209369124142283, 'std': 0.04232905831891148}

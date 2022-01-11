@@ -1,13 +1,21 @@
 {'tag': 'exp-Y', 'task_name': 'qqp/f1', 'training_params': ['bias']}
-total experiments: 4
+total experiments: 12
 
 {'seed': '13-13', 'learning_rate': 0.003, 'dev_result': 0.8108108108108109, 'test_result': 0.6503421138374396}
-Statistics for learning rate = 0.003: mean: 0.6503421138374396, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.003, 'dev_result': 0.6666666666666665, 'test_result': 0.5301271548242679}
+{'seed': '100-100', 'learning_rate': 0.003, 'dev_result': 0.6666666666666666, 'test_result': 0.5381903642773208}
+Statistics for learning rate = 0.003: mean: 0.5728865443130094, std: 0.05486819220906484
 {'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.7692307692307693, 'test_result': 0.6443078897361861}
-Statistics for learning rate = 0.001: mean: 0.6443078897361861, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.8333333333333334, 'test_result': 0.6603383411814534}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.7894736842105263, 'test_result': 0.6758985149120446}
+Statistics for learning rate = 0.001: mean: 0.6601815819432281, std: 0.012897295061225608
 {'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.7777777777777777, 'test_result': 0.6607852948147368}
-Statistics for learning rate = 0.0003: mean: 0.6607852948147368, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.8421052631578948, 'test_result': 0.6628857298528903}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.8108108108108109, 'test_result': 0.6787020711071345}
+Statistics for learning rate = 0.0003: mean: 0.6674576985915873, std: 0.00799707829100407
 {'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.7567567567567567, 'test_result': 0.6733179285034661}
-Statistics for learning rate = 0.0001: mean: 0.6733179285034661, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.0001, 'dev_result': 0.7999999999999999, 'test_result': 0.6772377661353248}
+{'seed': '100-100', 'learning_rate': 0.0001, 'dev_result': 0.7999999999999999, 'test_result': 0.6845614923609352}
+Statistics for learning rate = 0.0001: mean: 0.6783723956665754, std: 0.00465975465621214
 Warning! Best Learning rate equals minmum Learning rate.
-{'best_lr': 0.0001, 'mean': 0.6733179285034661, 'std': 0.0}
+{'best_lr': 0.0001, 'mean': 0.6783723956665754, 'std': 0.00465975465621214}

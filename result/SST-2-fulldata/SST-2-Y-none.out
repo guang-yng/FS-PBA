@@ -1,0 +1,8 @@
+{'tag': 'exp-fulldata-Y', 'task_name': 'sst-2', 'do_train': False}
+total experiments: 1
+
+Use Validation result!
+{'seed': '2-13', 'learning_rate': 5e-05, 'dev_result': 0.8360091743119266, 'test_result': 0.8360091743119266}
+Statistics for learning rate = 5e-05: mean: 0.8360091743119266, std: 0.0
+Warning! Best Learning rate equals minmum Learning rate.
+{'best_lr': 5e-05, 'mean': 0.8360091743119266, 'std': 0.0}

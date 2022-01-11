@@ -1,0 +1,28 @@
+{'tag': 'exp-N', 'task_name': 'qnli', 'training_params': ['prompt,bias,adapter']}
+Warning: Overwirte results on learning rate = 0.001, seed = 42-42
+Warning: Overwirte results on learning rate = 0.0003, seed = 42-42
+Warning: Overwirte results on learning rate = 0.0001, seed = 42-42
+Warning: Overwirte results on learning rate = 3e-05, seed = 42-42
+Warning: Overwirte results on learning rate = 0.001, seed = 100-100
+Warning: Overwirte results on learning rate = 0.0003, seed = 100-100
+Warning: Overwirte results on learning rate = 0.0001, seed = 100-100
+Warning: Overwirte results on learning rate = 3e-05, seed = 100-100
+total experiments: 20
+
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.5, 'test_result': 0.5}
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.53125, 'test_result': 0.53125}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.5, 'test_result': 0.5}
+Statistics for learning rate = 0.001: mean: 0.5055830129965221, std: 0.0002588712360192157
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.75, 'test_result': 0.75}
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.53125, 'test_result': 0.53125}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.6875, 'test_result': 0.6875}
+Statistics for learning rate = 0.0003: mean: 0.5892976996766124, std: 0.061422955443287824
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.71875, 'test_result': 0.71875}
+{'seed': '42-42', 'learning_rate': 0.0001, 'dev_result': 0.625, 'test_result': 0.625}
+{'seed': '100-100', 'learning_rate': 0.0001, 'dev_result': 0.6875, 'test_result': 0.6875}
+Statistics for learning rate = 0.0001: mean: 0.616022942217341, std: 0.07033319696888558
+{'seed': '13-13', 'learning_rate': 3e-05, 'dev_result': 0.6875, 'test_result': 0.6875}
+{'seed': '42-42', 'learning_rate': 3e-05, 'dev_result': 0.65625, 'test_result': 0.65625}
+{'seed': '100-100', 'learning_rate': 3e-05, 'dev_result': 0.6875, 'test_result': 0.6875}
+Statistics for learning rate = 3e-05: mean: 0.6051619989017023, std: 0.04960813196691213
+{'best_lr': 0.0001, 'mean': 0.616022942217341, 'std': 0.07033319696888558}

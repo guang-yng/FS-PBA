@@ -1,12 +1,20 @@
 {'tag': 'exp-Y', 'task_name': 'mnli', 'training_params': ['prompt,adapter']}
-total experiments: 4
+total experiments: 12
 
 {'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.3333333333333333, 'test_result': 0.3544574630667346}
-Statistics for learning rate = 0.001: mean: 0.3544574630667346, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.5833333333333334, 'test_result': 0.6136525725929699}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.5833333333333334, 'test_result': 0.6576668364747835}
+Statistics for learning rate = 0.001: mean: 0.5419256240448294, std: 0.13377231251058921
 {'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.7083333333333334, 'test_result': 0.6353540499235864}
-Statistics for learning rate = 0.0003: mean: 0.6353540499235864, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.6666666666666666, 'test_result': 0.65206316861946}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.6875, 'test_result': 0.6922058074375955}
+Statistics for learning rate = 0.0003: mean: 0.6598743419935472, std: 0.023857792650312563
 {'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.7708333333333334, 'test_result': 0.6626591951095262}
-Statistics for learning rate = 0.0001: mean: 0.6626591951095262, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.0001, 'dev_result': 0.7083333333333334, 'test_result': 0.6556291390728477}
+{'seed': '100-100', 'learning_rate': 0.0001, 'dev_result': 0.6875, 'test_result': 0.6959755476311767}
+Statistics for learning rate = 0.0001: mean: 0.6714212939378502, std: 0.017598086123153465
 {'seed': '13-13', 'learning_rate': 3e-05, 'dev_result': 0.7291666666666666, 'test_result': 0.6505348955680081}
-Statistics for learning rate = 3e-05: mean: 0.6505348955680081, std: 0.0
-{'best_lr': 0.0001, 'mean': 0.6626591951095262, 'std': 0.0}
+{'seed': '42-42', 'learning_rate': 3e-05, 'dev_result': 0.6875, 'test_result': 0.6358634742740703}
+{'seed': '100-100', 'learning_rate': 3e-05, 'dev_result': 0.7083333333333334, 'test_result': 0.6900662251655629}
+Statistics for learning rate = 3e-05: mean: 0.6588215316692138, std: 0.022890839571855733
+{'best_lr': 0.0001, 'mean': 0.6714212939378502, 'std': 0.017598086123153465}

@@ -236,10 +236,12 @@ def tokenize_multipart_input(
     # Truncate
     if len(input_ids) > max_length:
         if truncate_head:
+            logger.info("Truncate Head!")
             input_ids = input_ids[-max_length:]
             attention_mask = attention_mask[-max_length:]
             token_type_ids = token_type_ids[-max_length:]
         else:
+            logger.info("Truncate Tail!"+str(len(input_ids)))
             # Default is to truncate the tail
             input_ids = input_ids[:max_length]
             attention_mask = attention_mask[:max_length]

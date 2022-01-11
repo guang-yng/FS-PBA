@@ -1,13 +1,20 @@
 {'tag': 'exp-Y', 'task_name': 'rte', 'training_params': ['prompt,adapter']}
-total experiments: 4
+total experiments: 12
 
 {'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.75, 'test_result': 0.6750902527075813}
-Statistics for learning rate = 0.001: mean: 0.6750902527075813, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.65625, 'test_result': 0.6425992779783394}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.78125, 'test_result': 0.7364620938628159}
+Statistics for learning rate = 0.001: mean: 0.6847172081829122, std: 0.03891928189842654
 {'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.75, 'test_result': 0.6714801444043321}
-Statistics for learning rate = 0.0003: mean: 0.6714801444043321, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.6875, 'test_result': 0.7256317689530686}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.75, 'test_result': 0.7148014440433214}
+Statistics for learning rate = 0.0003: mean: 0.7039711191335739, std: 0.023396175806526576
 {'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.78125, 'test_result': 0.6642599277978339}
-Statistics for learning rate = 0.0001: mean: 0.6642599277978339, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.0001, 'dev_result': 0.71875, 'test_result': 0.7220216606498195}
+{'seed': '100-100', 'learning_rate': 0.0001, 'dev_result': 0.75, 'test_result': 0.7075812274368231}
+Statistics for learning rate = 0.0001: mean: 0.6979542719614922, std: 0.024544016912600657
 {'seed': '13-13', 'learning_rate': 3e-05, 'dev_result': 0.75, 'test_result': 0.6642599277978339}
-Statistics for learning rate = 3e-05: mean: 0.6642599277978339, std: 0.0
-Warning! Best Learning rate equals maximum Learning rate.
-{'best_lr': 0.001, 'mean': 0.6750902527075813, 'std': 0.0}
+{'seed': '42-42', 'learning_rate': 3e-05, 'dev_result': 0.65625, 'test_result': 0.6823104693140795}
+{'seed': '100-100', 'learning_rate': 3e-05, 'dev_result': 0.71875, 'test_result': 0.6714801444043321}
+Statistics for learning rate = 3e-05: mean: 0.6726835138387486, std: 0.007418067392261119
+{'best_lr': 0.0003, 'mean': 0.7039711191335739, 'std': 0.023396175806526576}

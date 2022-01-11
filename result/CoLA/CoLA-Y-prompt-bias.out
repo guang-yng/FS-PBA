@@ -1,13 +1,21 @@
 {'tag': 'exp-Y', 'task_name': 'cola', 'training_params': ['prompt,bias']}
-total experiments: 4
+total experiments: 12
 
 {'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.31311214554257477, 'test_result': 0.025913087060439887}
-Statistics for learning rate = 0.001: mean: 0.025913087060439887, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.31814238148788887, 'test_result': 0.08630405854100369}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.2519763153394848, 'test_result': 0.0647553232440163}
+Statistics for learning rate = 0.001: mean: 0.05899082294848662, std: 0.024989190420852493
 {'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.3216337604513384, 'test_result': -0.009252032508089042}
-Statistics for learning rate = 0.0003: mean: -0.009252032508089042, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.5, 'test_result': 0.017258471076539668}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.26967994498529685, 'test_result': 0.05177190093403012}
+Statistics for learning rate = 0.0003: mean: 0.01992611316749358, std: 0.024984226342916433
 {'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.0, 'test_result': 0.01834705324263748}
-Statistics for learning rate = 0.0001: mean: 0.01834705324263748, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.0001, 'dev_result': 0.31814238148788887, 'test_result': -0.005110605851005528}
+{'seed': '100-100', 'learning_rate': 0.0001, 'dev_result': 0.3872983346207417, 'test_result': 0.05169878132883272}
+Statistics for learning rate = 0.0001: mean: 0.02164507624015489, std: 0.02330928762970257
 {'seed': '13-13', 'learning_rate': 3e-05, 'dev_result': 0.0, 'test_result': -0.022935907714615785}
-Statistics for learning rate = 3e-05: mean: -0.022935907714615785, std: 0.0
+{'seed': '42-42', 'learning_rate': 3e-05, 'dev_result': 0.31814238148788887, 'test_result': 0.02512527421286872}
+{'seed': '100-100', 'learning_rate': 3e-05, 'dev_result': 0.5163977794943222, 'test_result': 0.03795334512627249}
+Statistics for learning rate = 3e-05: mean: 0.01338090387484181, std: 0.026208433170234226
 Warning! Best Learning rate equals maximum Learning rate.
-{'best_lr': 0.001, 'mean': 0.025913087060439887, 'std': 0.0}
+{'best_lr': 0.001, 'mean': 0.05899082294848662, 'std': 0.024989190420852493}

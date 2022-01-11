@@ -1,0 +1,21 @@
+{'tag': 'exp-N', 'task_name': 'qqp/f1', 'training_params': ['bias']}
+total experiments: 12
+
+{'seed': '13-13', 'learning_rate': 0.003, 'dev_result': 0.6666666666666666, 'test_result': 0.6666666666666666}
+{'seed': '42-42', 'learning_rate': 0.003, 'dev_result': 0.6666666666666666, 'test_result': 0.6666666666666666}
+{'seed': '100-100', 'learning_rate': 0.003, 'dev_result': 0.6666666666666666, 'test_result': 0.6666666666666666}
+Statistics for learning rate = 0.003: mean: 0.5280402838931267, std: 0.014354381338504424
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.717948717948718, 'test_result': 0.717948717948718}
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.6666666666666666, 'test_result': 0.6666666666666666}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.6666666666666666, 'test_result': 0.6666666666666666}
+Statistics for learning rate = 0.001: mean: 0.523353932153797, std: 0.07063249764895652
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.7368421052631579, 'test_result': 0.7368421052631579}
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.6666666666666666, 'test_result': 0.6666666666666666}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.7142857142857143, 'test_result': 0.7142857142857143}
+Statistics for learning rate = 0.0003: mean: 0.5436746631267032, std: 0.061401537753957125
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.7027027027027026, 'test_result': 0.7027027027027026}
+{'seed': '42-42', 'learning_rate': 0.0001, 'dev_result': 0.7333333333333334, 'test_result': 0.7333333333333334}
+{'seed': '100-100', 'learning_rate': 0.0001, 'dev_result': 0.7368421052631579, 'test_result': 0.7368421052631579}
+Statistics for learning rate = 0.0001: mean: 0.5513006994722479, std: 0.06265403872253109
+Warning! Best Learning rate equals minmum Learning rate.
+{'best_lr': 0.0001, 'mean': 0.5513006994722479, 'std': 0.06265403872253109}

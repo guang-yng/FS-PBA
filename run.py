@@ -393,14 +393,17 @@ def main():
     )
 
     # Get our special datasets.
+    logger.info("*** Here!!!!! ***")
     train_dataset = (
         FewShotDataset(data_args, tokenizer=tokenizer, mode="train", use_demo=False)
     )
+    logger.info("*** Here!!!!! ***")
     eval_dataset = (
         FewShotDataset(data_args, tokenizer=tokenizer, mode="dev", use_demo=False)
         if training_args.do_eval
         else None
     )
+    logger.info("*** Here!!!!! ***")
     test_dataset = (
         FewShotDataset(data_args, tokenizer=tokenizer, mode="test", use_demo=False)
         if training_args.do_predict

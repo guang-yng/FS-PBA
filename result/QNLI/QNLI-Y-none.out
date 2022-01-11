@@ -1,7 +1,7 @@
 {'tag': 'exp-Y', 'task_name': 'qnli', 'do_train': False}
 total experiments: 1
 
-{'seed': '13-13', 'learning_rate': 5e-05, 'dev_result': 0.5, 'test_result': 0.5081457074867289}
+{'seed': '13-13', 'learning_rate': 5e-05, 'dev_result': 0.5, 'test_result': 0.5}
 Statistics for learning rate = 5e-05: mean: 0.5081457074867289, std: 0.0
 Warning! Best Learning rate equals minmum Learning rate.
 {'best_lr': 5e-05, 'mean': 0.5081457074867289, 'std': 0.0}

@@ -1,0 +1,7 @@
+{'tag': 'exp-N', 'task_name': 'sts-b/pearson', 'do_train': False}
+total experiments: 1
+
+{'seed': '13-13', 'learning_rate': 5e-05, 'dev_result': 0.21049707733436585, 'test_result': -0.06161700445355284}
+Statistics for learning rate = 5e-05: mean: -0.06161700445355284, std: 0.0
+Warning! Best Learning rate equals minmum Learning rate.
+{'best_lr': 5e-05, 'mean': -0.06161700445355284, 'std': 0.0}

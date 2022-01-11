@@ -152,8 +152,12 @@ def main():
         s = []
         for seed in lrs[lr]:
             item = lrs[lr][seed]
-            s.append(item[args.test_key])
-            print({"seed": seed, "learning_rate": lr, "dev_result": item[args.key], "test_result": item[args.test_key]})
+            if args.test_key in item:
+                s.append(item[args.test_key])
+            else:
+                print('Use Validation result!')
+                s.append(item[args.key])
+            print({"seed": seed, "learning_rate": lr, "dev_result": item[args.key], "test_result": item[args.key]})
         test_acc_mean = np.array(s).mean()
         test_acc_std = np.array(s).std()
         print('Statistics for learning rate = '+str(lr)+": mean: "+str(test_acc_mean)+", std: " + str(test_acc_std))

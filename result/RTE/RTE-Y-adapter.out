@@ -1,13 +1,21 @@
 {'tag': 'exp-Y', 'task_name': 'rte', 'training_params': ['adapter']}
-total experiments: 4
+total experiments: 12
 
 {'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.84375, 'test_result': 0.7436823104693141}
-Statistics for learning rate = 0.001: mean: 0.7436823104693141, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.5625, 'test_result': 0.6570397111913358}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.65625, 'test_result': 0.7184115523465704}
+Statistics for learning rate = 0.001: mean: 0.7063778580024067, std: 0.03638078569875084
 {'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.6875, 'test_result': 0.6353790613718412}
-Statistics for learning rate = 0.0003: mean: 0.6353790613718412, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.6875, 'test_result': 0.6642599277978339}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.84375, 'test_result': 0.7003610108303249}
+Statistics for learning rate = 0.0003: mean: 0.6666666666666666, std: 0.02658329968035439
 {'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.71875, 'test_result': 0.6750902527075813}
-Statistics for learning rate = 0.0001: mean: 0.6750902527075813, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.0001, 'dev_result': 0.625, 'test_result': 0.6353790613718412}
+{'seed': '100-100', 'learning_rate': 0.0001, 'dev_result': 0.78125, 'test_result': 0.740072202166065}
+Statistics for learning rate = 0.0001: mean: 0.6835138387484957, std: 0.043153841340652456
 {'seed': '13-13', 'learning_rate': 3e-05, 'dev_result': 0.75, 'test_result': 0.6678700361010831}
-Statistics for learning rate = 3e-05: mean: 0.6678700361010831, std: 0.0
+{'seed': '42-42', 'learning_rate': 3e-05, 'dev_result': 0.65625, 'test_result': 0.6606498194945848}
+{'seed': '100-100', 'learning_rate': 3e-05, 'dev_result': 0.71875, 'test_result': 0.6787003610108303}
+Statistics for learning rate = 3e-05: mean: 0.6690734055354994, std: 0.007418067392261113
 Warning! Best Learning rate equals maximum Learning rate.
-{'best_lr': 0.001, 'mean': 0.7436823104693141, 'std': 0.0}
+{'best_lr': 0.001, 'mean': 0.7063778580024067, 'std': 0.03638078569875084}

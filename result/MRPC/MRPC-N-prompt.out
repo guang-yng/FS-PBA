@@ -1,13 +1,21 @@
 {'tag': 'exp-N', 'task_name': 'mrpc/f1', 'training_params': ['prompt']}
-total experiments: 4
+total experiments: 12
 
 {'seed': '13-13', 'learning_rate': 0.01, 'dev_result': 0.65, 'test_result': 0.5643153526970954}
-Statistics for learning rate = 0.01: mean: 0.5643153526970954, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.01, 'dev_result': 0.742857142857143, 'test_result': 0.6641366223908919}
+{'seed': '100-100', 'learning_rate': 0.01, 'dev_result': 0.742857142857143, 'test_result': 0.6295585412667946}
+Statistics for learning rate = 0.01: mean: 0.6193368387849273, std: 0.041387871589321674
 {'seed': '13-13', 'learning_rate': 0.003, 'dev_result': 0.6857142857142857, 'test_result': 0.5835010060362174}
-Statistics for learning rate = 0.003: mean: 0.5835010060362174, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.003, 'dev_result': 0.7999999999999999, 'test_result': 0.7226277372262774}
+{'seed': '100-100', 'learning_rate': 0.003, 'dev_result': 0.5384615384615384, 'test_result': 0.5342465753424658}
+Statistics for learning rate = 0.003: mean: 0.6134584395349868, std: 0.07977030109235979
 {'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.6666666666666665, 'test_result': 0.6055776892430279}
-Statistics for learning rate = 0.001: mean: 0.6055776892430279, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.7222222222222223, 'test_result': 0.6628131021194605}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.5714285714285715, 'test_result': 0.5514223194748359}
+Statistics for learning rate = 0.001: mean: 0.6066043702791082, std: 0.04548089100569519
 {'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.5641025641025642, 'test_result': 0.6616822429906543}
-Statistics for learning rate = 0.0003: mean: 0.6616822429906543, std: 0.0
-Warning! Best Learning rate equals minmum Learning rate.
-{'best_lr': 0.0003, 'mean': 0.6616822429906543, 'std': 0.0}
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.7222222222222223, 'test_result': 0.6743737957610791}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.4166666666666667, 'test_result': 0.34285714285714286}
+Statistics for learning rate = 0.0003: mean: 0.5596377272029588, std: 0.15337456371014538
+Warning! Best Learning rate equals maximum Learning rate.
+{'best_lr': 0.01, 'mean': 0.6193368387849273, 'std': 0.041387871589321674}

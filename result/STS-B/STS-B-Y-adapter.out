@@ -1,0 +1,20 @@
+{'tag': 'exp-Y', 'task_name': 'sts-b/pearson', 'training_params': ['adapter']}
+total experiments: 12
+
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.3146127373866358, 'test_result': -0.0390698413362068}
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.3349532842602569, 'test_result': -0.001708185328135639}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.33182986849573254, 'test_result': -0.003279552972141291}
+Statistics for learning rate = 0.001: mean: -0.014685859878827909, std: 0.017254008478292907
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.852316289133321, 'test_result': 0.7067577769995923}
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.8322701640950725, 'test_result': 0.6734752061840483}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.7818091110566511, 'test_result': 0.5945676885010011}
+Statistics for learning rate = 0.0003: mean: 0.6582668905615473, std: 0.047046952698948465
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.8268510936764322, 'test_result': 0.715880778920952}
+{'seed': '42-42', 'learning_rate': 0.0001, 'dev_result': 0.7824465844690258, 'test_result': 0.6375853930303843}
+{'seed': '100-100', 'learning_rate': 0.0001, 'dev_result': 0.7720835849446945, 'test_result': 0.5660942352846908}
+Statistics for learning rate = 0.0001: mean: 0.6398534690786758, std: 0.061171127668451675
+{'seed': '13-13', 'learning_rate': 3e-05, 'dev_result': 0.7789724632618873, 'test_result': 0.5953811799676778}
+{'seed': '42-42', 'learning_rate': 3e-05, 'dev_result': 0.7141826903224433, 'test_result': 0.5309952744230072}
+{'seed': '100-100', 'learning_rate': 3e-05, 'dev_result': 0.7128392679110964, 'test_result': 0.5256796589046189}
+Statistics for learning rate = 3e-05: mean: 0.5506853710984346, std: 0.031679124987303235
+{'best_lr': 0.0003, 'mean': 0.6582668905615473, 'std': 0.047046952698948465}

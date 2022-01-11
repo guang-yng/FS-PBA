@@ -1,0 +1,21 @@
+{'tag': 'exp-N', 'task_name': 'mrpc/f1', 'training_params': ['bias,adapter']}
+total experiments: 12
+
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.6666666666666666, 'test_result': 0.8122270742358079}
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.6666666666666666, 'test_result': 0.8122270742358079}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.6666666666666666, 'test_result': 0.8122270742358079}
+Statistics for learning rate = 0.001: mean: 0.8122270742358079, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.7368421052631579, 'test_result': 0.549266247379455}
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.9375, 'test_result': 0.781981981981982}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.7272727272727272, 'test_result': 0.7582417582417582}
+Statistics for learning rate = 0.0003: mean: 0.6964966625343983, std: 0.10455778598724477
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.5806451612903225, 'test_result': 0.5442764578833693}
+{'seed': '42-42', 'learning_rate': 0.0001, 'dev_result': 0.7777777777777777, 'test_result': 0.7467652495378928}
+{'seed': '100-100', 'learning_rate': 0.0001, 'dev_result': 0.717948717948718, 'test_result': 0.8129032258064517}
+Statistics for learning rate = 0.0001: mean: 0.7013149777425713, std: 0.11427855008968754
+{'seed': '13-13', 'learning_rate': 3e-05, 'dev_result': 0.6666666666666665, 'test_result': 0.5726141078838175}
+{'seed': '42-42', 'learning_rate': 3e-05, 'dev_result': 0.75, 'test_result': 0.7766323024054983}
+{'seed': '100-100', 'learning_rate': 3e-05, 'dev_result': 0.6666666666666667, 'test_result': 0.7841845140032948}
+Statistics for learning rate = 3e-05: mean: 0.7111436414308702, std: 0.09800368266406276
+Warning! Best Learning rate equals maximum Learning rate.
+{'best_lr': 0.001, 'mean': 0.8122270742358079, 'std': 0.0}

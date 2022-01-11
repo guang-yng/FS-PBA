@@ -1,0 +1,12 @@
+{'tag': 'exp-N', 'task_name': 'qqp/f1', 'training_params': ['bias,adapter']}
+total experiments: 4
+
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.6666666666666666, 'test_result': 0.5381903642773208}
+Statistics for learning rate = 0.001: mean: 0.5381903642773208, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.6486486486486486, 'test_result': 0.5387729839853521}
+Statistics for learning rate = 0.0003: mean: 0.5387729839853521, std: 0.0
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.761904761904762, 'test_result': 0.5886727153680666}
+Statistics for learning rate = 0.0001: mean: 0.5886727153680666, std: 0.0
+{'seed': '13-13', 'learning_rate': 3e-05, 'dev_result': 0.6486486486486486, 'test_result': 0.5754562617998741}
+Statistics for learning rate = 3e-05: mean: 0.5754562617998741, std: 0.0
+{'best_lr': 0.0001, 'mean': 0.5886727153680666, 'std': 0.0}

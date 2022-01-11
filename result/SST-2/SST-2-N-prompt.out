@@ -1,13 +1,21 @@
 {'tag': 'exp-N', 'task_name': 'sst-2', 'training_params': ['prompt']}
-total experiments: 4
+total experiments: 12
 
 {'seed': '13-13', 'learning_rate': 0.01, 'dev_result': 0.8125, 'test_result': 0.6502293577981652}
-Statistics for learning rate = 0.01: mean: 0.6502293577981652, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.01, 'dev_result': 0.84375, 'test_result': 0.8600917431192661}
+{'seed': '100-100', 'learning_rate': 0.01, 'dev_result': 0.625, 'test_result': 0.5584862385321101}
+Statistics for learning rate = 0.01: mean: 0.6896024464831804, std: 0.12623826726674917
 {'seed': '13-13', 'learning_rate': 0.003, 'dev_result': 0.71875, 'test_result': 0.6307339449541285}
-Statistics for learning rate = 0.003: mean: 0.6307339449541285, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.003, 'dev_result': 0.8125, 'test_result': 0.8119266055045872}
+{'seed': '100-100', 'learning_rate': 0.003, 'dev_result': 0.65625, 'test_result': 0.6227064220183486}
+Statistics for learning rate = 0.003: mean: 0.6884556574923547, std: 0.08736863103502183
 {'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.6875, 'test_result': 0.6846330275229358}
-Statistics for learning rate = 0.001: mean: 0.6846330275229358, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.78125, 'test_result': 0.6880733944954128}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.75, 'test_result': 0.6261467889908257}
+Statistics for learning rate = 0.001: mean: 0.6662844036697247, std: 0.02841631122331163
 {'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.75, 'test_result': 0.7534403669724771}
-Statistics for learning rate = 0.0003: mean: 0.7534403669724771, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.8125, 'test_result': 0.7408256880733946}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.90625, 'test_result': 0.7534403669724771}
+Statistics for learning rate = 0.0003: mean: 0.7492354740061162, std: 0.005946616661354735
 Warning! Best Learning rate equals minmum Learning rate.
-{'best_lr': 0.0003, 'mean': 0.7534403669724771, 'std': 0.0}
+{'best_lr': 0.0003, 'mean': 0.7492354740061162, 'std': 0.005946616661354735}

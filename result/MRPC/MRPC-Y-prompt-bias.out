@@ -1,13 +1,21 @@
 {'tag': 'exp-Y', 'task_name': 'mrpc/f1', 'training_params': ['prompt,bias']}
-total experiments: 4
+total experiments: 12
 
 {'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.7368421052631579, 'test_result': 0.6589147286821706}
-Statistics for learning rate = 0.001: mean: 0.6589147286821706, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.8205128205128205, 'test_result': 0.7963963963963964}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.742857142857143, 'test_result': 0.7304015296367112}
+Statistics for learning rate = 0.001: mean: 0.7285708849050927, std: 0.056141581051666445
 {'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.7567567567567567, 'test_result': 0.7020872865275143}
-Statistics for learning rate = 0.0003: mean: 0.7020872865275143, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.7777777777777777, 'test_result': 0.7611940298507461}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.6666666666666667, 'test_result': 0.7606679035250464}
+Statistics for learning rate = 0.0003: mean: 0.7413164066344357, std: 0.02774000841744757
 {'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.7567567567567567, 'test_result': 0.7150635208711433}
-Statistics for learning rate = 0.0001: mean: 0.7150635208711433, std: 0.0
+{'seed': '42-42', 'learning_rate': 0.0001, 'dev_result': 0.7999999999999999, 'test_result': 0.7781818181818182}
+{'seed': '100-100', 'learning_rate': 0.0001, 'dev_result': 0.6875, 'test_result': 0.7265625}
+Statistics for learning rate = 0.0001: mean: 0.7399359463509873, std: 0.027448335278321655
 {'seed': '13-13', 'learning_rate': 3e-05, 'dev_result': 0.7567567567567567, 'test_result': 0.7423423423423424}
-Statistics for learning rate = 3e-05: mean: 0.7423423423423424, std: 0.0
+{'seed': '42-42', 'learning_rate': 3e-05, 'dev_result': 0.7777777777777777, 'test_result': 0.7950963222416813}
+{'seed': '100-100', 'learning_rate': 3e-05, 'dev_result': 0.6875, 'test_result': 0.7462121212121212}
+Statistics for learning rate = 3e-05: mean: 0.7612169285987149, std: 0.024008384401239844
 Warning! Best Learning rate equals minmum Learning rate.
-{'best_lr': 3e-05, 'mean': 0.7423423423423424, 'std': 0.0}
+{'best_lr': 3e-05, 'mean': 0.7612169285987149, 'std': 0.024008384401239844}

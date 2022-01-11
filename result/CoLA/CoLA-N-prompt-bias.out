@@ -1,0 +1,21 @@
+{'tag': 'exp-N', 'task_name': 'cola', 'training_params': ['prompt,bias']}
+total experiments: 12
+
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.2581988897471611, 'test_result': -0.003484201710708457}
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.44539933408304444, 'test_result': 0.15848090877479157}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.592156525463792, 'test_result': 0.46957620875830214}
+Statistics for learning rate = 0.001: mean: 0.20819097194079508, std: 0.1962988466144639
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.18786728732554486, 'test_result': 0.07148706057398195}
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.5, 'test_result': 0.11594855342654903}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.5726562866782, 'test_result': 0.31700692643351513}
+Statistics for learning rate = 0.0003: mean: 0.16814751347801538, std: 0.10681307568446143
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.13483997249264842, 'test_result': 0.03880110545933893}
+{'seed': '42-42', 'learning_rate': 0.0001, 'dev_result': 0.629940788348712, 'test_result': 0.13366473294911196}
+{'seed': '100-100', 'learning_rate': 0.0001, 'dev_result': 0.44539933408304444, 'test_result': 0.2722723459637005}
+Statistics for learning rate = 0.0001: mean: 0.1482460614573838, std: 0.09587028177511862
+{'seed': '13-13', 'learning_rate': 3e-05, 'dev_result': 0.31814238148788887, 'test_result': 0.0008589819266450572}
+{'seed': '42-42', 'learning_rate': 3e-05, 'dev_result': 0.4605661864718383, 'test_result': 0.17252945151274832}
+{'seed': '100-100', 'learning_rate': 3e-05, 'dev_result': 0.2886751345948129, 'test_result': 0.21959434369125658}
+Statistics for learning rate = 3e-05: mean: 0.13099425904354997, std: 0.0940041445244619
+Warning! Best Learning rate equals maximum Learning rate.
+{'best_lr': 0.001, 'mean': 0.20819097194079508, 'std': 0.1962988466144639}
