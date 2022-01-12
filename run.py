@@ -494,6 +494,7 @@ def main():
         train_params_list = training_args.training_params
         if isinstance(train_params_list, str):
             train_params_list = [train_params_list]
+        time_records = []
         for params in train_params_list:
             model.freeze_model()
             if 'adapter' in params:
@@ -507,6 +508,8 @@ def main():
             result = trainer.train(model_path=model_args.model_name_or_path 
                                    if os.path.isdir(model_args.model_name_or_path) else None) [-1]
             torch.save(result, os.path.join(training_args.output_dir, "result_"+params+".pt"))
+            time_records.append(result[-1])
+            final_result[training_args.task_name + '_test_' + params + '_forward_time'] = teim_records[-1]
 
             # Use the early stop, so do not save the model in the end (unless specify save_at_last)
             save_trained_param(model, os.path.join(training_args.output_dir, 
@@ -591,6 +594,8 @@ def main():
             model.model_args = model_args
             model.data_args = data_args
             model.tokenizer = tokenizer
+
+        final_result[training_args.task_name+'_train_forward_time'] = np.array(time_records).mean()
 
         # Reload the best checkpoint (for eval)
         model.load_state_dict(torch.load(os.path.join(training_args.output_dir, "pytorch_model.bin")))

@@ -23,6 +23,7 @@ import inspect
 import math
 import os
 import re
+import time
 import shutil
 import warnings
 from pathlib import Path
@@ -237,6 +238,22 @@ class Trainer(transformers.Trainer):
                 self.optimizer, num_warmup_steps=self.args.warmup_steps, num_training_steps=num_training_steps
             )
 
+    def compute_loss(self, model, inputs):
+        """
+        How the loss is computed by Trainer. By default, all models return the loss in the first element.
+        Subclass and override for custom behavior.
+        """
+        start = time.time()
+        outputs = model(**inputs)
+        end = time.time()
+        if 'time_records' in dir(self) and ininstance(self.time_records, list):
+            self.time_records.append(end-start)
+        # Save past state if it exists
+        if self.args.past_index >= 0:
+            self._past = outputs[self.args.past_index]
+        # We don't use .loss here since the model may return tuples instead of ModelOutput.
+        return outputs[0]
+
     def train(self, model_path=None, dev_objective=None):
         """
         Main training entry point.
@@ -247,6 +264,9 @@ class Trainer(transformers.Trainer):
         self.best_dir = None
         self.objective = -float("inf")
         self.dev_objective = dev_objective if dev_objective is not None else default_dev_objective
+
+        # Record time
+        self.time_records = []
 
         # Data loading.
         train_dataloader = self.get_train_dataloader()
@@ -466,8 +486,10 @@ class Trainer(transformers.Trainer):
             # Clean the state at the end of training
             delattr(self, "_past")
 
-        logger.info("\n\nTraining completed. Do not forget to share your model on huggingface.co/models =)\n\n")
-        return TrainOutput(self.global_step, tr_loss / self.global_step), self.objective, self.result
+        average_forward_time = np.array(self.time_records).mean()
+        logger.info("\n\nTraining Average Forward Time: {} \n".format(average_forward_time))
+        logger.info("Training completed. Do not forget to share your model on huggingface.co/models =)\n\n")
+        return TrainOutput(self.global_step, tr_loss / self.global_step), self.objective, self.result, average_forward_time
 
 
     """
