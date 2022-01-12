@@ -246,7 +246,7 @@ class Trainer(transformers.Trainer):
         start = time.time()
         outputs = model(**inputs)
         end = time.time()
-        if 'time_records' in dir(self) and ininstance(self.time_records, list):
+        if 'time_records' in dir(self) and isinstance(self.time_records, list):
             self.time_records.append(end-start)
         # Save past state if it exists
         if self.args.past_index >= 0:
@@ -489,7 +489,7 @@ class Trainer(transformers.Trainer):
         average_forward_time = np.array(self.time_records).mean()
         logger.info("\n\nTraining Average Forward Time: {} \n".format(average_forward_time))
         logger.info("Training completed. Do not forget to share your model on huggingface.co/models =)\n\n")
-        return TrainOutput(self.global_step, tr_loss / self.global_step), self.objective, self.result, average_forward_time
+        return TrainOutput(self.global_step, tr_loss / self.global_step), self.objective, average_forward_time, self.result
 
 
     """
