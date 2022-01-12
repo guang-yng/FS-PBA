@@ -403,8 +403,10 @@ class FewShotDataset(torch.utils.data.Dataset):
         # Size is expanded by num_sample
         self.size = len(self.query_examples) * self.num_sample
         
+        logger.info("Hi!")
         # Prepare examples (especially for using demonstrations)
         support_indices = list(range(len(self.support_examples)))
+        logger.info("{} - {}".format(self.num_sample, len(self.query_examples)))
         self.example_idx = []
         for sample_idx in range(self.num_sample):
             for query_idx in range(len(self.query_examples)):
@@ -444,14 +446,17 @@ class FewShotDataset(torch.utils.data.Dataset):
                                 context_indices.append(support_idx)
                                 if args.debug_mode:
                                     print("    %.4f %s | %s" % (score, self.support_examples[support_idx].label, self.support_examples[support_idx].text_a)) # debug
-                else:
+                elif self.use_demo:
                     # Using demonstrations without filtering
                     context_indices = [support_idx for support_idx in support_indices
                                if support_idx != query_idx or mode != "train"]
+                else:
+                    context_indices = None
 
                 # We'll subsample context_indices further later.
                 self.example_idx.append((query_idx, context_indices, sample_idx))
 
+        logger.info("Hi!")
         # If it is not training, we pre-process the data; otherwise, we process the data online.
         if mode != "train":
             self.features = []
@@ -460,7 +465,10 @@ class FewShotDataset(torch.utils.data.Dataset):
                 # The input (query) example
                 example = self.query_examples[query_idx]
                 # The demonstrations
-                supports = self.select_context([self.support_examples[i] for i in context_indices])
+                if context_indices == None:
+                    supports = None
+                else:
+                    supports = self.select_context([self.support_examples[i] for i in context_indices])
 
                 if args.template_list is not None:
                     template = args.template_list[sample_idx % len(args.template_list)] # Use template in order
@@ -481,6 +489,7 @@ class FewShotDataset(torch.utils.data.Dataset):
                 _ += 1
         else:
             self.features = None
+        logger.info("Hi!")
 
     def select_context(self, context_examples):
         """
@@ -526,7 +535,10 @@ class FewShotDataset(torch.utils.data.Dataset):
             # The input (query) example
             example = self.query_examples[query_idx]
             # The demonstrations
-            supports = self.select_context([self.support_examples[i] for i in context_indices])
+            if context_indices == None:
+                supports = None
+            else:
+                supports = self.select_context([self.support_examples[i] for i in context_indices])
 
             if self.args.template_list is not None:
                 template = self.args.template_list[sample_idx % len(self.args.template_list)]

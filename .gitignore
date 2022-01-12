@@ -17,3 +17,5 @@
 /result/QQP-*roberta-large*
 /result/STS-B-*roberta-large*
 /A100-*
+
+/gather-mnli-mm.sh

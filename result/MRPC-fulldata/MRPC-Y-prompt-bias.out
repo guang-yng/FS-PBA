@@ -1,0 +1,16 @@
+{'tag': 'exp-fulldata-Y', 'task_name': 'mrpc/f1', 'training_params': ['prompt,bias']}
+total experiments: 4
+
+Use Validation result!
+{'seed': 'data/original/MRPC-13', 'learning_rate': 0.01, 'dev_result': 0.8122270742358079, 'test_result': 0.8122270742358079}
+Statistics for learning rate = 0.01: mean: 0.8122270742358079, std: 0.0
+Use Validation result!
+{'seed': 'data/original/MRPC-13', 'learning_rate': 0.001, 'dev_result': 0.9294320137693632, 'test_result': 0.9294320137693632}
+Statistics for learning rate = 0.001: mean: 0.9294320137693632, std: 0.0
+Use Validation result!
+{'seed': 'data/original/MRPC-13', 'learning_rate': 0.0001, 'dev_result': 0.9146757679180888, 'test_result': 0.9146757679180888}
+Statistics for learning rate = 0.0001: mean: 0.9146757679180888, std: 0.0
+Use Validation result!
+{'seed': 'data/original/MRPC-13', 'learning_rate': 1e-05, 'dev_result': 0.8467614533965244, 'test_result': 0.8467614533965244}
+Statistics for learning rate = 1e-05: mean: 0.8467614533965244, std: 0.0
+{'best_lr': 0.001, 'mean': 0.9294320137693632, 'std': 0.0}

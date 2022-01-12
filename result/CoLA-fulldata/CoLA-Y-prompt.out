@@ -1,0 +1,16 @@
+{'tag': 'exp-fulldata-Y', 'task_name': 'cola', 'training_params': ['prompt']}
+total experiments: 4
+
+Use Validation result!
+{'seed': 'data/original/CoLA-13', 'learning_rate': 0.01, 'dev_result': 0.041349610789917626, 'test_result': 0.041349610789917626}
+Statistics for learning rate = 0.01: mean: 0.041349610789917626, std: 0.0
+Use Validation result!
+{'seed': 'data/original/CoLA-13', 'learning_rate': 0.001, 'dev_result': 0.3502488233267007, 'test_result': 0.3502488233267007}
+Statistics for learning rate = 0.001: mean: 0.3502488233267007, std: 0.0
+Use Validation result!
+{'seed': 'data/original/CoLA-13', 'learning_rate': 0.0001, 'dev_result': 0.06524083814720649, 'test_result': 0.06524083814720649}
+Statistics for learning rate = 0.0001: mean: 0.06524083814720649, std: 0.0
+Use Validation result!
+{'seed': 'data/original/CoLA-13', 'learning_rate': 1e-05, 'dev_result': 0.006772026973175361, 'test_result': 0.006772026973175361}
+Statistics for learning rate = 1e-05: mean: 0.006772026973175361, std: 0.0
+{'best_lr': 0.001, 'mean': 0.3502488233267007, 'std': 0.0}

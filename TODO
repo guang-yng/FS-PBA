@@ -1,7 +1,12 @@
+Current Running: A100-1-1 TASK=RTE  GPU=5,0,2,3
 Current Running: A100-2-1 TASK=SST2 GPU=0,1,4,7
-Current Running: A100-2-2 TASK=MNLI GPU=3
+Current Running: A100-2-2 TASK=STSB GPU=2,3
 Current Running: A100-2-3 TASK=MRPC GPU=1,0,4,7
-Current Running: A000-3-2 TASK=QNLI GPU=5
+Current Running: A100-3-2 TASK=QNLI GPU=5
 Current Running: A100-3-3 TASK=QQP  GPU=7
+Current Running: A100-4-1 TASK=CoLA GPU=0
+Current Running: A100-4-2 TASK=QNLI GPU=4
+Current Running: A100-4-3 TASK=MNLI GPU=5
 
 Bug to Fix: QNLI max_seq_len 512
+Bug to Fix: Gather result for MNLI-mm

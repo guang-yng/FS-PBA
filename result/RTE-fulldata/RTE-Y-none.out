@@ -1,5 +1,7 @@
 {'tag': 'exp-fulldata-Y', 'task_name': 'rte', 'do_train': False}
-total experiments: 1
+Warning: Overwirte results on learning rate = 5e-05, seed = data/original/RTE-13
+Warning: Overwirte results on learning rate = 5e-05, seed = data/original/RTE-13
+total experiments: 3
 
 Use Validation result!
 {'seed': 'data/original/RTE-13', 'learning_rate': 5e-05, 'dev_result': 0.5126353790613718, 'test_result': 0.5126353790613718}

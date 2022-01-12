@@ -1,0 +1,9 @@
+{'tag': 'exp-fulldata-Y', 'task_name': 'qnli', 'do_train': False}
+Warning: Overwirte results on learning rate = 5e-05, seed = data/original/QNLI-13
+total experiments: 2
+
+Use Validation result!
+{'seed': 'data/original/QNLI-13', 'learning_rate': 5e-05, 'dev_result': 0.5083287570931723, 'test_result': 0.5083287570931723}
+Statistics for learning rate = 5e-05: mean: 0.5083287570931723, std: 0.0
+Warning! Best Learning rate equals minmum Learning rate.
+{'best_lr': 5e-05, 'mean': 0.5083287570931723, 'std': 0.0}

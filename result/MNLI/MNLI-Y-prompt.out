@@ -1,3 +1,21 @@
 {'tag': 'exp-Y', 'task_name': 'mnli', 'training_params': ['prompt']}
 total experiments: 12
 
+{'seed': '13-13', 'learning_rate': 0.01, 'dev_result': 0.6041666666666666, 'test_result': 0.6041666666666666}
+{'seed': '42-42', 'learning_rate': 0.01, 'dev_result': 0.6458333333333334, 'test_result': 0.6458333333333334}
+{'seed': '100-100', 'learning_rate': 0.01, 'dev_result': 0.4375, 'test_result': 0.4375}
+Statistics for learning rate = 0.01: mean: 0.4833757853625404, std: 0.02566802328870589
+{'seed': '13-13', 'learning_rate': 0.003, 'dev_result': 0.625, 'test_result': 0.625}
+{'seed': '42-42', 'learning_rate': 0.003, 'dev_result': 0.5625, 'test_result': 0.5625}
+{'seed': '100-100', 'learning_rate': 0.003, 'dev_result': 0.625, 'test_result': 0.625}
+Statistics for learning rate = 0.003: mean: 0.5022924095771778, std: 0.03908317428184742
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.6458333333333334, 'test_result': 0.6458333333333334}
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.625, 'test_result': 0.625}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.5625, 'test_result': 0.5625}
+Statistics for learning rate = 0.001: mean: 0.5225674987264392, std: 0.025061607127561485
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.6666666666666666, 'test_result': 0.6666666666666666}
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.5416666666666666, 'test_result': 0.5416666666666666}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.5208333333333334, 'test_result': 0.5208333333333334}
+Statistics for learning rate = 0.0003: mean: 0.5317371370351504, std: 0.024547418141313868
+Warning! Best Learning rate equals minmum Learning rate.
+{'best_lr': 0.0003, 'mean': 0.5317371370351504, 'std': 0.024547418141313868}

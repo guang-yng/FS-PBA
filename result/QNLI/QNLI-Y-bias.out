@@ -1,12 +1,20 @@
 {'tag': 'exp-Y', 'task_name': 'qnli', 'training_params': ['bias']}
-total experiments: 4
+total experiments: 12
 
-{'seed': '13-13', 'learning_rate': 0.003, 'dev_result': 0.78125, 'test_result': 0.5396302397949845}
-Statistics for learning rate = 0.003: mean: 0.5396302397949845, std: 0.0
-{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.71875, 'test_result': 0.6542192934285191}
-Statistics for learning rate = 0.001: mean: 0.6542192934285191, std: 0.0
-{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.71875, 'test_result': 0.6699615595826469}
-Statistics for learning rate = 0.0003: mean: 0.6699615595826469, std: 0.0
-{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.6875, 'test_result': 0.6456159619256818}
-Statistics for learning rate = 0.0001: mean: 0.6456159619256818, std: 0.0
-{'best_lr': 0.0003, 'mean': 0.6699615595826469, 'std': 0.0}
+{'seed': '13-13', 'learning_rate': 0.003, 'dev_result': 0.78125, 'test_result': 0.78125}
+{'seed': '42-42', 'learning_rate': 0.003, 'dev_result': 0.84375, 'test_result': 0.84375}
+{'seed': '100-100', 'learning_rate': 0.003, 'dev_result': 0.75, 'test_result': 0.75}
+Statistics for learning rate = 0.003: mean: 0.6407956556226738, std: 0.07770297081829482
+{'seed': '13-13', 'learning_rate': 0.001, 'dev_result': 0.71875, 'test_result': 0.71875}
+{'seed': '42-42', 'learning_rate': 0.001, 'dev_result': 0.90625, 'test_result': 0.90625}
+{'seed': '100-100', 'learning_rate': 0.001, 'dev_result': 0.75, 'test_result': 0.75}
+Statistics for learning rate = 0.001: mean: 0.7019342241747513, std: 0.03383508564465209
+{'seed': '13-13', 'learning_rate': 0.0003, 'dev_result': 0.71875, 'test_result': 0.71875}
+{'seed': '42-42', 'learning_rate': 0.0003, 'dev_result': 0.8125, 'test_result': 0.8125}
+{'seed': '100-100', 'learning_rate': 0.0003, 'dev_result': 0.75, 'test_result': 0.75}
+Statistics for learning rate = 0.0003: mean: 0.6915003966074806, std: 0.01818640804933668
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.6875, 'test_result': 0.6875}
+{'seed': '42-42', 'learning_rate': 0.0001, 'dev_result': 0.78125, 'test_result': 0.78125}
+{'seed': '100-100', 'learning_rate': 0.0001, 'dev_result': 0.75, 'test_result': 0.75}
+Statistics for learning rate = 0.0001: mean: 0.6597717981573007, std: 0.018739925410006474
+{'best_lr': 0.001, 'mean': 0.7019342241747513, 'std': 0.03383508564465209}

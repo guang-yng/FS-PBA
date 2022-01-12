@@ -1,7 +1,7 @@
-{'tag': 'exp-N', 'task_name': 'mnli-mm', 'do_train': False}
+{'tag': 'exp-Y', 'task_name': 'mnli-mm', 'do_train': False}
 total experiments: 1
 
-{'seed': '13-13', 'learning_rate': 5e-05, 'dev_result': 0.3541666666666667, 'test_result': 0.33899511798209925}
-Statistics for learning rate = 5e-05: mean: 0.33899511798209925, std: 0.0
+{'seed': '13-13', 'learning_rate': 5e-05, 'dev_result': 0.5, 'test_result': 0.5}
+Statistics for learning rate = 5e-05: mean: 0.5171887713588283, std: 0.0
 Warning! Best Learning rate equals minmum Learning rate.
-{'best_lr': 5e-05, 'mean': 0.33899511798209925, 'std': 0.0}
+{'best_lr': 5e-05, 'mean': 0.5171887713588283, 'std': 0.0}
