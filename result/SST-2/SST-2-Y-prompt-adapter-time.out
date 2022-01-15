@@ -1,0 +1,7 @@
+{'tag': 'exp-Y', 'task_name': 'sst-2', 'training_params': ['prompt,adapter']}
+total experiments: 1
+
+{'seed': '13-13', 'learning_rate': 0.0001, 'dev_result': 0.9375, 'test_result': 0.9375}
+Statistics for learning rate = 0.0001: mean: 0.0833320642709732, std: 0.0
+Warning! Best Learning rate equals minmum Learning rate.
+{'best_lr': 0.0001, 'mean': 0.0833320642709732, 'std': 0.0}

@@ -510,7 +510,7 @@ def main():
             time_records.append(result[-2])
             result = result[-1]
             torch.save(result, os.path.join(training_args.output_dir, "result_"+params+".pt"))
-            final_result[training_args.task_name + '_test_' + params + '_forward_time'] = time_records[-1]
+            final_result[data_args.task_name + '_test_' + params + '_forward_time'] = time_records[-1]
 
             # Use the early stop, so do not save the model in the end (unless specify save_at_last)
             save_trained_param(model, os.path.join(training_args.output_dir, 
@@ -596,7 +596,7 @@ def main():
             model.data_args = data_args
             model.tokenizer = tokenizer
 
-        final_result[training_args.task_name+'_train_forward_time'] = np.array(time_records).mean()
+        final_result[data_args.task_name+'_train_forward_time'] = np.array(time_records).mean()
 
         # Reload the best checkpoint (for eval)
         model.load_state_dict(torch.load(os.path.join(training_args.output_dir, "pytorch_model.bin")))
