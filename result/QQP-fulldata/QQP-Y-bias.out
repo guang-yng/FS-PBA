@@ -1,0 +1,20 @@
+{'tag': 'exp-fulldata-Y', 'task_name': 'qqp/f1', 'training_params': ['bias']}
+Warning: Overwirte results on learning rate = 0.01, seed = data/original/QQP-13
+Warning: Overwirte results on learning rate = 0.001, seed = data/original/QQP-13
+Warning: Overwirte results on learning rate = 0.0001, seed = data/original/QQP-13
+Warning: Overwirte results on learning rate = 1e-05, seed = data/original/QQP-13
+total experiments: 8
+
+Use Validation result!
+{'seed': 'data/original/QQP-13', 'learning_rate': 0.01, 'dev_result': 0.5381903642773208, 'test_result': 0.5381903642773208}
+Statistics for learning rate = 0.01: mean: 0.5381903642773208, std: 0.0
+Use Validation result!
+{'seed': 'data/original/QQP-13', 'learning_rate': 0.001, 'dev_result': 0.8419752304329923, 'test_result': 0.8419752304329923}
+Statistics for learning rate = 0.001: mean: 0.8419752304329923, std: 0.0
+Use Validation result!
+{'seed': 'data/original/QQP-13', 'learning_rate': 0.0001, 'dev_result': 0.8208807678816289, 'test_result': 0.8208807678816289}
+Statistics for learning rate = 0.0001: mean: 0.8208807678816289, std: 0.0
+Use Validation result!
+{'seed': 'data/original/QQP-13', 'learning_rate': 1e-05, 'dev_result': 0.7686604053386061, 'test_result': 0.7686604053386061}
+Statistics for learning rate = 1e-05: mean: 0.7686604053386061, std: 0.0
+{'best_lr': 0.001, 'mean': 0.8419752304329923, 'std': 0.0}

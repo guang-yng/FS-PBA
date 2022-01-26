@@ -1,0 +1,16 @@
+{'tag': 'exp-fulldata-N', 'task_name': 'mnli-mm', 'training_params': ['adapter']}
+total experiments: 4
+
+Use Validation result!
+{'seed': 'data/original/MNLI-13', 'learning_rate': 0.01, 'dev_result': 0.3544574630667346, 'test_result': 0.3544574630667346}
+Statistics for learning rate = 0.01: mean: 0.3544574630667346, std: 0.0
+Use Validation result!
+{'seed': 'data/original/MNLI-13', 'learning_rate': 0.001, 'dev_result': 0.4161996943453897, 'test_result': 0.4161996943453897}
+Statistics for learning rate = 0.001: mean: 0.4161996943453897, std: 0.0
+Use Validation result!
+{'seed': 'data/original/MNLI-13', 'learning_rate': 0.0001, 'dev_result': 0.8998471726948548, 'test_result': 0.8998471726948548}
+Statistics for learning rate = 0.0001: mean: 0.8998471726948548, std: 0.0
+Use Validation result!
+{'seed': 'data/original/MNLI-13', 'learning_rate': 1e-05, 'dev_result': 0.8567498726439123, 'test_result': 0.8567498726439123}
+Statistics for learning rate = 1e-05: mean: 0.8567498726439123, std: 0.0
+{'best_lr': 0.0001, 'mean': 0.8998471726948548, 'std': 0.0}

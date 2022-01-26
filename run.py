@@ -456,13 +456,6 @@ def main():
         return compute_metrics_fn
 
     # Initialize our Trainer
-    trainer = Trainer(
-        model=model,
-        args=training_args,
-        train_dataset=train_dataset,
-        eval_dataset=eval_dataset,
-        compute_metrics=build_compute_metrics_fn(data_args.task_name)
-    )
 
     def save_trained_param(model, dir):
         param = {}
@@ -505,6 +498,13 @@ def main():
                 model.train_bias()
             if 'all' in params:
                 model.train()
+            trainer = Trainer(
+                model=model,
+                args=training_args,
+                train_dataset=train_dataset,
+                eval_dataset=eval_dataset,
+                compute_metrics=build_compute_metrics_fn(data_args.task_name)
+            )
             result = trainer.train(model_path=model_args.model_name_or_path 
                                    if os.path.isdir(model_args.model_name_or_path) else None) [-1]
             torch.save(result, os.path.join(training_args.output_dir, "result_"+params+".pt"))
@@ -513,6 +513,9 @@ def main():
             save_trained_param(model, os.path.join(training_args.output_dir, 
                                                    "in_step_model_"+params+'.bin'))
  
+            # Save Logs
+            torch.save(trainer.state.log_history, os.path.join(training_args.output_dir, "log_history_"+params+'.bin'))
+
             if trainer.is_world_master():
                 tokenizer.save_pretrained(training_args.output_dir)
                 torch.save(model_args, os.path.join(training_args.output_dir, "model_args.bin"))
@@ -606,8 +609,15 @@ def main():
         model.data_args = data_args
         model.tokenizer = tokenizer
 
-        # Save Logs
-        torch.save(trainer.state.log_history, os.path.join(training_args.output_dir, "log_history.bin"))
+
+    else:
+        trainer = Trainer(
+            model=model,
+            args=training_args,
+            train_dataset=train_dataset,
+            eval_dataset=eval_dataset,
+            compute_metrics=build_compute_metrics_fn(data_args.task_name)
+        )
 
     # Evaluation
     eval_results = {}

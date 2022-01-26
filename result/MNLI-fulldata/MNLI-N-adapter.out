@@ -1,0 +1,20 @@
+{'tag': 'exp-fulldata-N', 'task_name': 'mnli', 'training_params': ['adapter']}
+Warning: Overwirte results on learning rate = 0.01, seed = data/original/MNLI-13
+Warning: Overwirte results on learning rate = 0.001, seed = data/original/MNLI-13
+Warning: Overwirte results on learning rate = 0.0001, seed = data/original/MNLI-13
+Warning: Overwirte results on learning rate = 1e-05, seed = data/original/MNLI-13
+total experiments: 8
+
+Use Validation result!
+{'seed': 'data/original/MNLI-13', 'learning_rate': 0.01, 'dev_result': 0.3544574630667346, 'test_result': 0.3544574630667346}
+Statistics for learning rate = 0.01: mean: 0.3544574630667346, std: 0.0
+Use Validation result!
+{'seed': 'data/original/MNLI-13', 'learning_rate': 0.001, 'dev_result': 0.8831380539989812, 'test_result': 0.8831380539989812}
+Statistics for learning rate = 0.001: mean: 0.8831380539989812, std: 0.0
+Use Validation result!
+{'seed': 'data/original/MNLI-13', 'learning_rate': 0.0001, 'dev_result': 0.899745287824758, 'test_result': 0.899745287824758}
+Statistics for learning rate = 0.0001: mean: 0.899745287824758, std: 0.0
+Use Validation result!
+{'seed': 'data/original/MNLI-13', 'learning_rate': 1e-05, 'dev_result': 0.8556291390728477, 'test_result': 0.8556291390728477}
+Statistics for learning rate = 1e-05: mean: 0.8556291390728477, std: 0.0
+{'best_lr': 0.0001, 'mean': 0.899745287824758, 'std': 0.0}

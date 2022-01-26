@@ -1,0 +1,16 @@
+{'tag': 'exp-fulldata-N', 'task_name': 'cola', 'training_params': ['bias,adapter']}
+total experiments: 4
+
+Use Validation result!
+{'seed': 'data/original/CoLA-13', 'learning_rate': 0.01, 'dev_result': 0.0, 'test_result': 0.0}
+Statistics for learning rate = 0.01: mean: 0.0, std: 0.0
+Use Validation result!
+{'seed': 'data/original/CoLA-13', 'learning_rate': 0.001, 'dev_result': 0.0, 'test_result': 0.0}
+Statistics for learning rate = 0.001: mean: 0.0, std: 0.0
+Use Validation result!
+{'seed': 'data/original/CoLA-13', 'learning_rate': 0.0001, 'dev_result': 0.6591892411081671, 'test_result': 0.6591892411081671}
+Statistics for learning rate = 0.0001: mean: 0.6591892411081671, std: 0.0
+Use Validation result!
+{'seed': 'data/original/CoLA-13', 'learning_rate': 1e-05, 'dev_result': 0.6007916142827379, 'test_result': 0.6007916142827379}
+Statistics for learning rate = 1e-05: mean: 0.6007916142827379, std: 0.0
+{'best_lr': 0.0001, 'mean': 0.6591892411081671, 'std': 0.0}

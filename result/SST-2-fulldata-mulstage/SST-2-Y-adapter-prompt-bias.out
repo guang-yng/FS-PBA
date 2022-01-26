@@ -1,0 +1,16 @@
+{'tag': 'exp-fulldata-mulstage-Y', 'task_name': 'sst-2', 'training_params': ['adapter', 'prompt', 'bias']}
+total experiments: 4
+
+Use Validation result!
+{'seed': '2-13', 'learning_rate': 0.01, 'dev_result': 0.5091743119266054, 'test_result': 0.5091743119266054}
+Statistics for learning rate = 0.01: mean: 0.5091743119266054, std: 0.0
+Use Validation result!
+{'seed': '2-13', 'learning_rate': 0.001, 'dev_result': 0.9495412844036697, 'test_result': 0.9495412844036697}
+Statistics for learning rate = 0.001: mean: 0.9495412844036697, std: 0.0
+Use Validation result!
+{'seed': '2-13', 'learning_rate': 0.0001, 'dev_result': 0.9541284403669725, 'test_result': 0.9541284403669725}
+Statistics for learning rate = 0.0001: mean: 0.9541284403669725, std: 0.0
+Use Validation result!
+{'seed': '2-13', 'learning_rate': 1e-05, 'dev_result': 0.9529816513761468, 'test_result': 0.9529816513761468}
+Statistics for learning rate = 1e-05: mean: 0.9529816513761468, std: 0.0
+{'best_lr': 0.0001, 'mean': 0.9541284403669725, 'std': 0.0}

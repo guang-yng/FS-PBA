@@ -1,0 +1,8 @@
+{'tag': 'exp-fulldata-N', 'task_name': 'mrpc/f1', 'do_train': False}
+total experiments: 1
+
+Use Validation result!
+{'seed': 'data/original/MRPC-13', 'learning_rate': 5e-05, 'dev_result': 0.014234875444839857, 'test_result': 0.014234875444839857}
+Statistics for learning rate = 5e-05: mean: 0.014234875444839857, std: 0.0
+Warning! Best Learning rate equals minmum Learning rate.
+{'best_lr': 5e-05, 'mean': 0.014234875444839857, 'std': 0.0}

@@ -1,0 +1,16 @@
+{'tag': 'exp-fulldata-Y', 'task_name': 'qnli', 'training_params': ['bias']}
+total experiments: 4
+
+Use Validation result!
+{'seed': 'data/original/QNLI-13', 'learning_rate': 0.01, 'dev_result': 0.5053999633900788, 'test_result': 0.5053999633900788}
+Statistics for learning rate = 0.01: mean: 0.5053999633900788, std: 0.0
+Use Validation result!
+{'seed': 'data/original/QNLI-13', 'learning_rate': 0.001, 'dev_result': 0.9342851912868387, 'test_result': 0.9342851912868387}
+Statistics for learning rate = 0.001: mean: 0.9342851912868387, std: 0.0
+Use Validation result!
+{'seed': 'data/original/QNLI-13', 'learning_rate': 0.0001, 'dev_result': 0.9178107267069375, 'test_result': 0.9178107267069375}
+Statistics for learning rate = 0.0001: mean: 0.9178107267069375, std: 0.0
+Use Validation result!
+{'seed': 'data/original/QNLI-13', 'learning_rate': 1e-05, 'dev_result': 0.8542925132710965, 'test_result': 0.8542925132710965}
+Statistics for learning rate = 1e-05: mean: 0.8542925132710965, std: 0.0
+{'best_lr': 0.001, 'mean': 0.9342851912868387, 'std': 0.0}

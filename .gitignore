@@ -8,14 +8,15 @@
 /run.back
 /run.tmp.py
 
-/result/SST-2-*
-/result/CoLA-*
-/result/MNLI-*
-/result/MRPC-*
-/result/QNLI-*
-/result/RTE-*
-/result/QQP-*
-/result/STS-B-*
+/result/SST-2-*roberta-large*
+/result/SST-2-full-mul*
+/result/CoLA-*roberta-large*
+/result/MNLI-*roberta-large*
+/result/MRPC-*roberta-large*
+/result/QNLI-*roberta-large*
+/result/RTE-*roberta-large*
+/result/QQP-*roberta-large*
+/result/STS-B-*roberta-large*
 /A100-*
 
 /gather-mnli-mm.sh

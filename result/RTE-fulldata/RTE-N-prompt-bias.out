@@ -1,0 +1,16 @@
+{'tag': 'exp-fulldata-N', 'task_name': 'rte', 'training_params': ['prompt,bias']}
+total experiments: 4
+
+Use Validation result!
+{'seed': 'data/original/RTE-13', 'learning_rate': 0.01, 'dev_result': 0.5270758122743683, 'test_result': 0.5270758122743683}
+Statistics for learning rate = 0.01: mean: 0.5270758122743683, std: 0.0
+Use Validation result!
+{'seed': 'data/original/RTE-13', 'learning_rate': 0.001, 'dev_result': 0.8916967509025271, 'test_result': 0.8916967509025271}
+Statistics for learning rate = 0.001: mean: 0.8916967509025271, std: 0.0
+Use Validation result!
+{'seed': 'data/original/RTE-13', 'learning_rate': 0.0001, 'dev_result': 0.8411552346570397, 'test_result': 0.8411552346570397}
+Statistics for learning rate = 0.0001: mean: 0.8411552346570397, std: 0.0
+Use Validation result!
+{'seed': 'data/original/RTE-13', 'learning_rate': 1e-05, 'dev_result': 0.7617328519855595, 'test_result': 0.7617328519855595}
+Statistics for learning rate = 1e-05: mean: 0.7617328519855595, std: 0.0
+{'best_lr': 0.001, 'mean': 0.8916967509025271, 'std': 0.0}

@@ -1,0 +1,16 @@
+{'tag': 'exp-fulldata-N', 'task_name': 'sts-b/pearson', 'training_params': ['prompt']}
+total experiments: 4
+
+Use Validation result!
+{'seed': 'B-13', 'learning_rate': 0.01, 'dev_result': 0.6149367979195817, 'test_result': 0.6149367979195817}
+Statistics for learning rate = 0.01: mean: 0.6149367979195817, std: 0.0
+Use Validation result!
+{'seed': 'B-13', 'learning_rate': 0.001, 'dev_result': 0.7910898477815959, 'test_result': 0.7910898477815959}
+Statistics for learning rate = 0.001: mean: 0.7910898477815959, std: 0.0
+Use Validation result!
+{'seed': 'B-13', 'learning_rate': 0.0001, 'dev_result': 0.22383683136216848, 'test_result': 0.22383683136216848}
+Statistics for learning rate = 0.0001: mean: 0.22383683136216848, std: 0.0
+Use Validation result!
+{'seed': 'B-13', 'learning_rate': 1e-05, 'dev_result': -0.0741730177218377, 'test_result': -0.0741730177218377}
+Statistics for learning rate = 1e-05: mean: -0.0741730177218377, std: 0.0
+{'best_lr': 0.001, 'mean': 0.7910898477815959, 'std': 0.0}

@@ -1,0 +1,16 @@
+{'tag': 'exp-fulldata-N', 'task_name': 'qqp/f1', 'training_params': ['prompt,adapter']}
+total experiments: 4
+
+Use Validation result!
+{'seed': 'data/original/QQP-13', 'learning_rate': 0.01, 'dev_result': 0.0, 'test_result': 0.0}
+Statistics for learning rate = 0.01: mean: 0.0, std: 0.0
+Use Validation result!
+{'seed': 'data/original/QQP-13', 'learning_rate': 0.001, 'dev_result': 0.7799054138968813, 'test_result': 0.7799054138968813}
+Statistics for learning rate = 0.001: mean: 0.7799054138968813, std: 0.0
+Use Validation result!
+{'seed': 'data/original/QQP-13', 'learning_rate': 0.0001, 'dev_result': 0.8593663508189248, 'test_result': 0.8593663508189248}
+Statistics for learning rate = 0.0001: mean: 0.8593663508189248, std: 0.0
+Use Validation result!
+{'seed': 'data/original/QQP-13', 'learning_rate': 1e-05, 'dev_result': 0.8165393083797435, 'test_result': 0.8165393083797435}
+Statistics for learning rate = 1e-05: mean: 0.8165393083797435, std: 0.0
+{'best_lr': 0.0001, 'mean': 0.8593663508189248, 'std': 0.0}
