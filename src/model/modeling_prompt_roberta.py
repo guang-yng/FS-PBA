@@ -266,8 +266,8 @@ class PromptRobertaModel(BertModelAdaptersMixin, RobertaPreTrainedModel):
         # override the default active adapters with those passed in the method call
         adapter_names = adapter_names or self.active_adapters
         # some warnings if we don't use available adapters
-        if not adapter_names and self.has_adapters():
-            logger.warning("There are adapters available but none are passed to model.forward")
+        # if not adapter_names and self.has_adapters():
+        #     logger.warning("There are adapters available but none are passed to model.forward")
 
         if input_ids is not None and inputs_embeds is not None:
             raise ValueError("You cannot specify both input_ids and inputs_embeds at the same time")

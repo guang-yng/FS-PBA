@@ -492,6 +492,7 @@ def main():
     # Training
     if training_args.do_train:
         train_params_list = training_args.training_params
+        logger.info(str(train_params_list))
         if isinstance(train_params_list, str):
             train_params_list = [train_params_list]
         for params in train_params_list:
@@ -604,6 +605,9 @@ def main():
         model.model_args = model_args
         model.data_args = data_args
         model.tokenizer = tokenizer
+
+        # Save Logs
+        torch.save(trainer.state.log_history, os.path.join(training_args.output_dir, "log_history.bin"))
 
     # Evaluation
     eval_results = {}

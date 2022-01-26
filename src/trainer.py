@@ -410,6 +410,7 @@ class Trainer(transformers.Trainer):
                         )
                         logging_loss_scalar = tr_loss_scalar
 
+                        self.state.global_step = self.global_step
                         self.log(logs)
 
                     # ----------------------------------------------------------------------

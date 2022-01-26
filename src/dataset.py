@@ -243,9 +243,17 @@ def tokenize_multipart_input(
         else:
             logger.info("Truncate Tail!"+str(len(input_ids)))
             # Default is to truncate the tail
-            input_ids = input_ids[:max_length]
-            attention_mask = attention_mask[:max_length]
-            token_type_ids = token_type_ids[:max_length]
+            if tokenizer.mask_token_id in input_ids[max_length:]:
+                mask_pos = input_ids.index(tokenizer.mask_token_id)
+                len_to_truncate = len(input_ids)-max_length
+                l, r = mask_pos-1-len_to_truncate, mask_pos-1
+                input_ids = input_ids[:l]+input_ids[r:]
+                attention_mask = attention_mask[:l]+attention_mask[r:]
+                token_type_ids = token_type_ids[:l]+token_type_ids[r:]
+            else:
+                input_ids = input_ids[:max_length]
+                attention_mask = attention_mask[:max_length]
+                token_type_ids = token_type_ids[:max_length]
 
     # Find mask token
     if prompt:

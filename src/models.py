@@ -34,26 +34,59 @@ class AutoRobertaForMaskedLM(nn.Module):
         self.ub = None
 
         self.num_labels = config.num_labels
+        self.evaluate = True
 
     def freeze_model(self):
         for p in self.parameters():
             p.requires_grad = False
 
     def train_prompt(self):
-        for n, p in self.named_parameters():
-            if 'prompt' in n:
-                p.requires_grad = True
+        self.training_params = "prompt"
+        if self.evaluate is True:
+            self.evaluate = False
+            for n, p in self.named_parameters():
+                if 'prompt' in n:
+                    p.requires_grad = True
 
     def add_adapter(self, *args, **kwargs):
         return self.roberta.add_adapter(*args, **kwargs)
 
     def train_adapter(self, *args, **kwargs):
-        return self.roberta.train_adapter(*args, **kwargs)
+        self.training_params = "adapter"
+        if self.evaluate is True:
+            self.evaluate = False
+            self.adapter_args = args
+            self.adapter_kwargs = kwargs
+            return self.roberta.train_adapter(*args, **kwargs)
 
     def train_bias(self):
-        for n, p in self.named_parameters():
-            if 'bias' in n:
-                p.requires_grad = True
+        self.training_params = "bias"
+        if self.evaluate is True:
+            self.evaluate = False
+            for n, p in self.named_parameters():
+                if 'bias' in n:
+                    p.requires_grad = True
+
+    def train(self, mode=True):
+        if mode == False:
+            self.evaluate = True
+            super().train(mode)
+            return
+        if not hasattr(self, 'training_params'):
+            super().train(mode)
+            return
+        if self.training_params == "adapter":
+            self.train_adapter(*self.adapter_args, **self.adapter_kwargs)
+        elif self.training_params == "bias":
+            self.train_bias()
+        elif self.training_params == "prompt":
+            self.train_prompt()
+        else:
+            super().train(mode)
+
+    def eval(self):
+        self.evaluate = True
+        super().eval()
 
     def forward(self, input_ids=None, attention_mask=None, mask_pos=None, labels=None):
         if mask_pos is not None:
