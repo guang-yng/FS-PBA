@@ -3,18 +3,22 @@ Warning: Overwirte results on learning rate = 0.01, seed = 2-13
 Warning: Overwirte results on learning rate = 0.001, seed = 2-13
 Warning: Overwirte results on learning rate = 0.0001, seed = 2-13
 Warning: Overwirte results on learning rate = 1e-05, seed = 2-13
-total experiments: 8
+Warning: Overwirte results on learning rate = 0.01, seed = 2-13
+Warning: Overwirte results on learning rate = 0.001, seed = 2-13
+Warning: Overwirte results on learning rate = 0.0001, seed = 2-13
+Warning: Overwirte results on learning rate = 1e-05, seed = 2-13
+total experiments: 12
 
 Use Validation result!
 {'seed': '2-13', 'learning_rate': 0.01, 'dev_result': 0.5091743119266054, 'test_result': 0.5091743119266054}
 Statistics for learning rate = 0.01: mean: 0.5091743119266054, std: 0.0
 Use Validation result!
-{'seed': '2-13', 'learning_rate': 0.001, 'dev_result': 0.9529816513761468, 'test_result': 0.9529816513761468}
-Statistics for learning rate = 0.001: mean: 0.9529816513761468, std: 0.0
+{'seed': '2-13', 'learning_rate': 0.001, 'dev_result': 0.9518348623853211, 'test_result': 0.9518348623853211}
+Statistics for learning rate = 0.001: mean: 0.9518348623853211, std: 0.0
 Use Validation result!
-{'seed': '2-13', 'learning_rate': 0.0001, 'dev_result': 0.9564220183486238, 'test_result': 0.9564220183486238}
-Statistics for learning rate = 0.0001: mean: 0.9564220183486238, std: 0.0
+{'seed': '2-13', 'learning_rate': 0.0001, 'dev_result': 0.9655963302752294, 'test_result': 0.9655963302752294}
+Statistics for learning rate = 0.0001: mean: 0.9655963302752294, std: 0.0
 Use Validation result!
-{'seed': '2-13', 'learning_rate': 1e-05, 'dev_result': 0.9541284403669725, 'test_result': 0.9541284403669725}
-Statistics for learning rate = 1e-05: mean: 0.9541284403669725, std: 0.0
-{'best_lr': 0.0001, 'mean': 0.9564220183486238, 'std': 0.0}
+{'seed': '2-13', 'learning_rate': 1e-05, 'dev_result': 0.9552752293577982, 'test_result': 0.9552752293577982}
+Statistics for learning rate = 1e-05: mean: 0.9552752293577982, std: 0.0
+{'best_lr': 0.0001, 'mean': 0.9655963302752294, 'std': 0.0}

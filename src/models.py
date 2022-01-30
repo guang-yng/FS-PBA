@@ -37,16 +37,23 @@ class AutoRobertaForMaskedLM(nn.Module):
         self.evaluate = True
 
     def freeze_model(self):
+        self.evaluate = True
         for p in self.parameters():
             p.requires_grad = False
 
     def train_prompt(self):
+        if not hasattr(self, 'training_params') or self.training_params != "prompt":
+            self.evaluate = True
+            self.params = []
+            for n, p in self.named_parameters():
+                if 'prompt' in n:
+                    self.params.append(p)
+
         self.training_params = "prompt"
         if self.evaluate is True:
             self.evaluate = False
-            for n, p in self.named_parameters():
-                if 'prompt' in n:
-                    p.requires_grad = True
+            for p in self.params:
+                p.requires_grad = True
 
     def add_adapter(self, *args, **kwargs):
         return self.roberta.add_adapter(*args, **kwargs)
@@ -60,12 +67,18 @@ class AutoRobertaForMaskedLM(nn.Module):
             return self.roberta.train_adapter(*args, **kwargs)
 
     def train_bias(self):
+        if not hasattr(self, 'training_params') or self.training_params != "bias":
+            self.evaluate = True
+            self.params = []
+            for n, p in self.named_parameters():
+                if 'bias' in n:
+                    self.params.append(p)
+
         self.training_params = "bias"
         if self.evaluate is True:
             self.evaluate = False
-            for n, p in self.named_parameters():
-                if 'bias' in n:
-                    p.requires_grad = True
+            for p in self.params:
+                p.requires_grad = True
 
     def train(self, mode=True):
         if mode == False:

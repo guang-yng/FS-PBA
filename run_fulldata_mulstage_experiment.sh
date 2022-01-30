@@ -115,7 +115,7 @@ esac
 # a maximum batch size of 2 when using large-size models. So we use gradient
 # accumulation steps to achieve the same effect of larger batch sizes.
 PER_BS=$(expr $BS / $GPUN)
-REAL_BS=$PER_BS
+REAL_BS=32
 GS=$(expr ${PER_BS} / ${REAL_BS})
 
 # Use a random number to distinguish different trails (avoid accidental overwriting)
