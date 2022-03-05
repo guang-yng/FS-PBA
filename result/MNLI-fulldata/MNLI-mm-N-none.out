@@ -4,7 +4,5 @@ Warning: Overwirte results on learning rate = 5e-05, seed = data/original/MNLI-1
 total experiments: 3
 
 Use Validation result!
-{'seed': 'data/original/MNLI-13', 'learning_rate': 5e-05, 'dev_result': 0.34192562404482935, 'test_result': 0.34192562404482935}
-Statistics for learning rate = 5e-05: mean: 0.34192562404482935, std: 0.0
-Warning! Best Learning rate equals minmum Learning rate.
-{'best_lr': 5e-05, 'mean': 0.34192562404482935, 'std': 0.0}
+[0.34192562404482935]
+{'mean': 0.34192562404482935, 'std': 0}

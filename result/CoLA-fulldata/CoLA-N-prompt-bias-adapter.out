@@ -2,15 +2,9 @@
 total experiments: 4
 
 Use Validation result!
-{'seed': 'data/original/CoLA-13', 'learning_rate': 0.01, 'dev_result': 0.0, 'test_result': 0.0}
-Statistics for learning rate = 0.01: mean: 0.0, std: 0.0
 Use Validation result!
-{'seed': 'data/original/CoLA-13', 'learning_rate': 0.001, 'dev_result': 0.0, 'test_result': 0.0}
-Statistics for learning rate = 0.001: mean: 0.0, std: 0.0
 Use Validation result!
-{'seed': 'data/original/CoLA-13', 'learning_rate': 0.0001, 'dev_result': 0.682185118591261, 'test_result': 0.682185118591261}
-Statistics for learning rate = 0.0001: mean: 0.682185118591261, std: 0.0
 Use Validation result!
-{'seed': 'data/original/CoLA-13', 'learning_rate': 1e-05, 'dev_result': 0.5881989399089292, 'test_result': 0.5881989399089292}
-Statistics for learning rate = 1e-05: mean: 0.5881989399089292, std: 0.0
-{'best_lr': 0.0001, 'mean': 0.682185118591261, 'std': 0.0}
+[0.0, 0.0, 0.682185118591261, 0.5881989399089292]
+[0.0, 0.682185118591261, 0.5881989399089292]
+{'mean': 0.42346135283339675, 'std': 0.30188075841679024}

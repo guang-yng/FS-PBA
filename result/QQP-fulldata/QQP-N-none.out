@@ -3,7 +3,5 @@ Warning: Overwirte results on learning rate = 5e-05, seed = data/original/QQP-13
 total experiments: 2
 
 Use Validation result!
-{'seed': 'data/original/QQP-13', 'learning_rate': 5e-05, 'dev_result': 0.06350373911977442, 'test_result': 0.06350373911977442}
-Statistics for learning rate = 5e-05: mean: 0.06350373911977442, std: 0.0
-Warning! Best Learning rate equals minmum Learning rate.
-{'best_lr': 5e-05, 'mean': 0.06350373911977442, 'std': 0.0}
+[0.06350373911977442]
+{'mean': 0.06350373911977442, 'std': 0}

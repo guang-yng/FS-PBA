@@ -96,7 +96,7 @@ case $TASK in
                 TEMPLATE=*cls*$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
         esac
         MAPPING="{'not_entailment':'No','entailment':'Yes'}"
-        TASK_EXTRA="--max_seq_len 256"
+        TASK_EXTRA="--max_seq_len 512"
         ;;
     RTE)
         case $HARD in

@@ -534,55 +534,75 @@ def main():
             model.data_args = data_args
             model.tokenizer = tokenizer
 
-            #Evaluation
-            eval_results = {}
-            if training_args.do_eval:
-                logger.info("*** Stage Validate ***")
+            # #Train Eval
+            # train_results = {}
+            # logger.info("*** Stage Train Validate ***")
 
-                for eval_dataset in eval_datasets:
-                    trainer.compute_metrics = build_compute_metrics_fn(eval_dataset.args.task_name)
-                    output = trainer.evaluate(eval_dataset=eval_dataset)
-                    eval_result = output.metrics 
+            # trainer.compute_metrics = build_compute_metrics_fn(train_dataset.args.task_name)
+            # output = trainer.evaluate(eval_dataset=train_dataset)
+            # train_result = output.metrics 
 
-                    output_eval_file = os.path.join(
-                        training_args.output_dir, f"eval_results_{eval_dataset.args.task_name}.txt"
-                    )
-                    if trainer.is_world_master():
-                        with open(output_eval_file, "w") as writer:
-                            logger.info("***** Eval results {} *****".format(eval_dataset.args.task_name))
-                            for key, value in eval_result.items():
-                                logger.info("  %s = %s", key, value)
-                                writer.write("%s = %s\n" % (key, value))
-                                final_result[eval_dataset.args.task_name + '_dev_' + params + '_' + key] = value
-                    eval_results.update(eval_result)
+            # output_train_file = os.path.join(
+            #     training_args.output_dir, f"train_results_{train_dataset.args.task_name}.txt"
+            # )
+            # if trainer.is_world_master():
+            #     with open(output_train_file, "w") as writer:
+            #         logger.info("***** Train results {} *****".format(train_dataset.args.task_name))
+            #         for key, value in train_result.items():
+            #             logger.info("  %s = %s", key, value)
+            #             writer.write("%s = %s\n" % (key, value))
+            #             final_result[train_dataset.args.task_name + '_train_' + params + '_' + key] = value
+            # train_results.update(train_result)
 
-            test_results = {}
-            if training_args.do_predict:
-                logging.info("*** Test ***")
+            # #Evaluation
+            # eval_results = {}
+            # if training_args.do_eval:
+            #     logger.info("*** Stage Validate ***")
 
-                for test_dataset in test_datasets:
-                    trainer.compute_metrics = build_compute_metrics_fn(test_dataset.args.task_name)
-                    output = trainer.evaluate(eval_dataset=test_dataset)
-                    test_result = output.metrics
+            #     for eval_dataset in eval_datasets:
+            #         trainer.compute_metrics = build_compute_metrics_fn(eval_dataset.args.task_name)
+            #         output = trainer.evaluate(eval_dataset=eval_dataset)
+            #         eval_result = output.metrics 
 
-                    output_test_file = os.path.join(
-                        training_args.output_dir, f"test_results_{test_dataset.args.task_name}.txt"
-                    )
-                    if trainer.is_world_master():
-                        with open(output_test_file, "w") as writer:
-                            logger.info("***** Test results {} *****".format(test_dataset.args.task_name))
-                            for key, value in test_result.items():
-                                logger.info("  %s = %s", key, value)
-                                writer.write("%s = %s\n" % (key, value))
-                                final_result[test_dataset.args.task_name + '_test_' + params + '_' + key] = value
+            #         output_eval_file = os.path.join(
+            #             training_args.output_dir, f"eval_results_{eval_dataset.args.task_name}.txt"
+            #         )
+            #         if trainer.is_world_master():
+            #             with open(output_eval_file, "w") as writer:
+            #                 logger.info("***** Eval results {} *****".format(eval_dataset.args.task_name))
+            #                 for key, value in eval_result.items():
+            #                     logger.info("  %s = %s", key, value)
+            #                     writer.write("%s = %s\n" % (key, value))
+            #                     final_result[eval_dataset.args.task_name + '_dev_' + params + '_' + key] = value
+            #         eval_results.update(eval_result)
 
-                        if training_args.save_logit:
-                            predictions = output.predictions
-                            num_logits = predictions.shape[-1]
-                            logits = predictions.reshape([test_dataset.num_sample, -1, num_logits]).mean(axis=0)
-                            np.save(os.path.join(training_args.save_logit_dir, "{}-{}-{}.npy".format(test_dataset.task_name, training_args.model_id, training_args.array_id)), logits)
+            # test_results = {}
+            # if training_args.do_predict:
+            #     logging.info("*** Test ***")
 
-                    test_results.update(test_result)
+            #     for test_dataset in test_datasets:
+            #         trainer.compute_metrics = build_compute_metrics_fn(test_dataset.args.task_name)
+            #         output = trainer.evaluate(eval_dataset=test_dataset)
+            #         test_result = output.metrics
+
+            #         output_test_file = os.path.join(
+            #             training_args.output_dir, f"test_results_{test_dataset.args.task_name}.txt"
+            #         )
+            #         if trainer.is_world_master():
+            #             with open(output_test_file, "w") as writer:
+            #                 logger.info("***** Test results {} *****".format(test_dataset.args.task_name))
+            #                 for key, value in test_result.items():
+            #                     logger.info("  %s = %s", key, value)
+            #                     writer.write("%s = %s\n" % (key, value))
+            #                     final_result[test_dataset.args.task_name + '_test_' + params + '_' + key] = value
+
+            #             if training_args.save_logit:
+            #                 predictions = output.predictions
+            #                 num_logits = predictions.shape[-1]
+            #                 logits = predictions.reshape([test_dataset.num_sample, -1, num_logits]).mean(axis=0)
+            #                 np.save(os.path.join(training_args.save_logit_dir, "{}-{}-{}.npy".format(test_dataset.task_name, training_args.model_id, training_args.array_id)), logits)
+
+            #        test_results.update(test_result)
 
             load_trained_param(model, os.path.join(training_args.output_dir, "in_step_model_"+params+'.bin'))
             model = model.to(training_args.device)
@@ -618,6 +638,27 @@ def main():
             eval_dataset=eval_dataset,
             compute_metrics=build_compute_metrics_fn(data_args.task_name)
         )
+
+ 
+    #Train Eval
+    train_results = {}
+    logger.info("*** Train Validate ***")
+
+    trainer.compute_metrics = build_compute_metrics_fn(train_dataset.args.task_name)
+    output = trainer.evaluate(eval_dataset=train_dataset)
+    train_result = output.metrics 
+
+    output_train_file = os.path.join(
+        training_args.output_dir, f"train_results_{train_dataset.args.task_name}.txt"
+    )
+    if trainer.is_world_master():
+        with open(output_train_file, "w") as writer:
+            logger.info("***** Train results {} *****".format(train_dataset.args.task_name))
+            for key, value in train_result.items():
+                logger.info("  %s = %s", key, value)
+                writer.write("%s = %s\n" % (key, value))
+                final_result[train_dataset.args.task_name + '_train_' + key] = value
+    train_results.update(train_result)
 
     # Evaluation
     eval_results = {}

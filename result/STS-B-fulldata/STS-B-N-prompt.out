@@ -1,9 +1,19 @@
 {'tag': 'exp-fulldata-N', 'task_name': 'sts-b/pearson', 'training_params': ['prompt']}
-total experiments: 4
+Warning: Overwirte results on learning rate = 0.01, seed = B-21
+Warning: Overwirte results on learning rate = 0.01, seed = B-21
+Warning: Overwirte results on learning rate = 0.01, seed = B-21
+Warning: Overwirte results on learning rate = 0.01, seed = B-42
+Warning: Overwirte results on learning rate = 0.01, seed = B-42
+Warning: Overwirte results on learning rate = 0.01, seed = B-42
+total experiments: 12
 
 Use Validation result!
 {'seed': 'B-13', 'learning_rate': 0.01, 'dev_result': 0.6149367979195817, 'test_result': 0.6149367979195817}
-Statistics for learning rate = 0.01: mean: 0.6149367979195817, std: 0.0
+Use Validation result!
+{'seed': 'B-21', 'learning_rate': 0.01, 'dev_result': 0.8425056535842231, 'test_result': 0.8425056535842231}
+Use Validation result!
+{'seed': 'B-42', 'learning_rate': 0.01, 'dev_result': 0.8427869834389713, 'test_result': 0.8427869834389713}
+Statistics for learning rate = 0.01: mean: 0.7667431449809254, std: 0.10734335887764908
 Use Validation result!
 {'seed': 'B-13', 'learning_rate': 0.001, 'dev_result': 0.7910898477815959, 'test_result': 0.7910898477815959}
 Statistics for learning rate = 0.001: mean: 0.7910898477815959, std: 0.0

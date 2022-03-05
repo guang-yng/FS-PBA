@@ -2,15 +2,9 @@
 total experiments: 4
 
 Use Validation result!
-{'seed': 'data/original/RTE-13', 'learning_rate': 0.01, 'dev_result': 0.5270758122743683, 'test_result': 0.5270758122743683}
-Statistics for learning rate = 0.01: mean: 0.5270758122743683, std: 0.0
 Use Validation result!
-{'seed': 'data/original/RTE-13', 'learning_rate': 0.001, 'dev_result': 0.8592057761732852, 'test_result': 0.8592057761732852}
-Statistics for learning rate = 0.001: mean: 0.8592057761732852, std: 0.0
 Use Validation result!
-{'seed': 'data/original/RTE-13', 'learning_rate': 0.0001, 'dev_result': 0.8628158844765343, 'test_result': 0.8628158844765343}
-Statistics for learning rate = 0.0001: mean: 0.8628158844765343, std: 0.0
 Use Validation result!
-{'seed': 'data/original/RTE-13', 'learning_rate': 1e-05, 'dev_result': 0.855595667870036, 'test_result': 0.855595667870036}
-Statistics for learning rate = 1e-05: mean: 0.855595667870036, std: 0.0
-{'best_lr': 0.0001, 'mean': 0.8628158844765343, 'std': 0.0}
+[0.5270758122743683, 0.8592057761732852, 0.8628158844765343, 0.855595667870036]
+[0.8592057761732852, 0.8628158844765343, 0.855595667870036]
+{'mean': 0.8592057761732853, 'std': 0.0029476410863817242}

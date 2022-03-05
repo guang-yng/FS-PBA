@@ -148,6 +148,24 @@ def main():
     max_lr = 0
     best_lr = None
     std = None
+
+    # s = []
+    # for lr in lrs:
+    #     for seed in lrs[lr]:
+    #         item = lrs[lr][seed]
+    #         if args.test_key in item:
+    #             s.append(item[args.test_key])
+    #         else:
+    #             print('Use Validation result!')
+    #             s.append(item[args.key])
+    # print(s)
+    # if len(s) == 1:
+    #     print({'mean': s[0], 'std': 0})
+    # else:
+    #     s.remove(min(s))
+    #     print(s)
+    #     print({'mean': np.array(s).mean(), 'std': np.array(s).std()})
+
     for lr in lrs:
         s = []
         for seed in lrs[lr]:

@@ -1,0 +1,17 @@
+{'tag': 'exp-fulldata-16-Y', 'task_name': 'sst-2', 'training_params': ['prompt']}
+total experiments: 4
+
+Use Validation result!
+{'seed': '2-13', 'learning_rate': 0.01, 'train_result': 0.9738439306358382, 'dev_result': 0.9598623853211009}
+Statistics for learning rate = 0.01: mean: 0.9598623853211009, std: 0.0, gap_mean: 0.013981545314737276, gap_std: 0.0
+Use Validation result!
+{'seed': '2-13', 'learning_rate': 0.001, 'train_result': 0.9723988439306358, 'dev_result': 0.9552752293577982}
+Statistics for learning rate = 0.001: mean: 0.9552752293577982, std: 0.0, gap_mean: 0.01712361457283762, gap_std: 0.0
+Use Validation result!
+{'seed': '2-13', 'learning_rate': 0.0001, 'train_result': 0.9469653179190751, 'dev_result': 0.9380733944954128}
+Statistics for learning rate = 0.0001: mean: 0.9380733944954128, std: 0.0, gap_mean: 0.008891923423662296, gap_std: 0.0
+Use Validation result!
+{'seed': '2-13', 'learning_rate': 1e-05, 'train_result': 0.8426300578034682, 'dev_result': 0.8314220183486238}
+Statistics for learning rate = 1e-05: mean: 0.8314220183486238, std: 0.0, gap_mean: 0.011208039454844387, gap_std: 0.0
+Warning! Best Learning rate equals maximum Learning rate.
+{'best_lr': 0.01, 'mean': 0.9598623853211009, 'std': 0.0, 'gap_mean': 0.013981545314737276, 'gap_std': 0.0}

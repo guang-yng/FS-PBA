@@ -184,7 +184,9 @@ class Trainer(transformers.Trainer):
         """
         if self.optimizer is None:
             params = {}
+            total = 0
             for n, p in self.model.named_parameters():
+                total += p.numel()
                 if self.args.fix_layers > 0:
                     if 'encoder.layer' in n:
                         try:
@@ -225,7 +227,11 @@ class Trainer(transformers.Trainer):
                     "weight_decay": 0.0,
                 },
             ]
-            print(optimizer_grouped_parameters_names, self.args.learning_rate)
+            s = 0
+            for d in optimizer_grouped_parameters:
+                for param in d["params"]:
+                    s += param.numel()
+            print(optimizer_grouped_parameters_names, s, total, self.args.learning_rate)
             self.optimizer = AdamW(
                 optimizer_grouped_parameters,
                 lr=self.args.learning_rate,

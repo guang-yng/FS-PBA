@@ -1,20 +1,44 @@
-{'tag': 'exp-fulldata-Y', 'task_name': 'qqp/f1', 'training_params': ['prompt']}
+{'tag': 'exp-fulldata-16-Y', 'task_name': 'qqp/f1', 'training_params': ['prompt']}
 Warning: Overwirte results on learning rate = 0.01, seed = data/original/QQP-13
 Warning: Overwirte results on learning rate = 0.001, seed = data/original/QQP-13
 Warning: Overwirte results on learning rate = 0.0001, seed = data/original/QQP-13
 Warning: Overwirte results on learning rate = 1e-05, seed = data/original/QQP-13
-total experiments: 8
+Warning: Overwirte results on learning rate = 0.01, seed = data/original/QQP-21
+Warning: Overwirte results on learning rate = 0.001, seed = data/original/QQP-21
+Warning: Overwirte results on learning rate = 0.0001, seed = data/original/QQP-21
+Warning: Overwirte results on learning rate = 1e-05, seed = data/original/QQP-21
+Warning: Overwirte results on learning rate = 0.01, seed = data/original/QQP-42
+Warning: Overwirte results on learning rate = 0.001, seed = data/original/QQP-42
+Warning: Overwirte results on learning rate = 0.0001, seed = data/original/QQP-42
+Warning: Overwirte results on learning rate = 1e-05, seed = data/original/QQP-42
+total experiments: 24
 
 Use Validation result!
-{'seed': 'data/original/QQP-13', 'learning_rate': 0.01, 'dev_result': 0.5290355426862252, 'test_result': 0.5290355426862252}
-Statistics for learning rate = 0.01: mean: 0.5290355426862252, std: 0.0
+{'seed': 'data/original/QQP-13', 'learning_rate': 0.01, 'dev_result': 0.6409487728545545, 'test_result': 0.6409487728545545}
 Use Validation result!
-{'seed': 'data/original/QQP-13', 'learning_rate': 0.001, 'dev_result': 0.5570838371624346, 'test_result': 0.5570838371624346}
-Statistics for learning rate = 0.001: mean: 0.5570838371624346, std: 0.0
+{'seed': 'data/original/QQP-21', 'learning_rate': 0.01, 'dev_result': 0.6771463813430482, 'test_result': 0.6771463813430482}
 Use Validation result!
-{'seed': 'data/original/QQP-13', 'learning_rate': 0.0001, 'dev_result': 0.4825107610012954, 'test_result': 0.4825107610012954}
-Statistics for learning rate = 0.0001: mean: 0.4825107610012954, std: 0.0
+{'seed': 'data/original/QQP-42', 'learning_rate': 0.01, 'dev_result': 0.43544363012630594, 'test_result': 0.43544363012630594}
+Statistics for learning rate = 0.01: mean: 0.5845129281079696, std: 0.10643874111629055
 Use Validation result!
-{'seed': 'data/original/QQP-13', 'learning_rate': 1e-05, 'dev_result': 0.4817731726169338, 'test_result': 0.4817731726169338}
-Statistics for learning rate = 1e-05: mean: 0.4817731726169338, std: 0.0
-{'best_lr': 0.001, 'mean': 0.5570838371624346, 'std': 0.0}
+{'seed': 'data/original/QQP-13', 'learning_rate': 0.001, 'dev_result': 0.7792960141049052, 'test_result': 0.7792960141049052}
+Use Validation result!
+{'seed': 'data/original/QQP-21', 'learning_rate': 0.001, 'dev_result': 0.7622958771220695, 'test_result': 0.7622958771220695}
+Use Validation result!
+{'seed': 'data/original/QQP-42', 'learning_rate': 0.001, 'dev_result': 0.7671337823602643, 'test_result': 0.7671337823602643}
+Statistics for learning rate = 0.001: mean: 0.7695752245290798, std: 0.007151766413809827
+Use Validation result!
+{'seed': 'data/original/QQP-13', 'learning_rate': 0.0001, 'dev_result': 0.6605523147992043, 'test_result': 0.6605523147992043}
+Use Validation result!
+{'seed': 'data/original/QQP-21', 'learning_rate': 0.0001, 'dev_result': 0.6622599728988333, 'test_result': 0.6622599728988333}
+Use Validation result!
+{'seed': 'data/original/QQP-42', 'learning_rate': 0.0001, 'dev_result': 0.6497383082897181, 'test_result': 0.6497383082897181}
+Statistics for learning rate = 0.0001: mean: 0.6575168653292519, std: 0.0055442755017686245
+Use Validation result!
+{'seed': 'data/original/QQP-13', 'learning_rate': 1e-05, 'dev_result': 0.4817872144782764, 'test_result': 0.4817872144782764}
+Use Validation result!
+{'seed': 'data/original/QQP-21', 'learning_rate': 1e-05, 'dev_result': 0.48027336380026, 'test_result': 0.48027336380026}
+Use Validation result!
+{'seed': 'data/original/QQP-42', 'learning_rate': 1e-05, 'dev_result': 0.4823576164480977, 'test_result': 0.4823576164480977}
+Statistics for learning rate = 1e-05: mean: 0.4814727315755447, std: 0.0008794702561154134
+{'best_lr': 0.001, 'mean': 0.7695752245290798, 'std': 0.007151766413809827}

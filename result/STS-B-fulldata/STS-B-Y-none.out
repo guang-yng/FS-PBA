@@ -1,8 +1,4 @@
-{'tag': 'exp-fulldata-Y', 'task_name': 'sts-b/pearson', 'do_train': False}
-total experiments: 1
+{'tag': 'exp-fulldata-16-Y', 'task_name': 'sts-b/pearson', 'do_train': False}
+total experiments: 0
 
-Use Validation result!
-{'seed': 'B-13', 'learning_rate': 5e-05, 'dev_result': -0.03283896150510093, 'test_result': -0.03283896150510093}
-Statistics for learning rate = 5e-05: mean: -0.03283896150510093, std: 0.0
-Warning! Best Learning rate equals minmum Learning rate.
-{'best_lr': 5e-05, 'mean': -0.03283896150510093, 'std': 0.0}
+{'best_lr': None, 'mean': None, 'std': None}

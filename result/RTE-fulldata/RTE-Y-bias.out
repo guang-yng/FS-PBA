@@ -1,16 +1,32 @@
 {'tag': 'exp-fulldata-Y', 'task_name': 'rte', 'training_params': ['bias']}
-total experiments: 4
+total experiments: 12
 
 Use Validation result!
 {'seed': 'data/original/RTE-13', 'learning_rate': 0.01, 'dev_result': 0.5306859205776173, 'test_result': 0.5306859205776173}
-Statistics for learning rate = 0.01: mean: 0.5306859205776173, std: 0.0
+Use Validation result!
+{'seed': 'data/original/RTE-21', 'learning_rate': 0.01, 'dev_result': 0.5270758122743683, 'test_result': 0.5270758122743683}
+Use Validation result!
+{'seed': 'data/original/RTE-42', 'learning_rate': 0.01, 'dev_result': 0.5270758122743683, 'test_result': 0.5270758122743683}
+Statistics for learning rate = 0.01: mean: 0.5282791817087845, std: 0.0017018213746968372
 Use Validation result!
 {'seed': 'data/original/RTE-13', 'learning_rate': 0.001, 'dev_result': 0.8844765342960289, 'test_result': 0.8844765342960289}
-Statistics for learning rate = 0.001: mean: 0.8844765342960289, std: 0.0
+Use Validation result!
+{'seed': 'data/original/RTE-21', 'learning_rate': 0.001, 'dev_result': 0.8339350180505415, 'test_result': 0.8339350180505415}
+Use Validation result!
+{'seed': 'data/original/RTE-42', 'learning_rate': 0.001, 'dev_result': 0.8483754512635379, 'test_result': 0.8483754512635379}
+Statistics for learning rate = 0.001: mean: 0.8555956678700362, std: 0.021255742157227094
 Use Validation result!
 {'seed': 'data/original/RTE-13', 'learning_rate': 0.0001, 'dev_result': 0.8664259927797834, 'test_result': 0.8664259927797834}
-Statistics for learning rate = 0.0001: mean: 0.8664259927797834, std: 0.0
+Use Validation result!
+{'seed': 'data/original/RTE-21', 'learning_rate': 0.0001, 'dev_result': 0.7978339350180506, 'test_result': 0.7978339350180506}
+Use Validation result!
+{'seed': 'data/original/RTE-42', 'learning_rate': 0.0001, 'dev_result': 0.7978339350180506, 'test_result': 0.7978339350180506}
+Statistics for learning rate = 0.0001: mean: 0.8206979542719616, std: 0.03233460611924043
 Use Validation result!
 {'seed': 'data/original/RTE-13', 'learning_rate': 1e-05, 'dev_result': 0.8086642599277978, 'test_result': 0.8086642599277978}
-Statistics for learning rate = 1e-05: mean: 0.8086642599277978, std: 0.0
-{'best_lr': 0.001, 'mean': 0.8844765342960289, 'std': 0.0}
+Use Validation result!
+{'seed': 'data/original/RTE-21', 'learning_rate': 1e-05, 'dev_result': 0.7978339350180506, 'test_result': 0.7978339350180506}
+Use Validation result!
+{'seed': 'data/original/RTE-42', 'learning_rate': 1e-05, 'dev_result': 0.7978339350180506, 'test_result': 0.7978339350180506}
+Statistics for learning rate = 1e-05: mean: 0.8014440433212996, std: 0.005105464124090564
+{'best_lr': 0.001, 'mean': 0.8555956678700362, 'std': 0.021255742157227094}

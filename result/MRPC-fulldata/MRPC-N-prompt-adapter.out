@@ -1,16 +1,32 @@
-{'tag': 'exp-fulldata-N', 'task_name': 'mrpc/f1', 'training_params': ['prompt,adapter']}
-total experiments: 4
+{'tag': 'exp-fulldata-16-N', 'task_name': 'mrpc/f1', 'training_params': ['prompt,adapter']}
+total experiments: 12
 
 Use Validation result!
 {'seed': 'data/original/MRPC-13', 'learning_rate': 0.01, 'dev_result': 0.8122270742358079, 'test_result': 0.8122270742358079}
+Use Validation result!
+{'seed': 'data/original/MRPC-21', 'learning_rate': 0.01, 'dev_result': 0.8122270742358079, 'test_result': 0.8122270742358079}
+Use Validation result!
+{'seed': 'data/original/MRPC-42', 'learning_rate': 0.01, 'dev_result': 0.8122270742358079, 'test_result': 0.8122270742358079}
 Statistics for learning rate = 0.01: mean: 0.8122270742358079, std: 0.0
 Use Validation result!
-{'seed': 'data/original/MRPC-13', 'learning_rate': 0.001, 'dev_result': 0.9352517985611511, 'test_result': 0.9352517985611511}
-Statistics for learning rate = 0.001: mean: 0.9352517985611511, std: 0.0
+{'seed': 'data/original/MRPC-13', 'learning_rate': 0.001, 'dev_result': 0.8122270742358079, 'test_result': 0.8122270742358079}
 Use Validation result!
-{'seed': 'data/original/MRPC-13', 'learning_rate': 0.0001, 'dev_result': 0.9249563699825479, 'test_result': 0.9249563699825479}
-Statistics for learning rate = 0.0001: mean: 0.9249563699825479, std: 0.0
+{'seed': 'data/original/MRPC-21', 'learning_rate': 0.001, 'dev_result': 0.8176470588235294, 'test_result': 0.8176470588235294}
 Use Validation result!
-{'seed': 'data/original/MRPC-13', 'learning_rate': 1e-05, 'dev_result': 0.9090909090909091, 'test_result': 0.9090909090909091}
-Statistics for learning rate = 1e-05: mean: 0.9090909090909091, std: 0.0
-{'best_lr': 0.001, 'mean': 0.9352517985611511, 'std': 0.0}
+{'seed': 'data/original/MRPC-42', 'learning_rate': 0.001, 'dev_result': 0.8122270742358079, 'test_result': 0.8122270742358079}
+Statistics for learning rate = 0.001: mean: 0.8140337357650483, std: 0.0025550052372696436
+Use Validation result!
+{'seed': 'data/original/MRPC-13', 'learning_rate': 0.0001, 'dev_result': 0.913884007029877, 'test_result': 0.913884007029877}
+Use Validation result!
+{'seed': 'data/original/MRPC-21', 'learning_rate': 0.0001, 'dev_result': 0.926391382405745, 'test_result': 0.926391382405745}
+Use Validation result!
+{'seed': 'data/original/MRPC-42', 'learning_rate': 0.0001, 'dev_result': 0.9184397163120569, 'test_result': 0.9184397163120569}
+Statistics for learning rate = 0.0001: mean: 0.919571701915893, std: 0.005168471937538622
+Use Validation result!
+{'seed': 'data/original/MRPC-13', 'learning_rate': 1e-05, 'dev_result': 0.881646655231561, 'test_result': 0.881646655231561}
+Use Validation result!
+{'seed': 'data/original/MRPC-21', 'learning_rate': 1e-05, 'dev_result': 0.882661996497373, 'test_result': 0.882661996497373}
+Use Validation result!
+{'seed': 'data/original/MRPC-42', 'learning_rate': 1e-05, 'dev_result': 0.8904347826086957, 'test_result': 0.8904347826086957}
+Statistics for learning rate = 1e-05: mean: 0.8849144781125432, std: 0.003925391765518089
+{'best_lr': 0.0001, 'mean': 0.919571701915893, 'std': 0.005168471937538622}

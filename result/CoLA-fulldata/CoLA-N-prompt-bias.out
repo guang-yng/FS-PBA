@@ -1,16 +1,26 @@
 {'tag': 'exp-fulldata-N', 'task_name': 'cola', 'training_params': ['prompt,bias']}
-total experiments: 4
+Warning: Overwirte results on learning rate = 0.001, seed = data/original/CoLA-21
+Warning: Overwirte results on learning rate = 0.001, seed = data/original/CoLA-21
+Warning: Overwirte results on learning rate = 0.001, seed = data/original/CoLA-21
+Warning: Overwirte results on learning rate = 0.001, seed = data/original/CoLA-42
+Warning: Overwirte results on learning rate = 0.001, seed = data/original/CoLA-42
+Warning: Overwirte results on learning rate = 0.001, seed = data/original/CoLA-42
+total experiments: 12
 
 Use Validation result!
 {'seed': 'data/original/CoLA-13', 'learning_rate': 0.01, 'dev_result': 0.0, 'test_result': 0.0}
 Statistics for learning rate = 0.01: mean: 0.0, std: 0.0
 Use Validation result!
 {'seed': 'data/original/CoLA-13', 'learning_rate': 0.001, 'dev_result': 0.6670956076048045, 'test_result': 0.6670956076048045}
-Statistics for learning rate = 0.001: mean: 0.6670956076048045, std: 0.0
+Use Validation result!
+{'seed': 'data/original/CoLA-21', 'learning_rate': 0.001, 'dev_result': 0.6579677841732349, 'test_result': 0.6579677841732349}
+Use Validation result!
+{'seed': 'data/original/CoLA-42', 'learning_rate': 0.001, 'dev_result': 0.6298908217708153, 'test_result': 0.6298908217708153}
+Statistics for learning rate = 0.001: mean: 0.651651404516285, std: 0.015831856307590673
 Use Validation result!
 {'seed': 'data/original/CoLA-13', 'learning_rate': 0.0001, 'dev_result': 0.6190614534394121, 'test_result': 0.6190614534394121}
 Statistics for learning rate = 0.0001: mean: 0.6190614534394121, std: 0.0
 Use Validation result!
 {'seed': 'data/original/CoLA-13', 'learning_rate': 1e-05, 'dev_result': 0.4697708172649808, 'test_result': 0.4697708172649808}
 Statistics for learning rate = 1e-05: mean: 0.4697708172649808, std: 0.0
-{'best_lr': 0.001, 'mean': 0.6670956076048045, 'std': 0.0}
+{'best_lr': 0.001, 'mean': 0.651651404516285, 'std': 0.015831856307590673}

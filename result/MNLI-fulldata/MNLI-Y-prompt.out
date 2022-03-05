@@ -1,17 +1,33 @@
-{'tag': 'exp-fulldata-Y', 'task_name': 'mnli', 'training_params': ['prompt']}
-total experiments: 4
+{'tag': 'exp-fulldata-16-Y', 'task_name': 'mnli', 'training_params': ['prompt']}
+total experiments: 12
 
 Use Validation result!
-{'seed': 'data/original/MNLI-13', 'learning_rate': 0.01, 'dev_result': 0.7656647987773816, 'test_result': 0.7656647987773816}
-Statistics for learning rate = 0.01: mean: 0.7656647987773816, std: 0.0
+{'seed': 'data/original/MNLI-13', 'learning_rate': 0.01, 'dev_result': 0.8049923586347427, 'test_result': 0.8049923586347427}
 Use Validation result!
-{'seed': 'data/original/MNLI-13', 'learning_rate': 0.001, 'dev_result': 0.7638308711156393, 'test_result': 0.7638308711156393}
-Statistics for learning rate = 0.001: mean: 0.7638308711156393, std: 0.0
+{'seed': 'data/original/MNLI-21', 'learning_rate': 0.01, 'dev_result': 0.8011207335710647, 'test_result': 0.8011207335710647}
 Use Validation result!
-{'seed': 'data/original/MNLI-13', 'learning_rate': 0.0001, 'dev_result': 0.5307182883341823, 'test_result': 0.5307182883341823}
-Statistics for learning rate = 0.0001: mean: 0.5307182883341823, std: 0.0
+{'seed': 'data/original/MNLI-42', 'learning_rate': 0.01, 'dev_result': 0.7996943453897096, 'test_result': 0.7996943453897096}
+Statistics for learning rate = 0.01: mean: 0.8019358125318391, std: 0.002238377592567023
 Use Validation result!
-{'seed': 'data/original/MNLI-13', 'learning_rate': 1e-05, 'dev_result': 0.5235863474274071, 'test_result': 0.5235863474274071}
-Statistics for learning rate = 1e-05: mean: 0.5235863474274071, std: 0.0
+{'seed': 'data/original/MNLI-13', 'learning_rate': 0.001, 'dev_result': 0.785838003056546, 'test_result': 0.785838003056546}
+Use Validation result!
+{'seed': 'data/original/MNLI-21', 'learning_rate': 0.001, 'dev_result': 0.7970453387671931, 'test_result': 0.7970453387671931}
+Use Validation result!
+{'seed': 'data/original/MNLI-42', 'learning_rate': 0.001, 'dev_result': 0.7850229240957718, 'test_result': 0.7850229240957718}
+Statistics for learning rate = 0.001: mean: 0.789302088639837, std: 0.005485406720209206
+Use Validation result!
+{'seed': 'data/original/MNLI-13', 'learning_rate': 0.0001, 'dev_result': 0.6198675496688741, 'test_result': 0.6198675496688741}
+Use Validation result!
+{'seed': 'data/original/MNLI-21', 'learning_rate': 0.0001, 'dev_result': 0.6523688232297504, 'test_result': 0.6523688232297504}
+Use Validation result!
+{'seed': 'data/original/MNLI-42', 'learning_rate': 0.0001, 'dev_result': 0.6570555272542028, 'test_result': 0.6570555272542028}
+Statistics for learning rate = 0.0001: mean: 0.6430973000509425, std: 0.016536974244867303
+Use Validation result!
+{'seed': 'data/original/MNLI-13', 'learning_rate': 1e-05, 'dev_result': 0.5230769230769231, 'test_result': 0.5230769230769231}
+Use Validation result!
+{'seed': 'data/original/MNLI-21', 'learning_rate': 1e-05, 'dev_result': 0.5235863474274071, 'test_result': 0.5235863474274071}
+Use Validation result!
+{'seed': 'data/original/MNLI-42', 'learning_rate': 1e-05, 'dev_result': 0.5257259296994397, 'test_result': 0.5257259296994397}
+Statistics for learning rate = 1e-05: mean: 0.5241297334012566, std: 0.0011476817964826446
 Warning! Best Learning rate equals maximum Learning rate.
-{'best_lr': 0.01, 'mean': 0.7656647987773816, 'std': 0.0}
+{'best_lr': 0.01, 'mean': 0.8019358125318391, 'std': 0.002238377592567023}

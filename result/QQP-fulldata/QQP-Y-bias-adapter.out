@@ -2,15 +2,9 @@
 total experiments: 4
 
 Use Validation result!
-{'seed': 'data/original/QQP-13', 'learning_rate': 0.01, 'dev_result': 0.0, 'test_result': 0.0}
-Statistics for learning rate = 0.01: mean: 0.0, std: 0.0
 Use Validation result!
-{'seed': 'data/original/QQP-13', 'learning_rate': 0.001, 'dev_result': 0.8623320725185862, 'test_result': 0.8623320725185862}
-Statistics for learning rate = 0.001: mean: 0.8623320725185862, std: 0.0
 Use Validation result!
-{'seed': 'data/original/QQP-13', 'learning_rate': 0.0001, 'dev_result': 0.8593597183282259, 'test_result': 0.8593597183282259}
-Statistics for learning rate = 0.0001: mean: 0.8593597183282259, std: 0.0
 Use Validation result!
-{'seed': 'data/original/QQP-13', 'learning_rate': 1e-05, 'dev_result': 0.8198531800168908, 'test_result': 0.8198531800168908}
-Statistics for learning rate = 1e-05: mean: 0.8198531800168908, std: 0.0
-{'best_lr': 0.001, 'mean': 0.8623320725185862, 'std': 0.0}
+[0.0, 0.8623320725185862, 0.8593597183282259, 0.8198531800168908]
+[0.8623320725185862, 0.8593597183282259, 0.8198531800168908]
+{'mean': 0.8471816569545676, 'std': 0.019362213392035702}

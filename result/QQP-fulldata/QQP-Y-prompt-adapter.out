@@ -1,9 +1,19 @@
 {'tag': 'exp-fulldata-Y', 'task_name': 'qqp/f1', 'training_params': ['prompt,adapter']}
-total experiments: 4
+Warning: Overwirte results on learning rate = 0.01, seed = data/original/QQP-21
+Warning: Overwirte results on learning rate = 0.01, seed = data/original/QQP-21
+Warning: Overwirte results on learning rate = 0.01, seed = data/original/QQP-21
+Warning: Overwirte results on learning rate = 0.01, seed = data/original/QQP-42
+Warning: Overwirte results on learning rate = 0.01, seed = data/original/QQP-42
+Warning: Overwirte results on learning rate = 0.01, seed = data/original/QQP-42
+total experiments: 12
 
 Use Validation result!
 {'seed': 'data/original/QQP-13', 'learning_rate': 0.01, 'dev_result': 0.0, 'test_result': 0.0}
-Statistics for learning rate = 0.01: mean: 0.0, std: 0.0
+Use Validation result!
+{'seed': 'data/original/QQP-21', 'learning_rate': 0.01, 'dev_result': 0.5381903642773208, 'test_result': 0.5381903642773208}
+Use Validation result!
+{'seed': 'data/original/QQP-42', 'learning_rate': 0.01, 'dev_result': 0.0, 'test_result': 0.0}
+Statistics for learning rate = 0.01: mean: 0.17939678809244028, std: 0.2537053707665012
 Use Validation result!
 {'seed': 'data/original/QQP-13', 'learning_rate': 0.001, 'dev_result': 0.8122732154779528, 'test_result': 0.8122732154779528}
 Statistics for learning rate = 0.001: mean: 0.8122732154779528, std: 0.0

@@ -1,21 +1,8 @@
-{'tag': 'exp-fulldata-mulstage-Y', 'task_name': 'sst-2', 'training_params': ['prompt', 'adapter', 'bias']}
-Warning: Overwirte results on learning rate = 0.01, seed = 2-13
-Warning: Overwirte results on learning rate = 0.001, seed = 2-13
-Warning: Overwirte results on learning rate = 0.0001, seed = 2-13
-Warning: Overwirte results on learning rate = 1e-05, seed = 2-13
-total experiments: 8
+{'tag': 'exp-fulldata-mulstage-lr-Y', 'task_name': 'sst-2', 'training_params': ['prompt', 'adapter', 'bias']}
+total experiments: 1
 
 Use Validation result!
-{'seed': '2-13', 'learning_rate': 0.01, 'dev_result': 0.5091743119266054, 'test_result': 0.5091743119266054}
-Statistics for learning rate = 0.01: mean: 0.5091743119266054, std: 0.0
-Use Validation result!
-{'seed': '2-13', 'learning_rate': 0.001, 'dev_result': 0.9529816513761468, 'test_result': 0.9529816513761468}
-Statistics for learning rate = 0.001: mean: 0.9529816513761468, std: 0.0
-Use Validation result!
-{'seed': '2-13', 'learning_rate': 0.0001, 'dev_result': 0.9575688073394495, 'test_result': 0.9575688073394495}
-Statistics for learning rate = 0.0001: mean: 0.9575688073394495, std: 0.0
-Use Validation result!
-{'seed': '2-13', 'learning_rate': 1e-05, 'dev_result': 0.9621559633027523, 'test_result': 0.9621559633027523}
-Statistics for learning rate = 1e-05: mean: 0.9621559633027523, std: 0.0
+{'seed': '2-13', 'learning_rate': 0.001, 'dev_result': 0.9552752293577982, 'test_result': 0.9552752293577982}
+Statistics for learning rate = 0.001: mean: 0.9552752293577982, std: 0.0
 Warning! Best Learning rate equals minmum Learning rate.
-{'best_lr': 1e-05, 'mean': 0.9621559633027523, 'std': 0.0}
+{'best_lr': 0.001, 'mean': 0.9552752293577982, 'std': 0.0}

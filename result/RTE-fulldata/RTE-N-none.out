@@ -2,7 +2,5 @@
 total experiments: 1
 
 Use Validation result!
-{'seed': 'data/original/RTE-13', 'learning_rate': 5e-05, 'dev_result': 0.47653429602888087, 'test_result': 0.47653429602888087}
-Statistics for learning rate = 5e-05: mean: 0.47653429602888087, std: 0.0
-Warning! Best Learning rate equals minmum Learning rate.
-{'best_lr': 5e-05, 'mean': 0.47653429602888087, 'std': 0.0}
+[0.47653429602888087]
+{'mean': 0.47653429602888087, 'std': 0}

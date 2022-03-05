@@ -2,15 +2,9 @@
 total experiments: 4
 
 Use Validation result!
-{'seed': 'data/original/QNLI-13', 'learning_rate': 0.01, 'dev_result': 0.5053999633900788, 'test_result': 0.5053999633900788}
-Statistics for learning rate = 0.01: mean: 0.5053999633900788, std: 0.0
 Use Validation result!
-{'seed': 'data/original/QNLI-13', 'learning_rate': 0.001, 'dev_result': 0.5053999633900788, 'test_result': 0.5053999633900788}
-Statistics for learning rate = 0.001: mean: 0.5053999633900788, std: 0.0
 Use Validation result!
-{'seed': 'data/original/QNLI-13', 'learning_rate': 0.0001, 'dev_result': 0.9478308621636463, 'test_result': 0.9478308621636463}
-Statistics for learning rate = 0.0001: mean: 0.9478308621636463, std: 0.0
 Use Validation result!
-{'seed': 'data/original/QNLI-13', 'learning_rate': 1e-05, 'dev_result': 0.9082921471718836, 'test_result': 0.9082921471718836}
-Statistics for learning rate = 1e-05: mean: 0.9082921471718836, std: 0.0
-{'best_lr': 0.0001, 'mean': 0.9478308621636463, 'std': 0.0}
+[0.5053999633900788, 0.5053999633900788, 0.9478308621636463, 0.9082921471718836]
+[0.5053999633900788, 0.9478308621636463, 0.9082921471718836]
+{'mean': 0.7871743242418695, 'std': 0.19989734085421007}

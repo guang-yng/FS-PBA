@@ -1,2 +1,10 @@
-Bug to Fix: QNLI max_seq_len 512
+A100-4-2: MNLI Y
+A100-4-3: QQP 
+A100-4-4: STS-B
+A100-4-5: SST-2
+A100-4-6: CoLA
+A100-2-1: RTE
+A100-1-1: MNLI N
+A100-1-4: QNLI
+
 Bug to Fix: Gather result for MNLI-mm

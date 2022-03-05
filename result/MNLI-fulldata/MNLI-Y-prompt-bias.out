@@ -2,15 +2,9 @@
 total experiments: 4
 
 Use Validation result!
-{'seed': 'data/original/MNLI-13', 'learning_rate': 0.01, 'dev_result': 0.3544574630667346, 'test_result': 0.3544574630667346}
-Statistics for learning rate = 0.01: mean: 0.3544574630667346, std: 0.0
 Use Validation result!
-{'seed': 'data/original/MNLI-13', 'learning_rate': 0.001, 'dev_result': 0.8916963830871115, 'test_result': 0.8916963830871115}
-Statistics for learning rate = 0.001: mean: 0.8916963830871115, std: 0.0
 Use Validation result!
-{'seed': 'data/original/MNLI-13', 'learning_rate': 0.0001, 'dev_result': 0.866632705043301, 'test_result': 0.866632705043301}
-Statistics for learning rate = 0.0001: mean: 0.866632705043301, std: 0.0
 Use Validation result!
-{'seed': 'data/original/MNLI-13', 'learning_rate': 1e-05, 'dev_result': 0.7867549668874172, 'test_result': 0.7867549668874172}
-Statistics for learning rate = 1e-05: mean: 0.7867549668874172, std: 0.0
-{'best_lr': 0.001, 'mean': 0.8916963830871115, 'std': 0.0}
+[0.3544574630667346, 0.8916963830871115, 0.866632705043301, 0.7867549668874172]
+[0.8916963830871115, 0.866632705043301, 0.7867549668874172]
+{'mean': 0.8483613516726098, 'std': 0.044747863814912}

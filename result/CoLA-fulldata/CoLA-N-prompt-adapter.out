@@ -1,8 +1,18 @@
 {'tag': 'exp-fulldata-N', 'task_name': 'cola', 'training_params': ['prompt,adapter']}
-total experiments: 4
+Warning: Overwirte results on learning rate = 0.01, seed = data/original/CoLA-21
+Warning: Overwirte results on learning rate = 0.01, seed = data/original/CoLA-21
+Warning: Overwirte results on learning rate = 0.01, seed = data/original/CoLA-21
+Warning: Overwirte results on learning rate = 0.01, seed = data/original/CoLA-42
+Warning: Overwirte results on learning rate = 0.01, seed = data/original/CoLA-42
+Warning: Overwirte results on learning rate = 0.01, seed = data/original/CoLA-42
+total experiments: 12
 
 Use Validation result!
 {'seed': 'data/original/CoLA-13', 'learning_rate': 0.01, 'dev_result': 0.0, 'test_result': 0.0}
+Use Validation result!
+{'seed': 'data/original/CoLA-21', 'learning_rate': 0.01, 'dev_result': 0.0, 'test_result': 0.0}
+Use Validation result!
+{'seed': 'data/original/CoLA-42', 'learning_rate': 0.01, 'dev_result': 0.0, 'test_result': 0.0}
 Statistics for learning rate = 0.01: mean: 0.0, std: 0.0
 Use Validation result!
 {'seed': 'data/original/CoLA-13', 'learning_rate': 0.001, 'dev_result': 0.6591892411081671, 'test_result': 0.6591892411081671}

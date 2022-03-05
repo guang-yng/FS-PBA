@@ -6,16 +6,9 @@ Warning: Overwirte results on learning rate = 1e-05, seed = data/original/MNLI-1
 total experiments: 8
 
 Use Validation result!
-{'seed': 'data/original/MNLI-13', 'learning_rate': 0.01, 'dev_result': 0.767396841569027, 'test_result': 0.767396841569027}
-Statistics for learning rate = 0.01: mean: 0.767396841569027, std: 0.0
 Use Validation result!
-{'seed': 'data/original/MNLI-13', 'learning_rate': 0.001, 'dev_result': 0.7521141110545084, 'test_result': 0.7521141110545084}
-Statistics for learning rate = 0.001: mean: 0.7521141110545084, std: 0.0
 Use Validation result!
-{'seed': 'data/original/MNLI-13', 'learning_rate': 0.0001, 'dev_result': 0.39154355578196637, 'test_result': 0.39154355578196637}
-Statistics for learning rate = 0.0001: mean: 0.39154355578196637, std: 0.0
 Use Validation result!
-{'seed': 'data/original/MNLI-13', 'learning_rate': 1e-05, 'dev_result': 0.34274070300560366, 'test_result': 0.34274070300560366}
-Statistics for learning rate = 1e-05: mean: 0.34274070300560366, std: 0.0
-Warning! Best Learning rate equals maximum Learning rate.
-{'best_lr': 0.01, 'mean': 0.767396841569027, 'std': 0.0}
+[0.767396841569027, 0.7521141110545084, 0.39154355578196637, 0.34274070300560366]
+[0.767396841569027, 0.7521141110545084, 0.39154355578196637]
+{'mean': 0.6370181694685007, 'std': 0.17368885962434813}
