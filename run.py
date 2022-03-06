@@ -494,7 +494,9 @@ def main():
         train_params_list = training_args.training_params
         if isinstance(train_params_list, str):
             train_params_list = [train_params_list]
-        time_records = []
+        forward_time_records = []
+        backward_time_records = []
+        infer_time_records = []
         for params in train_params_list:
             model.freeze_model()
             if 'adapter' in params:
@@ -507,10 +509,11 @@ def main():
                 model.train()
             result = trainer.train(model_path=model_args.model_name_or_path 
                                    if os.path.isdir(model_args.model_name_or_path) else None) 
-            time_records.append(result[-2])
+            forward_time_records.append(result[-4])
+            backward_time_records.append(result[-3])
+            infer_time_records.append(result[-2])
             result = result[-1]
             torch.save(result, os.path.join(training_args.output_dir, "result_"+params+".pt"))
-            final_result[data_args.task_name + '_test_' + params + '_forward_time'] = time_records[-1]
 
             # Use the early stop, so do not save the model in the end (unless specify save_at_last)
             save_trained_param(model, os.path.join(training_args.output_dir, 
@@ -534,132 +537,10 @@ def main():
             model.data_args = data_args
             model.tokenizer = tokenizer
 
-            #Evaluation
-            eval_results = {}
-            if training_args.do_eval:
-                logger.info("*** Stage Validate ***")
+        final_result[data_args.task_name+'_train_forward_time'] = np.array(forward_time_records).mean()
+        final_result[data_args.task_name+'_train_backward_time'] = np.array(backward_time_records).mean()
+        final_result[data_args.task_name+'_train_infer_time'] = np.array(infer_time_records).mean()
 
-                for eval_dataset in eval_datasets:
-                    trainer.compute_metrics = build_compute_metrics_fn(eval_dataset.args.task_name)
-                    output = trainer.evaluate(eval_dataset=eval_dataset)
-                    eval_result = output.metrics 
-
-                    output_eval_file = os.path.join(
-                        training_args.output_dir, f"eval_results_{eval_dataset.args.task_name}.txt"
-                    )
-                    if trainer.is_world_master():
-                        with open(output_eval_file, "w") as writer:
-                            logger.info("***** Eval results {} *****".format(eval_dataset.args.task_name))
-                            for key, value in eval_result.items():
-                                logger.info("  %s = %s", key, value)
-                                writer.write("%s = %s\n" % (key, value))
-                                final_result[eval_dataset.args.task_name + '_dev_' + params + '_' + key] = value
-                    eval_results.update(eval_result)
-
-            test_results = {}
-            if training_args.do_predict:
-                logging.info("*** Test ***")
-
-                for test_dataset in test_datasets:
-                    trainer.compute_metrics = build_compute_metrics_fn(test_dataset.args.task_name)
-                    output = trainer.evaluate(eval_dataset=test_dataset)
-                    test_result = output.metrics
-
-                    output_test_file = os.path.join(
-                        training_args.output_dir, f"test_results_{test_dataset.args.task_name}.txt"
-                    )
-                    if trainer.is_world_master():
-                        with open(output_test_file, "w") as writer:
-                            logger.info("***** Test results {} *****".format(test_dataset.args.task_name))
-                            for key, value in test_result.items():
-                                logger.info("  %s = %s", key, value)
-                                writer.write("%s = %s\n" % (key, value))
-                                final_result[test_dataset.args.task_name + '_test_' + params + '_' + key] = value
-
-                        if training_args.save_logit:
-                            predictions = output.predictions
-                            num_logits = predictions.shape[-1]
-                            logits = predictions.reshape([test_dataset.num_sample, -1, num_logits]).mean(axis=0)
-                            np.save(os.path.join(training_args.save_logit_dir, "{}-{}-{}.npy".format(test_dataset.task_name, training_args.model_id, training_args.array_id)), logits)
-
-                    test_results.update(test_result)
-
-            load_trained_param(model, os.path.join(training_args.output_dir, "in_step_model_"+params+'.bin'))
-            model = model.to(training_args.device)
-            trainer.model = model
-            if data_args.prompt:
-                model.label_word_list = torch.tensor(train_dataset.label_word_list).long().cuda()
-            if output_modes_mapping[data_args.task_name] == 'regression':
-                # lower / upper bounds
-                model.lb, model.ub = bound_mapping[data_args.task_name]
-            model.model_args = model_args
-            model.data_args = data_args
-            model.tokenizer = tokenizer
-
-        final_result[data_args.task_name+'_train_forward_time'] = np.array(time_records).mean()
-
-        # Reload the best checkpoint (for eval)
-        model.load_state_dict(torch.load(os.path.join(training_args.output_dir, "pytorch_model.bin")))
-        model = model.to(training_args.device)
-        trainer.model = model
-        if data_args.prompt:
-            model.label_word_list = torch.tensor(train_dataset.label_word_list).long().cuda()
-        if output_modes_mapping[data_args.task_name] == 'regression':
-            # lower / upper bounds
-            model.lb, model.ub = bound_mapping[data_args.task_name]
-        model.model_args = model_args
-        model.data_args = data_args
-        model.tokenizer = tokenizer
-
-    # Evaluation
-    eval_results = {}
-    if training_args.do_eval:
-        logger.info("*** Validate ***")
-
-        for eval_dataset in eval_datasets:
-            trainer.compute_metrics = build_compute_metrics_fn(eval_dataset.args.task_name)
-            output = trainer.evaluate(eval_dataset=eval_dataset)
-            eval_result = output.metrics 
-
-            output_eval_file = os.path.join(
-                training_args.output_dir, f"eval_results_{eval_dataset.args.task_name}.txt"
-            )
-            if trainer.is_world_master():
-                with open(output_eval_file, "w") as writer:
-                    logger.info("***** Eval results {} *****".format(eval_dataset.args.task_name))
-                    for key, value in eval_result.items():
-                        logger.info("  %s = %s", key, value)
-                        writer.write("%s = %s\n" % (key, value))
-                        final_result[eval_dataset.args.task_name + '_dev_' + key] = value
-            eval_results.update(eval_result)
-
-    test_results = {}
-    if training_args.do_predict:
-        logging.info("*** Test ***")
-
-        for test_dataset in test_datasets:
-            trainer.compute_metrics = build_compute_metrics_fn(test_dataset.args.task_name)
-            output = trainer.evaluate(eval_dataset=test_dataset)
-            test_result = output.metrics
-
-            output_test_file = os.path.join(
-                training_args.output_dir, f"test_results_{test_dataset.args.task_name}.txt"
-            )
-            if trainer.is_world_master():
-                with open(output_test_file, "w") as writer:
-                    logger.info("***** Test results {} *****".format(test_dataset.args.task_name))
-                    for key, value in test_result.items():
-                        logger.info("  %s = %s", key, value)
-                        writer.write("%s = %s\n" % (key, value))
-                        final_result[test_dataset.args.task_name + '_test_' + key] = value
-
-                if training_args.save_logit:
-                    predictions = output.predictions
-                    num_logits = predictions.shape[-1]
-                    logits = predictions.reshape([test_dataset.num_sample, -1, num_logits]).mean(axis=0)
-                    np.save(os.path.join(training_args.save_logit_dir, "{}-{}-{}.npy".format(test_dataset.task_name, training_args.model_id, training_args.array_id)), logits)
-
-            test_results.update(test_result)
 
     with FileLock('log.lock'):
         with open('log', 'a') as f:
@@ -674,7 +555,6 @@ def main():
         os.remove(os.path.join(training_args.output_dir, "pytorch_model.bin"))
     except:
         logger.info("The pytorch_model.bin file doesn't EXIST")
-    return eval_results
 
 if __name__ == "__main__":
     main()

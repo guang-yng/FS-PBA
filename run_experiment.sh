@@ -170,7 +170,6 @@ if [ -z "$NOTRAIN" ]; then
     --model_name_or_path $MODEL \
     --prompt_num 10 \
     --num_k $K \
-    --max_seq_length 256 \
     --per_device_train_batch_size $REAL_BS \
     --per_device_eval_batch_size 16 \
     --gradient_accumulation_steps $GS \
@@ -197,7 +196,6 @@ else
     --model_name_or_path $MODEL \
     --prompt_num 10 \
     --num_k $K \
-    --max_seq_length 256 \
     --per_device_train_batch_size $REAL_BS \
     --per_device_eval_batch_size 16 \
     --gradient_accumulation_steps $GS \

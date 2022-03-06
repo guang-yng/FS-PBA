@@ -246,13 +246,127 @@ class Trainer(transformers.Trainer):
         start = time.time()
         outputs = model(**inputs)
         end = time.time()
-        if 'time_records' in dir(self) and isinstance(self.time_records, list):
-            self.time_records.append(end-start)
+        if 'forward_time_records' in dir(self) and isinstance(self.forward_time_records, list):
+            self.forward_time_records.append(end-start)
         # Save past state if it exists
         if self.args.past_index >= 0:
             self._past = outputs[self.args.past_index]
         # We don't use .loss here since the model may return tuples instead of ModelOutput.
         return outputs[0]
+
+    def training_step(self, model: nn.Module, inputs: Dict[str, Union[torch.Tensor, Any]]) -> torch.Tensor:
+        """
+        Perform a training step on a batch of inputs.
+        Subclass and override to inject custom behavior.
+        Args:
+            model (:obj:`nn.Module`):
+                The model to train.
+            inputs (:obj:`Dict[str, Union[torch.Tensor, Any]]`):
+                The inputs and targets of the model.
+                The dictionary will be unpacked before being fed to the model. Most models expect the targets under the
+                argument :obj:`labels`. Check your model's documentation for all accepted arguments.
+        Return:
+            :obj:`torch.Tensor`: The tensor with training loss on this batch.
+        """
+        if hasattr(self, "_training_step"):
+            warnings.warn(
+                "The `_training_step` method is deprecated and won't be called in a future version, define `training_step` in your subclass.",
+                FutureWarning,
+            )
+            return self._training_step(model, inputs, self.optimizer)
+
+        model.train()
+        inputs = self._prepare_inputs(inputs)
+
+        if self.args.fp16 and _use_native_amp:
+            with autocast():
+                loss = self.compute_loss(model, inputs)
+        else:
+            loss = self.compute_loss(model, inputs)
+
+        if self.args.n_gpu > 1:
+            loss = loss.mean()  # mean() to average on multi-gpu parallel training
+
+        if self.args.gradient_accumulation_steps > 1:
+            loss = loss / self.args.gradient_accumulation_steps
+
+        if self.args.fp16 and _use_native_amp:
+            self.scaler.scale(loss).backward()
+        elif self.args.fp16 and _use_apex:
+            with amp.scale_loss(loss, self.optimizer) as scaled_loss:
+                scaled_loss.backward()
+        else:
+            start = time.time()
+            loss.backward()
+            end = time.time()
+            if 'backward_time_records' in dir(self) and isinstance(self.backward_time_records, list):
+                self.backward_time_records.append(end-start)
+
+        return loss.detach()
+
+    def prediction_step(
+        self, model: nn.Module, inputs: Dict[str, Union[torch.Tensor, Any]], prediction_loss_only: bool
+    ) -> Tuple[Optional[float], Optional[torch.Tensor], Optional[torch.Tensor]]:
+        """
+        Perform an evaluation step on :obj:`model` using obj:`inputs`.
+        Subclass and override to inject custom behavior.
+        Args:
+            model (:obj:`nn.Module`):
+                The model to evaluate.
+            inputs (:obj:`Dict[str, Union[torch.Tensor, Any]]`):
+                The inputs and targets of the model.
+                The dictionary will be unpacked before being fed to the model. Most models expect the targets under the
+                argument :obj:`labels`. Check your model's documentation for all accepted arguments.
+            prediction_loss_only (:obj:`bool`):
+                Whether or not to return the loss only.
+        Return:
+            Tuple[Optional[float], Optional[torch.Tensor], Optional[torch.Tensor]]: A tuple with the loss, logits and
+            labels (each being optional).
+        """
+        has_labels = all(inputs.get(k) is not None for k in self.label_names)
+        inputs = self._prepare_inputs(inputs)
+
+        with torch.no_grad():
+            if self.args.fp16 and _use_native_amp:
+                with autocast():
+                    start = time.time()
+                    outputs = model(**inputs)
+                    end = time.time()
+                    if 'infer_time_records' in dir(self) and isinstance(self.infer_time_records, list):
+                        self.infer_time_records.append(end-start)
+            else:
+                start = time.time()
+                outputs = model(**inputs)
+                end = time.time()
+                if 'infer_time_records' in dir(self) and isinstance(self.infer_time_records, list):
+                    self.infer_time_records.append(end-start)
+            if has_labels:
+                loss = outputs[0].mean().detach()
+                logits = outputs[1:]
+            else:
+                loss = None
+                # Slicing so we get a tuple even if `outputs` is a `ModelOutput`.
+                logits = outputs[:]
+            if self.args.past_index >= 0:
+                self._past = outputs[self.args.past_index if has_labels else self.args.past_index - 1]
+                # Remove the past from the logits.
+                logits = logits[: self.args.past_index - 1] + logits[self.args.past_index :]
+
+        if prediction_loss_only:
+            return (loss, None, None)
+
+        logits = nested_detach(logits)
+        if len(logits) == 1:
+            logits = logits[0]
+
+        if has_labels:
+            labels = nested_detach(tuple(inputs.get(name) for name in self.label_names))
+            if len(labels) == 1:
+                labels = labels[0]
+        else:
+            labels = None
+
+        return (loss, logits, labels)
 
     def train(self, model_path=None, dev_objective=None):
         """
@@ -266,7 +380,9 @@ class Trainer(transformers.Trainer):
         self.dev_objective = dev_objective if dev_objective is not None else default_dev_objective
 
         # Record time
-        self.time_records = []
+        self.forward_time_records = []
+        self.backward_time_records = []
+        self.infer_time_records = []
 
         # Data loading.
         train_dataloader = self.get_train_dataloader()
@@ -486,10 +602,14 @@ class Trainer(transformers.Trainer):
             # Clean the state at the end of training
             delattr(self, "_past")
 
-        average_forward_time = np.array(self.time_records).mean()
+        average_forward_time = np.array(self.forward_time_records).mean()
         logger.info("\n\nTraining Average Forward Time: {} \n".format(average_forward_time))
+        average_backward_time = np.array(self.backward_time_records).mean()
+        logger.info("\n\nTraining Average Backward Time: {} \n".format(average_backward_time))
+        average_infer_time = np.array(self.infer_time_records).mean()
+        logger.info("\n\nTraining Average Infer Time: {} \n".format(average_infer_time))
         logger.info("Training completed. Do not forget to share your model on huggingface.co/models =)\n\n")
-        return TrainOutput(self.global_step, tr_loss / self.global_step), self.objective, average_forward_time, self.result
+        return TrainOutput(self.global_step, tr_loss / self.global_step), self.objective, average_forward_time, average_backward_time, average_infer_time, self.result
 
 
     """
