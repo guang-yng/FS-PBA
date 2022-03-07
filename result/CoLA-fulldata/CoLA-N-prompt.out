@@ -1,32 +1,32 @@
-{'tag': 'exp-fulldata-N', 'task_name': 'cola', 'training_params': ['prompt']}
+{'tag': 'exp-fulldata-16-N', 'task_name': 'cola', 'training_params': ['prompt']}
 total experiments: 12
 
 Use Validation result!
-{'seed': 'data/original/CoLA-13', 'learning_rate': 0.01, 'dev_result': 0.05026857088876793, 'test_result': 0.05026857088876793}
+{'seed': 'data/original/CoLA-13', 'learning_rate': 0.01, 'dev_result': 0.049848138106847704, 'test_result': 0.049848138106847704}
 Use Validation result!
-{'seed': 'data/original/CoLA-21', 'learning_rate': 0.01, 'dev_result': 0.10586343287126085, 'test_result': 0.10586343287126085}
+{'seed': 'data/original/CoLA-21', 'learning_rate': 0.01, 'dev_result': 0.06787939379502084, 'test_result': 0.06787939379502084}
 Use Validation result!
-{'seed': 'data/original/CoLA-42', 'learning_rate': 0.01, 'dev_result': 0.0871009685345742, 'test_result': 0.0871009685345742}
-Statistics for learning rate = 0.01: mean: 0.08107765743153433, std: 0.023092673833867913
+{'seed': 'data/original/CoLA-42', 'learning_rate': 0.01, 'dev_result': 0.06635595290616526, 'test_result': 0.06635595290616526}
+Statistics for learning rate = 0.01: mean: 0.06136116160267794, std: 0.008164659639654856
 Use Validation result!
-{'seed': 'data/original/CoLA-13', 'learning_rate': 0.001, 'dev_result': 0.0463559874942472, 'test_result': 0.0463559874942472}
+{'seed': 'data/original/CoLA-13', 'learning_rate': 0.001, 'dev_result': 0.45652208268442435, 'test_result': 0.45652208268442435}
 Use Validation result!
-{'seed': 'data/original/CoLA-21', 'learning_rate': 0.001, 'dev_result': 0.42014767335237374, 'test_result': 0.42014767335237374}
+{'seed': 'data/original/CoLA-21', 'learning_rate': 0.001, 'dev_result': 0.40068606376889737, 'test_result': 0.40068606376889737}
 Use Validation result!
-{'seed': 'data/original/CoLA-42', 'learning_rate': 0.001, 'dev_result': 0.4979366411311316, 'test_result': 0.4979366411311316}
-Statistics for learning rate = 0.001: mean: 0.32148010065925087, std: 0.197117121039994
+{'seed': 'data/original/CoLA-42', 'learning_rate': 0.001, 'dev_result': 0.42265735589062714, 'test_result': 0.42265735589062714}
+Statistics for learning rate = 0.001: mean: 0.42662183411464955, std: 0.02296668700205195
 Use Validation result!
-{'seed': 'data/original/CoLA-13', 'learning_rate': 0.0001, 'dev_result': 0.018148342420931135, 'test_result': 0.018148342420931135}
+{'seed': 'data/original/CoLA-13', 'learning_rate': 0.0001, 'dev_result': 0.07216289396103202, 'test_result': 0.07216289396103202}
 Use Validation result!
-{'seed': 'data/original/CoLA-21', 'learning_rate': 0.0001, 'dev_result': 0.11106709150234363, 'test_result': 0.11106709150234363}
+{'seed': 'data/original/CoLA-21', 'learning_rate': 0.0001, 'dev_result': 0.08036809130702588, 'test_result': 0.08036809130702588}
 Use Validation result!
-{'seed': 'data/original/CoLA-42', 'learning_rate': 0.0001, 'dev_result': 0.19144885197186645, 'test_result': 0.19144885197186645}
-Statistics for learning rate = 0.0001: mean: 0.1068880952983804, std: 0.07081132046788381
+{'seed': 'data/original/CoLA-42', 'learning_rate': 0.0001, 'dev_result': 0.07080473081055227, 'test_result': 0.07080473081055227}
+Statistics for learning rate = 0.0001: mean: 0.07444523869287006, std: 0.004224633246613611
 Use Validation result!
 {'seed': 'data/original/CoLA-13', 'learning_rate': 1e-05, 'dev_result': 0.018148342420931135, 'test_result': 0.018148342420931135}
 Use Validation result!
 {'seed': 'data/original/CoLA-21', 'learning_rate': 1e-05, 'dev_result': 0.018148342420931135, 'test_result': 0.018148342420931135}
 Use Validation result!
-{'seed': 'data/original/CoLA-42', 'learning_rate': 1e-05, 'dev_result': 0.00286100001416597, 'test_result': 0.00286100001416597}
-Statistics for learning rate = 1e-05: mean: 0.01305256161867608, std: 0.00720652232142955
-{'best_lr': 0.001, 'mean': 0.32148010065925087, 'std': 0.197117121039994}
+{'seed': 'data/original/CoLA-42', 'learning_rate': 1e-05, 'dev_result': 0.004969753950229529, 'test_result': 0.004969753950229529}
+Statistics for learning rate = 1e-05: mean: 0.013755479597363932, std: 0.006212446182733306
+{'best_lr': 0.001, 'mean': 0.42662183411464955, 'std': 0.02296668700205195}

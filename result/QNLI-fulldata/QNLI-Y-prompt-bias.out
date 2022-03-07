@@ -1,4 +1,4 @@
-{'tag': 'exp-fulldata-Y', 'task_name': 'qnli', 'training_params': ['prompt,bias']}
+{'tag': 'exp-fulldata-16-Y', 'task_name': 'qnli', 'training_params': ['prompt,bias']}
 total experiments: 12
 
 Use Validation result!
@@ -9,24 +9,24 @@ Use Validation result!
 {'seed': 'data/original/QNLI-42', 'learning_rate': 0.01, 'dev_result': 0.5053999633900788, 'test_result': 0.5053999633900788}
 Statistics for learning rate = 0.01: mean: 0.5053999633900788, std: 0.0
 Use Validation result!
-{'seed': 'data/original/QNLI-13', 'learning_rate': 0.001, 'dev_result': 0.9359326377448288, 'test_result': 0.9359326377448288}
+{'seed': 'data/original/QNLI-13', 'learning_rate': 0.001, 'dev_result': 0.9293428519128684, 'test_result': 0.9293428519128684}
 Use Validation result!
-{'seed': 'data/original/QNLI-21', 'learning_rate': 0.001, 'dev_result': 0.9342851912868387, 'test_result': 0.9342851912868387}
+{'seed': 'data/original/QNLI-21', 'learning_rate': 0.001, 'dev_result': 0.9308072487644151, 'test_result': 0.9308072487644151}
 Use Validation result!
-{'seed': 'data/original/QNLI-42', 'learning_rate': 0.001, 'dev_result': 0.9372139849899322, 'test_result': 0.9372139849899322}
-Statistics for learning rate = 0.001: mean: 0.9358106046738666, std: 0.0011987847156256222
+{'seed': 'data/original/QNLI-42', 'learning_rate': 0.001, 'dev_result': 0.9298920007321985, 'test_result': 0.9298920007321985}
+Statistics for learning rate = 0.001: mean: 0.9300140338031606, std: 0.0006040328840448779
 Use Validation result!
-{'seed': 'data/original/QNLI-13', 'learning_rate': 0.0001, 'dev_result': 0.9157971810360608, 'test_result': 0.9157971810360608}
+{'seed': 'data/original/QNLI-13', 'learning_rate': 0.0001, 'dev_result': 0.9101226432363171, 'test_result': 0.9101226432363171}
 Use Validation result!
-{'seed': 'data/original/QNLI-21', 'learning_rate': 0.0001, 'dev_result': 0.9172615778876075, 'test_result': 0.9172615778876075}
+{'seed': 'data/original/QNLI-21', 'learning_rate': 0.0001, 'dev_result': 0.9104887424492037, 'test_result': 0.9104887424492037}
 Use Validation result!
-{'seed': 'data/original/QNLI-42', 'learning_rate': 0.0001, 'dev_result': 0.9205564708035878, 'test_result': 0.9205564708035878}
-Statistics for learning rate = 0.0001: mean: 0.9178717432424186, std: 0.00199029915556779
+{'seed': 'data/original/QNLI-42', 'learning_rate': 0.0001, 'dev_result': 0.9112209408749771, 'test_result': 0.9112209408749771}
+Statistics for learning rate = 0.0001: mean: 0.910610775520166, std: 0.00045660594139650075
 Use Validation result!
-{'seed': 'data/original/QNLI-13', 'learning_rate': 1e-05, 'dev_result': 0.8411129416071755, 'test_result': 0.8411129416071755}
+{'seed': 'data/original/QNLI-13', 'learning_rate': 1e-05, 'dev_result': 0.832875709317225, 'test_result': 0.832875709317225}
 Use Validation result!
-{'seed': 'data/original/QNLI-21', 'learning_rate': 1e-05, 'dev_result': 0.85612300933553, 'test_result': 0.85612300933553}
+{'seed': 'data/original/QNLI-21', 'learning_rate': 1e-05, 'dev_result': 0.8301299652205748, 'test_result': 0.8301299652205748}
 Use Validation result!
-{'seed': 'data/original/QNLI-42', 'learning_rate': 1e-05, 'dev_result': 0.8550247116968699, 'test_result': 0.8550247116968699}
-Statistics for learning rate = 1e-05: mean: 0.8507535542131919, std: 0.006831672464349727
-{'best_lr': 0.001, 'mean': 0.9358106046738666, 'std': 0.0011987847156256222}
+{'seed': 'data/original/QNLI-42', 'learning_rate': 1e-05, 'dev_result': 0.8341570565623284, 'test_result': 0.8341570565623284}
+Statistics for learning rate = 1e-05: mean: 0.8323875770333761, std: 0.0016798950391038105
+{'best_lr': 0.001, 'mean': 0.9300140338031606, 'std': 0.0006040328840448779}

@@ -1,10 +1,32 @@
-{'tag': 'exp-fulldata-N', 'task_name': 'sts-b/pearson', 'training_params': ['prompt,bias']}
-total experiments: 4
+{'tag': 'exp-fulldata-16-N', 'task_name': 'sts-b/pearson', 'training_params': ['prompt,bias']}
+total experiments: 12
 
 Use Validation result!
+{'seed': 'B-13', 'learning_rate': 0.01, 'dev_result': 0.07823928813771204, 'test_result': 0.07823928813771204}
 Use Validation result!
+{'seed': 'B-21', 'learning_rate': 0.01, 'dev_result': 0.06654519045291768, 'test_result': 0.06654519045291768}
 Use Validation result!
+{'seed': 'B-42', 'learning_rate': 0.01, 'dev_result': 0.14627720096238891, 'test_result': 0.14627720096238891}
+Statistics for learning rate = 0.01: mean: 0.09702055985100622, std: 0.035155374177566326
 Use Validation result!
-[0.07136019685926444, 0.9145814301231646, 0.8949079105534704, 0.7401497526525895]
-[0.9145814301231646, 0.8949079105534704, 0.7401497526525895]
-{'mean': 0.8498796977764081, 'std': 0.07800537368550099}
+{'seed': 'B-13', 'learning_rate': 0.001, 'dev_result': 0.9092248613405919, 'test_result': 0.9092248613405919}
+Use Validation result!
+{'seed': 'B-21', 'learning_rate': 0.001, 'dev_result': 0.892995229286838, 'test_result': 0.892995229286838}
+Use Validation result!
+{'seed': 'B-42', 'learning_rate': 0.001, 'dev_result': 0.9058518677994857, 'test_result': 0.9058518677994857}
+Statistics for learning rate = 0.001: mean: 0.9026906528089719, std: 0.006992624653268391
+Use Validation result!
+{'seed': 'B-13', 'learning_rate': 0.0001, 'dev_result': 0.8770901048394236, 'test_result': 0.8770901048394236}
+Use Validation result!
+{'seed': 'B-21', 'learning_rate': 0.0001, 'dev_result': 0.8773935650256963, 'test_result': 0.8773935650256963}
+Use Validation result!
+{'seed': 'B-42', 'learning_rate': 0.0001, 'dev_result': 0.8827671319732328, 'test_result': 0.8827671319732328}
+Statistics for learning rate = 0.0001: mean: 0.8790836006127841, std: 0.0026075946110951844
+Use Validation result!
+{'seed': 'B-13', 'learning_rate': 1e-05, 'dev_result': 0.688877336105494, 'test_result': 0.688877336105494}
+Use Validation result!
+{'seed': 'B-21', 'learning_rate': 1e-05, 'dev_result': 0.7066951208117089, 'test_result': 0.7066951208117089}
+Use Validation result!
+{'seed': 'B-42', 'learning_rate': 1e-05, 'dev_result': 0.6782874463044238, 'test_result': 0.6782874463044238}
+Statistics for learning rate = 1e-05: mean: 0.6912866344072088, std: 0.01172184659678809
+{'best_lr': 0.001, 'mean': 0.9026906528089719, 'std': 0.006992624653268391}

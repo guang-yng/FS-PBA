@@ -1,10 +1,25 @@
-{'tag': 'exp-fulldata-Y', 'task_name': 'qqp/f1', 'training_params': ['prompt,bias,adapter']}
-total experiments: 4
+{'tag': 'exp-fulldata-16-Y', 'task_name': 'qqp/f1', 'training_params': ['prompt,bias,adapter']}
+total experiments: 9
 
 Use Validation result!
+{'seed': 'data/original/QQP-13', 'learning_rate': 0.001, 'dev_result': 0.0, 'test_result': 0.0}
 Use Validation result!
+{'seed': 'data/original/QQP-21', 'learning_rate': 0.001, 'dev_result': 0.5381903642773208, 'test_result': 0.5381903642773208}
 Use Validation result!
+{'seed': 'data/original/QQP-42', 'learning_rate': 0.001, 'dev_result': 0.0, 'test_result': 0.0}
+Statistics for learning rate = 0.001: mean: 0.17939678809244028, std: 0.2537053707665012
 Use Validation result!
-[0.0, 0.0, 0.8585746827204687, 0.8166443128659754]
-[0.0, 0.8585746827204687, 0.8166443128659754]
-{'mean': 0.558406331862148, 'std': 0.39522378688268767}
+{'seed': 'data/original/QQP-13', 'learning_rate': 0.0001, 'dev_result': 0.8461863168490438, 'test_result': 0.8461863168490438}
+Use Validation result!
+{'seed': 'data/original/QQP-21', 'learning_rate': 0.0001, 'dev_result': 0.8443899764569291, 'test_result': 0.8443899764569291}
+Use Validation result!
+{'seed': 'data/original/QQP-42', 'learning_rate': 0.0001, 'dev_result': 0.8424915626331138, 'test_result': 0.8424915626331138}
+Statistics for learning rate = 0.0001: mean: 0.8443559519796956, std: 0.0015085689527543258
+Use Validation result!
+{'seed': 'data/original/QQP-13', 'learning_rate': 1e-05, 'dev_result': 0.7970686983471074, 'test_result': 0.7970686983471074}
+Use Validation result!
+{'seed': 'data/original/QQP-21', 'learning_rate': 1e-05, 'dev_result': 0.7962523179023391, 'test_result': 0.7962523179023391}
+Use Validation result!
+{'seed': 'data/original/QQP-42', 'learning_rate': 1e-05, 'dev_result': 0.798871997666202, 'test_result': 0.798871997666202}
+Statistics for learning rate = 1e-05: mean: 0.7973976713052161, std: 0.0010944855478483425
+{'best_lr': 0.0001, 'mean': 0.8443559519796956, 'std': 0.0015085689527543258}

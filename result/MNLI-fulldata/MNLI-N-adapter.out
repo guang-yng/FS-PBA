@@ -1,14 +1,25 @@
-{'tag': 'exp-fulldata-N', 'task_name': 'mnli', 'training_params': ['adapter']}
-Warning: Overwirte results on learning rate = 0.01, seed = data/original/MNLI-13
-Warning: Overwirte results on learning rate = 0.001, seed = data/original/MNLI-13
-Warning: Overwirte results on learning rate = 0.0001, seed = data/original/MNLI-13
-Warning: Overwirte results on learning rate = 1e-05, seed = data/original/MNLI-13
-total experiments: 8
+{'tag': 'exp-fulldata-16-N', 'task_name': 'mnli', 'training_params': ['adapter']}
+total experiments: 9
 
 Use Validation result!
+{'seed': 'data/original/MNLI-13', 'learning_rate': 0.001, 'dev_result': 0.3544574630667346, 'test_result': 0.3544574630667346}
 Use Validation result!
+{'seed': 'data/original/MNLI-21', 'learning_rate': 0.001, 'dev_result': 0.7591441670911869, 'test_result': 0.7591441670911869}
 Use Validation result!
+{'seed': 'data/original/MNLI-42', 'learning_rate': 0.001, 'dev_result': 0.3544574630667346, 'test_result': 0.3544574630667346}
+Statistics for learning rate = 0.001: mean: 0.4893530310748853, std: 0.19077114178114904
 Use Validation result!
-[0.3544574630667346, 0.8831380539989812, 0.899745287824758, 0.8556291390728477]
-[0.8831380539989812, 0.899745287824758, 0.8556291390728477]
-{'mean': 0.8795041602988624, 'std': 0.018192718923477673}
+{'seed': 'data/original/MNLI-13', 'learning_rate': 0.0001, 'dev_result': 0.8850738665308202, 'test_result': 0.8850738665308202}
+Use Validation result!
+{'seed': 'data/original/MNLI-21', 'learning_rate': 0.0001, 'dev_result': 0.8849719816607233, 'test_result': 0.8849719816607233}
+Use Validation result!
+{'seed': 'data/original/MNLI-42', 'learning_rate': 0.0001, 'dev_result': 0.888537952114111, 'test_result': 0.888537952114111}
+Statistics for learning rate = 0.0001: mean: 0.8861946001018849, std: 0.0016575220705603456
+Use Validation result!
+{'seed': 'data/original/MNLI-13', 'learning_rate': 1e-05, 'dev_result': 0.822414671421294, 'test_result': 0.822414671421294}
+Use Validation result!
+{'seed': 'data/original/MNLI-21', 'learning_rate': 1e-05, 'dev_result': 0.8263881813550688, 'test_result': 0.8263881813550688}
+Use Validation result!
+{'seed': 'data/original/MNLI-42', 'learning_rate': 1e-05, 'dev_result': 0.8196637799286806, 'test_result': 0.8196637799286806}
+Statistics for learning rate = 1e-05: mean: 0.8228222109016811, std: 0.0027603091562188632
+{'best_lr': 0.0001, 'mean': 0.8861946001018849, 'std': 0.0016575220705603456}

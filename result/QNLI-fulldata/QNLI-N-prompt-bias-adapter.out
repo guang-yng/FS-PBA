@@ -1,10 +1,25 @@
-{'tag': 'exp-fulldata-N', 'task_name': 'qnli', 'training_params': ['prompt,bias,adapter']}
-total experiments: 4
+{'tag': 'exp-fulldata-16-N', 'task_name': 'qnli', 'training_params': ['prompt,bias,adapter']}
+total experiments: 9
 
 Use Validation result!
+{'seed': 'data/original/QNLI-13', 'learning_rate': 0.001, 'dev_result': 0.5053999633900788, 'test_result': 0.5053999633900788}
 Use Validation result!
+{'seed': 'data/original/QNLI-21', 'learning_rate': 0.001, 'dev_result': 0.5053999633900788, 'test_result': 0.5053999633900788}
 Use Validation result!
+{'seed': 'data/original/QNLI-42', 'learning_rate': 0.001, 'dev_result': 0.5053999633900788, 'test_result': 0.5053999633900788}
+Statistics for learning rate = 0.001: mean: 0.5053999633900788, std: 0.0
 Use Validation result!
-[0.5053999633900788, 0.5053999633900788, 0.9478308621636463, 0.9082921471718836]
-[0.5053999633900788, 0.9478308621636463, 0.9082921471718836]
-{'mean': 0.7871743242418695, 'std': 0.19989734085421007}
+{'seed': 'data/original/QNLI-13', 'learning_rate': 0.0001, 'dev_result': 0.9425224235767893, 'test_result': 0.9425224235767893}
+Use Validation result!
+{'seed': 'data/original/QNLI-21', 'learning_rate': 0.0001, 'dev_result': 0.9436207212154494, 'test_result': 0.9436207212154494}
+Use Validation result!
+{'seed': 'data/original/QNLI-42', 'learning_rate': 0.0001, 'dev_result': 0.9454512172798828, 'test_result': 0.9454512172798828}
+Statistics for learning rate = 0.0001: mean: 0.9438647873573739, std: 0.0012080657680897632
+Use Validation result!
+{'seed': 'data/original/QNLI-13', 'learning_rate': 1e-05, 'dev_result': 0.8876075416437854, 'test_result': 0.8876075416437854}
+Use Validation result!
+{'seed': 'data/original/QNLI-21', 'learning_rate': 1e-05, 'dev_result': 0.8844956983342486, 'test_result': 0.8844956983342486}
+Use Validation result!
+{'seed': 'data/original/QNLI-42', 'learning_rate': 1e-05, 'dev_result': 0.8890719384953323, 'test_result': 0.8890719384953323}
+Statistics for learning rate = 1e-05: mean: 0.8870583928244553, std: 0.0019081695980367349
+{'best_lr': 0.0001, 'mean': 0.9438647873573739, 'std': 0.0012080657680897632}

@@ -1,6 +1,4 @@
-{'tag': 'exp-fulldata-N', 'task_name': 'rte', 'do_train': False}
-total experiments: 1
+{'tag': 'exp-fulldata-16-N', 'task_name': 'rte', 'do_train': False}
+total experiments: 0
 
-Use Validation result!
-[0.47653429602888087]
-{'mean': 0.47653429602888087, 'std': 0}
+{'best_lr': None, 'mean': None, 'std': None}

@@ -3,7 +3,14 @@ Warning: Overwirte results on learning rate = 0.01, seed = data/original/QQP-13
 Warning: Overwirte results on learning rate = 0.001, seed = data/original/QQP-13
 Warning: Overwirte results on learning rate = 0.0001, seed = data/original/QQP-13
 Warning: Overwirte results on learning rate = 1e-05, seed = data/original/QQP-13
-total experiments: 16
+Warning: Overwirte results on learning rate = 0.01, seed = data/original/QQP-21
+Warning: Overwirte results on learning rate = 0.001, seed = data/original/QQP-21
+Warning: Overwirte results on learning rate = 0.0001, seed = data/original/QQP-21
+Warning: Overwirte results on learning rate = 1e-05, seed = data/original/QQP-21
+Warning: Overwirte results on learning rate = 0.001, seed = data/original/QQP-42
+Warning: Overwirte results on learning rate = 0.0001, seed = data/original/QQP-42
+Warning: Overwirte results on learning rate = 1e-05, seed = data/original/QQP-42
+total experiments: 23
 
 Use Validation result!
 {'seed': 'data/original/QQP-13', 'learning_rate': 0.01, 'dev_result': 0.5381903642773208, 'test_result': 0.5381903642773208}
