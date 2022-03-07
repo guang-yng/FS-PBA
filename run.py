@@ -524,19 +524,6 @@ def main():
                 torch.save(model_args, os.path.join(training_args.output_dir, "model_args.bin"))
                 torch.save(data_args, os.path.join(training_args.output_dir, "data_args.bin"))
         
-            # Reload the best checkpoint (for eval)
-            model.load_state_dict(torch.load(os.path.join(training_args.output_dir, "pytorch_model.bin")))
-            model = model.to(training_args.device)
-            trainer.model = model
-            if data_args.prompt:
-                model.label_word_list = torch.tensor(train_dataset.label_word_list).long().cuda()
-            if output_modes_mapping[data_args.task_name] == 'regression':
-                # lower / upper bounds
-                model.lb, model.ub = bound_mapping[data_args.task_name]
-            model.model_args = model_args
-            model.data_args = data_args
-            model.tokenizer = tokenizer
-
         final_result[data_args.task_name+'_train_forward_time'] = np.array(forward_time_records).mean()
         final_result[data_args.task_name+'_train_backward_time'] = np.array(backward_time_records).mean()
         final_result[data_args.task_name+'_train_infer_time'] = np.array(infer_time_records).mean()
