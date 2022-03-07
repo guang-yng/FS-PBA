@@ -159,7 +159,7 @@ TRIAL_IDTF=$RANDOM
 DATA_DIR=data/k-shot/$TASK/$K-$SEED
 
 if [ -z "$NOTRAIN" ]; then
-    python run.py \
+    CUDA_LAUNCH_BLOCKING=1 python run.py \
     --task_name $TASK \
     --data_dir $DATA_DIR \
     --overwrite_output_dir \
@@ -186,7 +186,7 @@ if [ -z "$NOTRAIN" ]; then
     $TASK_EXTRA \
     $1
 else
-    python run.py \
+    CUDA_LAUNCH_BLOCKING=1 python run.py \
     --task_name $TASK \
     --data_dir $DATA_DIR \
     --overwrite_output_dir \

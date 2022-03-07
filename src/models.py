@@ -39,6 +39,10 @@ class AutoRobertaForMaskedLM(nn.Module):
         for p in self.parameters():
             p.requires_grad = False
 
+    def train(self, value=True):
+        for p in self.parameters():
+            p.requires_grad=True
+
     def train_prompt(self):
         for n, p in self.named_parameters():
             if 'prompt' in n:

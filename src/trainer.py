@@ -205,6 +205,7 @@ class Trainer(transformers.Trainer):
                         params[n] = p
                 else:
                     params[n] = p
+                print(n, p.requires_grad)
             no_decay = ["bias", "LayerNorm.weight"]
             optimizer_grouped_parameters = [
                 {
