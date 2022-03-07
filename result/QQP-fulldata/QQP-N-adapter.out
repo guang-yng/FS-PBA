@@ -1,10 +1,25 @@
-{'tag': 'exp-fulldata-N', 'task_name': 'qqp/f1', 'training_params': ['adapter']}
-total experiments: 4
+{'tag': 'exp-fulldata-16-N', 'task_name': 'qqp/f1', 'training_params': ['adapter']}
+total experiments: 9
 
 Use Validation result!
+{'seed': 'data/original/QQP-13', 'learning_rate': 0.001, 'dev_result': 0.0, 'test_result': 0.0}
 Use Validation result!
+{'seed': 'data/original/QQP-21', 'learning_rate': 0.001, 'dev_result': 0.5381903642773208, 'test_result': 0.5381903642773208}
 Use Validation result!
+{'seed': 'data/original/QQP-42', 'learning_rate': 0.001, 'dev_result': 0.0, 'test_result': 0.0}
+Statistics for learning rate = 0.001: mean: 0.17939678809244028, std: 0.2537053707665012
 Use Validation result!
-[0.0, 0.0, 0.8488804161685354, 0.8072663382800489]
-[0.0, 0.8488804161685354, 0.8072663382800489]
-{'mean': 0.5520489181495281, 'std': 0.3907270478583701}
+{'seed': 'data/original/QQP-13', 'learning_rate': 0.0001, 'dev_result': 0.8338553944521588, 'test_result': 0.8338553944521588}
+Use Validation result!
+{'seed': 'data/original/QQP-21', 'learning_rate': 0.0001, 'dev_result': 0.8350257069408741, 'test_result': 0.8350257069408741}
+Use Validation result!
+{'seed': 'data/original/QQP-42', 'learning_rate': 0.0001, 'dev_result': 0.8365229718409691, 'test_result': 0.8365229718409691}
+Statistics for learning rate = 0.0001: mean: 0.8351346910780006, std: 0.0010917571274271303
+Use Validation result!
+{'seed': 'data/original/QQP-13', 'learning_rate': 1e-05, 'dev_result': 0.7844697919278014, 'test_result': 0.7844697919278014}
+Use Validation result!
+{'seed': 'data/original/QQP-21', 'learning_rate': 1e-05, 'dev_result': 0.7824262618783165, 'test_result': 0.7824262618783165}
+Use Validation result!
+{'seed': 'data/original/QQP-42', 'learning_rate': 1e-05, 'dev_result': 0.7836866010598031, 'test_result': 0.7836866010598031}
+Statistics for learning rate = 1e-05: mean: 0.7835275516219737, std: 0.0008418140366859779
+{'best_lr': 0.0001, 'mean': 0.8351346910780006, 'std': 0.0010917571274271303}

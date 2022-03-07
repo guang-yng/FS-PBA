@@ -1,32 +1,25 @@
-{'tag': 'exp-fulldata-Y', 'task_name': 'mnli', 'training_params': ['prompt,adapter']}
-total experiments: 12
+{'tag': 'exp-fulldata-16-Y', 'task_name': 'mnli', 'training_params': ['prompt,adapter']}
+total experiments: 9
 
 Use Validation result!
-{'seed': 'data/original/MNLI-13', 'learning_rate': 0.01, 'dev_result': 0.3544574630667346, 'test_result': 0.3544574630667346}
+{'seed': 'data/original/MNLI-13', 'learning_rate': 0.001, 'dev_result': 0.8248599083036169, 'test_result': 0.8248599083036169}
 Use Validation result!
-{'seed': 'data/original/MNLI-21', 'learning_rate': 0.01, 'dev_result': 0.3544574630667346, 'test_result': 0.3544574630667346}
+{'seed': 'data/original/MNLI-21', 'learning_rate': 0.001, 'dev_result': 0.8371879775853286, 'test_result': 0.8371879775853286}
 Use Validation result!
-{'seed': 'data/original/MNLI-42', 'learning_rate': 0.01, 'dev_result': 0.3544574630667346, 'test_result': 0.3544574630667346}
-Statistics for learning rate = 0.01: mean: 0.3544574630667346, std: 0.0
+{'seed': 'data/original/MNLI-42', 'learning_rate': 0.001, 'dev_result': 0.3544574630667346, 'test_result': 0.3544574630667346}
+Statistics for learning rate = 0.001: mean: 0.6721684496518935, std: 0.22471196166164936
 Use Validation result!
-{'seed': 'data/original/MNLI-13', 'learning_rate': 0.001, 'dev_result': 0.8694854814060112, 'test_result': 0.8694854814060112}
+{'seed': 'data/original/MNLI-13', 'learning_rate': 0.0001, 'dev_result': 0.8865002547121752, 'test_result': 0.8865002547121752}
 Use Validation result!
-{'seed': 'data/original/MNLI-21', 'learning_rate': 0.001, 'dev_result': 0.8600101884870097, 'test_result': 0.8600101884870097}
+{'seed': 'data/original/MNLI-21', 'learning_rate': 0.0001, 'dev_result': 0.8873153336729496, 'test_result': 0.8873153336729496}
 Use Validation result!
-{'seed': 'data/original/MNLI-42', 'learning_rate': 0.001, 'dev_result': 0.8989302088639837, 'test_result': 0.8989302088639837}
-Statistics for learning rate = 0.001: mean: 0.8761419595856683, std: 0.016571532273816324
+{'seed': 'data/original/MNLI-42', 'learning_rate': 0.0001, 'dev_result': 0.8859908303616912, 'test_result': 0.8859908303616912}
+Statistics for learning rate = 0.0001: mean: 0.886602139582272, std: 0.0005455044457194655
 Use Validation result!
-{'seed': 'data/original/MNLI-13', 'learning_rate': 0.0001, 'dev_result': 0.8955680081507896, 'test_result': 0.8955680081507896}
+{'seed': 'data/original/MNLI-13', 'learning_rate': 1e-05, 'dev_result': 0.829240957717779, 'test_result': 0.829240957717779}
 Use Validation result!
-{'seed': 'data/original/MNLI-21', 'learning_rate': 0.0001, 'dev_result': 0.8989302088639837, 'test_result': 0.8989302088639837}
+{'seed': 'data/original/MNLI-21', 'learning_rate': 1e-05, 'dev_result': 0.8352521650534895, 'test_result': 0.8352521650534895}
 Use Validation result!
-{'seed': 'data/original/MNLI-42', 'learning_rate': 0.0001, 'dev_result': 0.8985226693835965, 'test_result': 0.8985226693835965}
-Statistics for learning rate = 0.0001: mean: 0.8976736287994566, std: 0.0014981657327296566
-Use Validation result!
-{'seed': 'data/original/MNLI-13', 'learning_rate': 1e-05, 'dev_result': 0.8519612837493632, 'test_result': 0.8519612837493632}
-Use Validation result!
-{'seed': 'data/original/MNLI-21', 'learning_rate': 1e-05, 'dev_result': 0.8589913397860418, 'test_result': 0.8589913397860418}
-Use Validation result!
-{'seed': 'data/original/MNLI-42', 'learning_rate': 1e-05, 'dev_result': 0.8561385634233316, 'test_result': 0.8561385634233316}
-Statistics for learning rate = 1e-05: mean: 0.8556970623195789, std: 0.0028869377534187224
-{'best_lr': 0.0001, 'mean': 0.8976736287994566, 'std': 0.0014981657327296566}
+{'seed': 'data/original/MNLI-42', 'learning_rate': 1e-05, 'dev_result': 0.8319918492103923, 'test_result': 0.8319918492103923}
+Statistics for learning rate = 1e-05: mean: 0.8321616573272202, std: 0.002457000814764578
+{'best_lr': 0.0001, 'mean': 0.886602139582272, 'std': 0.0005455044457194655}
