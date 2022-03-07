@@ -1,3 +1,4 @@
+#!/bin/bash
 # Required environment variables:
 # TASK: SST-2 / sst-5 / mr / cr / mpqa / subj / trec / CoLA / MNLI / SNLI / QNLI / RTE / MRPC / QQP / STS-B
 
