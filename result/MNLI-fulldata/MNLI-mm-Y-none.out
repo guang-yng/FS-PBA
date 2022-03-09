@@ -1,8 +1,4 @@
-{'tag': 'exp-fulldata-N', 'task_name': 'mnli-mm', 'do_train': False}
-Warning: Overwirte results on learning rate = 5e-05, seed = data/original/MNLI-13
-Warning: Overwirte results on learning rate = 5e-05, seed = data/original/MNLI-13
-total experiments: 3
+{'tag': 'exp-fulldata-16-N', 'task_name': 'mnli-mm', 'do_train': False}
+total experiments: 0
 
-Use Validation result!
-[0.34192562404482935]
-{'mean': 0.34192562404482935, 'std': 0}
+{'best_lr': None, 'mean': None, 'std': None}

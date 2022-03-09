@@ -1,10 +1,32 @@
-{'tag': 'exp-fulldata-N', 'task_name': 'cola', 'training_params': ['prompt,bias,adapter']}
-total experiments: 4
+{'tag': 'exp-fulldata-16-N', 'task_name': 'cola', 'training_params': ['prompt,bias,adapter']}
+total experiments: 12
 
 Use Validation result!
+{'seed': 'data/original/CoLA-13', 'learning_rate': 0.01, 'dev_result': 0.0, 'test_result': 0.0}
 Use Validation result!
+{'seed': 'data/original/CoLA-21', 'learning_rate': 0.01, 'dev_result': 0.0, 'test_result': 0.0}
 Use Validation result!
+{'seed': 'data/original/CoLA-42', 'learning_rate': 0.01, 'dev_result': 0.0, 'test_result': 0.0}
+Statistics for learning rate = 0.01: mean: 0.0, std: 0.0
 Use Validation result!
-[0.0, 0.0, 0.682185118591261, 0.5881989399089292]
-[0.0, 0.682185118591261, 0.5881989399089292]
-{'mean': 0.42346135283339675, 'std': 0.30188075841679024}
+{'seed': 'data/original/CoLA-13', 'learning_rate': 0.001, 'dev_result': 0.0, 'test_result': 0.0}
+Use Validation result!
+{'seed': 'data/original/CoLA-21', 'learning_rate': 0.001, 'dev_result': 0.0, 'test_result': 0.0}
+Use Validation result!
+{'seed': 'data/original/CoLA-42', 'learning_rate': 0.001, 'dev_result': 0.0, 'test_result': 0.0}
+Statistics for learning rate = 0.001: mean: 0.0, std: 0.0
+Use Validation result!
+{'seed': 'data/original/CoLA-13', 'learning_rate': 0.0001, 'dev_result': 0.6549479450779031, 'test_result': 0.6549479450779031}
+Use Validation result!
+{'seed': 'data/original/CoLA-21', 'learning_rate': 0.0001, 'dev_result': 0.6431471477188715, 'test_result': 0.6431471477188715}
+Use Validation result!
+{'seed': 'data/original/CoLA-42', 'learning_rate': 0.0001, 'dev_result': 0.6337676777494227, 'test_result': 0.6337676777494227}
+Statistics for learning rate = 0.0001: mean: 0.6439542568487324, std: 0.008665621727535485
+Use Validation result!
+{'seed': 'data/original/CoLA-13', 'learning_rate': 1e-05, 'dev_result': 0.593573957735696, 'test_result': 0.593573957735696}
+Use Validation result!
+{'seed': 'data/original/CoLA-21', 'learning_rate': 1e-05, 'dev_result': 0.6023021983248817, 'test_result': 0.6023021983248817}
+Use Validation result!
+{'seed': 'data/original/CoLA-42', 'learning_rate': 1e-05, 'dev_result': 0.5992590434767208, 'test_result': 0.5992590434767208}
+Statistics for learning rate = 1e-05: mean: 0.5983783998457661, std: 0.0036172914221585827
+{'best_lr': 0.0001, 'mean': 0.6439542568487324, 'std': 0.008665621727535485}

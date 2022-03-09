@@ -1,10 +1,26 @@
-{'tag': 'exp-fulldata-N', 'task_name': 'qqp/f1', 'training_params': ['prompt,bias']}
-total experiments: 4
+{'tag': 'exp-fulldata-16-N', 'task_name': 'qqp/f1', 'training_params': ['prompt,bias']}
+total experiments: 9
 
 Use Validation result!
+{'seed': 'data/original/QQP-13', 'learning_rate': 0.001, 'dev_result': 0.8378888142962182, 'test_result': 0.8378888142962182}
 Use Validation result!
+{'seed': 'data/original/QQP-21', 'learning_rate': 0.001, 'dev_result': 0.8350605893245833, 'test_result': 0.8350605893245833}
 Use Validation result!
+{'seed': 'data/original/QQP-42', 'learning_rate': 0.001, 'dev_result': 0.83543329806675, 'test_result': 0.83543329806675}
+Statistics for learning rate = 0.001: mean: 0.8361275672291839, std: 0.0012546503829021433
 Use Validation result!
-[0.0, 0.8504238802091793, 0.8242553466434064, 0.7615119828538026]
-[0.8504238802091793, 0.8242553466434064, 0.7615119828538026]
-{'mean': 0.812063736568796, 'std': 0.037307799809975055}
+{'seed': 'data/original/QQP-13', 'learning_rate': 0.0001, 'dev_result': 0.8120670391061452, 'test_result': 0.8120670391061452}
+Use Validation result!
+{'seed': 'data/original/QQP-21', 'learning_rate': 0.0001, 'dev_result': 0.8116176661054267, 'test_result': 0.8116176661054267}
+Use Validation result!
+{'seed': 'data/original/QQP-42', 'learning_rate': 0.0001, 'dev_result': 0.8134359334589227, 'test_result': 0.8134359334589227}
+Statistics for learning rate = 0.0001: mean: 0.8123735462234981, std: 0.0007732977011640382
+Use Validation result!
+{'seed': 'data/original/QQP-13', 'learning_rate': 1e-05, 'dev_result': 0.7376358828714132, 'test_result': 0.7376358828714132}
+Use Validation result!
+{'seed': 'data/original/QQP-21', 'learning_rate': 1e-05, 'dev_result': 0.7370160375830229, 'test_result': 0.7370160375830229}
+Use Validation result!
+{'seed': 'data/original/QQP-42', 'learning_rate': 1e-05, 'dev_result': 0.7362569487337863, 'test_result': 0.7362569487337863}
+Statistics for learning rate = 1e-05: mean: 0.7369696230627408, std: 0.0005639034017441751
+Warning! Best Learning rate equals maximum Learning rate.
+{'best_lr': 0.001, 'mean': 0.8361275672291839, 'std': 0.0012546503829021433}
