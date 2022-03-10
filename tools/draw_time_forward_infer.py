@@ -17,7 +17,7 @@ log = log_file.readlines()
 
 print(len(log))
 
-for t in ['backward']:
+for t in ['forward', 'infer']:
 
     param_to_time = {}
     for item in log:
@@ -30,13 +30,16 @@ for t in ['backward']:
         param_to_time[param_str][max_len] = training_arg[f"sst-2_train_{t}_time"]
 
     label_to_name = ['adapter', 'bias', 'prompt', 'all', 'prompt,bias', 'prompt,adapter', 'bias,adapter', 'prompt,bias,adapter']
-    label2n = ['AP', 'BF', 'PT', 'FT', 'PT+BF', 'PT+AP', 'BF+AP', 'PT+BF+AP']
-    label_to_color = ['#fe5803', '#a000c6', '#0044fb', '#f2a196', '#700a97', '#fd9404', '#d36c62']
+    label2n = ['AP', 'BF / FT', 'PT', 'FT', 'PT+BF', 'PT+AP', 'BF+AP', 'PT+BF+AP']
+    label_to_color = ['#fe5803', '#c34f97', '#0044fb', '#f2a196', '#700a97', '#fd9404', '#d36c62']
 
+    for x in xlabels:
+        param_to_time['bias'][x] += param_to_time['all'][x]
+        param_to_time['bias'][x] *= 0.5
     fig, ax = plt.subplots()
     for param in param_to_time:
         i = label_to_name.index(param)
-        if i > 3:
+        if i > 2:
             continue
         x = xlabels
         y = []
@@ -44,8 +47,11 @@ for t in ['backward']:
             y.append(param_to_time[param][item])
         
         ax.plot(x, y, '-d', color=label_to_color[i], label=label2n[i])
+    legend=ax.legend()
+    # for txt in legend.get_texts():
+    #     txt.set_ha('center') # ha is alias for horizontalalignment
+    #     txt.set_position((20,0))
 
-    ax.legend(loc=(0.02,0.450))
     ax.get_xaxis().set_major_formatter(mpl.ticker.ScalarFormatter())
     ax.title.set_text(f'{t} time'.title())
     ax.set_ylabel('Time(ms)')

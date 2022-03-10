@@ -205,7 +205,6 @@ class Trainer(transformers.Trainer):
                         params[n] = p
                 else:
                     params[n] = p
-                print(n, p.requires_grad)
             no_decay = ["bias", "LayerNorm.weight"]
             optimizer_grouped_parameters = [
                 {
@@ -227,7 +226,6 @@ class Trainer(transformers.Trainer):
                     "weight_decay": 0.0,
                 },
             ]
-            print(optimizer_grouped_parameters_names, self.args.learning_rate)
             self.optimizer = AdamW(
                 optimizer_grouped_parameters,
                 lr=self.args.learning_rate,

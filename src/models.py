@@ -40,8 +40,19 @@ class AutoRobertaForMaskedLM(nn.Module):
             p.requires_grad = False
 
     def train(self, value=True):
-        for p in self.parameters():
-            p.requires_grad=True
+        if not value:
+            for p in self.parameters():
+                p.requires_grad = False
+            return
+        if 'prompt' in self.training_params:
+            self.train_prompt()
+        if 'bias' in self.training_params:
+            self.train_bias()
+        if 'adapter' in self.training_params:
+            self.train_adapter('PBAdapter')
+        if 'all' in self.training_params:
+            for p in self.parameters():
+                p.requires_grad=True
 
     def train_prompt(self):
         for n, p in self.named_parameters():

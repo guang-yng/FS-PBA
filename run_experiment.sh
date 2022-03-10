@@ -14,10 +14,10 @@
 K=16
 
 # Training steps
-MAX_STEP=6000
+MAX_STEP=2000
 
 # Validation steps
-EVAL_STEP=200
+EVAL_STEP=100
 
 # Task specific parameters
 # The default length is 128 and the default number of samples is 16.
@@ -42,7 +42,7 @@ case $TASK in
             Y)
                 TEMPLATE=*cls*$PROMPT*sent_0*_It_was*mask*.*sep+*;;
             N)
-                TEMPLATE=*cls*$PROMPT*sent_0**sep+**mask**sep+*;;
+                TEMPLATE=cls*$PROMPT*sent_0*sep+*mask*sep+;;
         esac
         MAPPING="{'0':'terrible','1':'great'}"
         ;;

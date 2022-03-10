@@ -216,6 +216,11 @@ class DynamicDataTrainingArguments(DataTrainingArguments):
         metadata={"help": "(DO NOT List of templates (only initialized after the program starts."}
     )
 
+    input_length: int = field(
+        default=None,
+        metadata={"help": "input length for time measuring"}
+    )
+
 
 @dataclass
 class DynamicTrainingArguments(TrainingArguments):
@@ -393,17 +398,14 @@ def main():
     )
 
     # Get our special datasets.
-    logger.info("*** Here!!!!! ***")
     train_dataset = (
         FewShotDataset(data_args, tokenizer=tokenizer, mode="train", use_demo=False)
     )
-    logger.info("*** Here!!!!! ***")
     eval_dataset = (
         FewShotDataset(data_args, tokenizer=tokenizer, mode="dev", use_demo=False)
         if training_args.do_eval
         else None
     )
-    logger.info("*** Here!!!!! ***")
     test_dataset = (
         FewShotDataset(data_args, tokenizer=tokenizer, mode="test", use_demo=False)
         if training_args.do_predict
@@ -499,14 +501,8 @@ def main():
         infer_time_records = []
         for params in train_params_list:
             model.freeze_model()
-            if 'adapter' in params:
-                model.train_adapter('PBAdapter')
-            if 'prompt' in params:
-                model.train_prompt()
-            if 'bias' in params:
-                model.train_bias()
-            if 'all' in params:
-                model.train()
+            model.training_params = params
+            model.train()
             result = trainer.train(model_path=model_args.model_name_or_path 
                                    if os.path.isdir(model_args.model_name_or_path) else None) 
             forward_time_records.append(result[-4])
