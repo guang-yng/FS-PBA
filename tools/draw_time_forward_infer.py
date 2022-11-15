@@ -8,7 +8,7 @@ from torch import device
 mpl.rcParams['xtick.minor.size'] = 0
 mpl.rcParams['xtick.minor.width'] = 0
 mpl.rc('font', size=18)
-xlabels = [16, 32, 64, 128, 256, 496]
+xlabels = [16, 32, 64, 128, 256, 480]
 xlabels_txt = [str(i) for i in xlabels]
 print(xlabels, xlabels_txt)
 
@@ -53,7 +53,7 @@ for t in ['forward', 'infer']:
     #     txt.set_position((20,0))
 
     ax.get_xaxis().set_major_formatter(mpl.ticker.ScalarFormatter())
-    ax.title.set_text(f'{t} time'.title())
+    ax.title.set_text(f'forward time'.title())
     ax.set_ylabel('Time(ms)')
     ax.set_xlabel('Length of Inputs')
     ax.set_xscale('log')

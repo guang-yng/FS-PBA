@@ -101,7 +101,7 @@ def tokenize_multipart_input(
 ):
     assert input_length is not None
     def enc(text):
-        return torch.randint(1, tokenizer.vocab_size-1, (input_length, ) )
+        return torch.randint(1, tokenizer.vocab_size-1, (input_length, ) ).tolist()
         # return tokenizer.encode(text, add_special_tokens=False)
 
     input_ids = []

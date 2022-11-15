@@ -8,7 +8,7 @@ from torch import device
 mpl.rcParams['xtick.minor.size'] = 0
 mpl.rcParams['xtick.minor.width'] = 0
 mpl.rc('font', size=18)
-xlabels = [16, 32, 64, 128, 256, 496]
+xlabels = [16, 32, 64, 128, 256, 480]
 xlabels_txt = [str(i) for i in xlabels]
 print(xlabels, xlabels_txt)
 

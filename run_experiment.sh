@@ -14,7 +14,7 @@
 K=16
 
 # Training steps
-MAX_STEP=2000
+MAX_STEP=1000
 
 # Validation steps
 EVAL_STEP=100
@@ -29,10 +29,10 @@ case $TASK in
     CoLA)
         case $HARD in
             Y)
-                TEMPLATE=*cls*$PROMPT*sent_0*_This_is*mask*.*sep+*
+                TEMPLATE=*cls$PROMPT*sent_0*_This_is*mask*.*sep+*
                 ;;
             N)
-                TEMPLATE=*cls*$PROMPT*sent_0**sep+**mask**sep+*
+                TEMPLATE=*cls$PROMPT*sent_0**sep+**mask**sep+*
                 ;;
         esac
         MAPPING="{'0':'incorrect','1':'correct'}"
@@ -40,27 +40,27 @@ case $TASK in
     SST-2)
         case $HARD in
             Y)
-                TEMPLATE=*cls*$PROMPT*sent_0*_It_was*mask*.*sep+*;;
+                TEMPLATE=*cls$PROMPT*sent_0*_It_was*mask*.*sep+*;;
             N)
-                TEMPLATE=cls*$PROMPT*sent_0*sep+*mask*sep+;;
+                TEMPLATE=cls$PROMPT*sent_0*sep+*mask*sep+;;
         esac
         MAPPING="{'0':'terrible','1':'great'}"
         ;;
     MRPC)
         case $HARD in
             Y)
-                TEMPLATE=*cls*$PROMPT*sent_0**mask*,*+sentl_1**sep+*;;
+                TEMPLATE=*cls$PROMPT*sent_0**mask*,*+sentl_1**sep+*;;
             N)
-                TEMPLATE=*cls*$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
+                TEMPLATE=*cls$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
         esac
         MAPPING="{'0':'No','1':'Yes'}"
         ;;
     QQP)
         case $HARD in
             Y)
-                TEMPLATE=*cls*$PROMPT*sent_0**mask*,*+sentl_1**sep+*;;
+                TEMPLATE=*cls$PROMPT*sent_0**mask*,*+sentl_1**sep+*;;
             N)
-                TEMPLATE=*cls*$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
+                TEMPLATE=*cls$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
         esac
         MAPPING="{'0':'No','1':'Yes'}"
         TASK_EXTRA="--num_sample 4"
@@ -68,18 +68,18 @@ case $TASK in
     STS-B)
         case $HARD in
             Y)
-                TEMPLATE=*cls*$PROMPT*sent_0**mask*,*+sentl_1**sep+*;;
+                TEMPLATE=*cls$PROMPT*sent_0**mask*,*+sentl_1**sep+*;;
             N)
-                TEMPLATE=*cls*$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
+                TEMPLATE=*cls$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
         esac
         MAPPING="{'0':'No','1':'Yes'}"
         ;;
     MNLI)
         case $HARD in
             Y)
-                TEMPLATE=*cls*$PROMPT*sent-_0*?*mask*,*+sentl_1**sep+*;;
+                TEMPLATE=*cls$PROMPT*sent-_0*?*mask*,*+sentl_1**sep+*;;
             N)
-                TEMPLATE=*cls*$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
+                TEMPLATE=*cls$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
         esac
         MAPPING="{'contradiction':'No','entailment':'Yes','neutral':'Maybe'}"
         TASK_EXTRA="--max_seq_len 512 --num_sample 4"
@@ -92,18 +92,18 @@ case $TASK in
     QNLI)
         case $HARD in
             Y)
-                TEMPLATE=*cls*$PROMPT*sent-_0*?*mask*,*+sentl_1**sep+*;;
+                TEMPLATE=*cls$PROMPT*sent-_0*?*mask*,*+sentl_1**sep+*;;
             N)
-                TEMPLATE=*cls*$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
+                TEMPLATE=*cls$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
         esac
         MAPPING="{'not_entailment':'No','entailment':'Yes'}"
         ;;
     RTE)
         case $HARD in
             Y)
-                TEMPLATE=*cls*$PROMPT*sent-_0*?*mask*,*+sentl_1**sep+*;;
+                TEMPLATE=*cls$PROMPT*sent-_0*?*mask*,*+sentl_1**sep+*;;
             N)
-                TEMPLATE=*cls*$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
+                TEMPLATE=*cls$PROMPT*sent_0**sep+**sent_1**sep+**mask**sep+*;;
         esac
         MAPPING="{'not_entailment':'No','entailment':'Yes'}"
         TASK_EXTRA="--max_seq_len 512 --first_sent_limit 240"
@@ -171,7 +171,7 @@ if [ -z "$NOTRAIN" ]; then
     --prompt_num 10 \
     --num_k $K \
     --per_device_train_batch_size $REAL_BS \
-    --per_device_eval_batch_size 16 \
+    --per_device_eval_batch_size 1 \
     --gradient_accumulation_steps $GS \
     --learning_rate $LR \
     --max_steps $MAX_STEP \
@@ -197,7 +197,7 @@ else
     --prompt_num 10 \
     --num_k $K \
     --per_device_train_batch_size $REAL_BS \
-    --per_device_eval_batch_size 16 \
+    --per_device_eval_batch_size 1 \
     --gradient_accumulation_steps $GS \
     --max_steps $MAX_STEP \
     --logging_steps $EVAL_STEP \
